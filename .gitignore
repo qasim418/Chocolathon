@@ -6,10 +6,7 @@ __pycache__/
 
 data/boxes/raw/
 data/boxes/previews/
-data/boxes/processed/
 outputs/
 
 # Reproducible box-processing artifacts
 data/boxes/oriented_images/
-data/boxes/normalized/
-data/boxes/slots/empty/
