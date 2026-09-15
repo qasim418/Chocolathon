@@ -1,0 +1,10 @@
+.venv/
+.venv_jupyter/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+data/boxes/raw/
+data/boxes/previews/
+data/boxes/processed/
+outputs/
