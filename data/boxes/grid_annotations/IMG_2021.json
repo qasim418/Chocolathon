@@ -1,0 +1,24 @@
+{
+  "file": "IMG_2021.jpg",
+  "box_size": 6,
+  "rows": 3,
+  "columns": 2,
+  "anchors": {
+    "top_left": [
+      108.0,
+      174.0
+    ],
+    "top_right": [
+      337.0,
+      174.0
+    ],
+    "bottom_right": [
+      336.0,
+      606.0
+    ],
+    "bottom_left": [
+      112.0,
+      602.0
+    ]
+  }
+}

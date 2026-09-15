@@ -1,0 +1,24 @@
+{
+  "file": "IMG_2026.jpg",
+  "box_size": 16,
+  "rows": 4,
+  "columns": 4,
+  "anchors": {
+    "top_left": [
+      111.18,
+      172.62
+    ],
+    "top_right": [
+      804.57,
+      179.93
+    ],
+    "bottom_right": [
+      806.03,
+      866.01
+    ],
+    "bottom_left": [
+      111.18,
+      870.4
+    ]
+  }
+}

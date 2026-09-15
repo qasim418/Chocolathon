@@ -1,0 +1,24 @@
+{
+  "file": "IMG_2022.jpg",
+  "box_size": 16,
+  "rows": 4,
+  "columns": 4,
+  "anchors": {
+    "top_left": [
+      194.56,
+      190.17
+    ],
+    "top_right": [
+      870.4,
+      198.95
+    ],
+    "bottom_right": [
+      868.94,
+      890.88
+    ],
+    "bottom_left": [
+      169.69,
+      868.94
+    ]
+  }
+}
