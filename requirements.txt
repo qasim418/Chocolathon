@@ -1,0 +1,9 @@
+numpy
+pandas
+matplotlib
+pillow
+opencv-python-headless
+scipy
+ipympl
+ipykernel
+jupyter-console
