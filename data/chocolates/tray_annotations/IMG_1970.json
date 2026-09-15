@@ -1,0 +1,31 @@
+{
+  "file": "IMG_1970.jpg",
+  "source_path": "/homes/s959m963/Chocolathon/data/chocolates/raw/flavor_trays/_unlabeled/IMG_1970.jpg",
+  "original_size": [
+    3024,
+    4032
+  ],
+  "preview_size": [
+    675,
+    900
+  ],
+  "corners": {
+    "top_left": [
+      492.79998779296875,
+      103.04000091552734
+    ],
+    "top_right": [
+      2369.919921875,
+      89.5999984741211
+    ],
+    "bottom_right": [
+      2535.679931640625,
+      3897.60009765625
+    ],
+    "bottom_left": [
+      349.44000244140625,
+      3911.0400390625
+    ]
+  },
+  "crop_path": "/homes/s959m963/Chocolathon/data/chocolates/cropped_trays/IMG_1970.jpg"
+}
