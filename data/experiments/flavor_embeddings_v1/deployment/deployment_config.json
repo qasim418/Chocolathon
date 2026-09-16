@@ -1,0 +1,36 @@
+{
+  "version": "flavor_embeddings_v1",
+  "dataset_version": "chocolate_dataset_v1",
+  "backbone": "efficientnet_b0",
+  "weights": "EfficientNet_B0_Weights.IMAGENET1K_V1",
+  "embedding_dimension": 1280,
+  "similarity": "cosine",
+  "classifier": "class_prototype",
+  "margin_threshold": 0.01,
+  "uncertain_action": "show_top3",
+  "supported_classes": 33,
+  "unsupported_catalog_classes": [
+    "Blackberry Sangria",
+    "Mint",
+    "Peach Cobbler"
+  ],
+  "controlled_validation": {
+    "samples": 133,
+    "top1_accuracy": 0.9925,
+    "top3_accuracy": 1.0,
+    "macro_f1": 0.9929
+  },
+  "source_holdout_evaluation": {
+    "samples": 89,
+    "classes": 4,
+    "top1_accuracy": 0.9551,
+    "top3_accuracy": 1.0,
+    "macro_f1": 0.98
+  },
+  "limitations": [
+    "Controlled validation shares source photographs across splits.",
+    "Independent source evaluation covers only four classes.",
+    "Most training crops contain white tray backgrounds.",
+    "Predictions for unsupported classes must not be forced into supported labels."
+  ]
+}

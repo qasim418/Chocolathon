@@ -1,0 +1,22 @@
+{
+  "seed": 42,
+  "dataset_version": "chocolate_dataset_v1",
+  "samples": 889,
+  "classes": 33,
+  "controlled_counts": {
+    "train": 623,
+    "validation": 133,
+    "test": 133
+  },
+  "source_holdout_counts": {
+    "train": 637,
+    "validation": 163,
+    "test": 89
+  },
+  "independently_testable_classes": [
+    "cocoashot_bourbon",
+    "cocoashot_tequila",
+    "truffle_creamsicle",
+    "truffle_s_mores"
+  ]
+}

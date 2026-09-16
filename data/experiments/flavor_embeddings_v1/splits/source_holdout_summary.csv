@@ -1,0 +1,5 @@
+flavor_id,flavor_name,training_sources,holdout_source,train_samples,validation_samples,test_samples
+cocoashot_bourbon,Bourbon,IMG_1979.jpg,IMG_1984.jpg,16,4,12
+cocoashot_tequila,Tequila,IMG_1980.jpg,IMG_1981.jpg,18,4,22
+truffle_creamsicle,Creamsicle,IMG_1996.jpg,IMG_1989.jpg,22,6,27
+truffle_s_mores,S'mores,IMG_1971.jpg,IMG_1985.jpg,19,5,28
