@@ -1,0 +1,31 @@
+{
+  "file": "IMG_1980.jpg",
+  "source_file": "data/chocolates/raw/flavor_trays/_unlabeled/IMG_1980.jpg",
+  "original_size": [
+    3024,
+    4032
+  ],
+  "preview_size": [
+    675,
+    900
+  ],
+  "corners": {
+    "top_left": [
+      501.760009765625,
+      645.1199951171875
+    ],
+    "top_right": [
+      2670.080078125,
+      591.3599853515625
+    ],
+    "bottom_right": [
+      2755.199951171875,
+      2750.719970703125
+    ],
+    "bottom_left": [
+      586.8800048828125,
+      2786.56005859375
+    ]
+  },
+  "crop_file": "data/chocolates/cropped_trays/IMG_1980.jpg"
+}

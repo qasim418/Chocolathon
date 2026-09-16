@@ -1,0 +1,15 @@
+{
+  "dataset_name": "Chocolathon Chocolate Dataset",
+  "version": "1.0",
+  "created_utc": "2026-09-16T04:25:01.664710+00:00",
+  "accepted_samples": 889,
+  "rejected_samples": 10,
+  "flavor_classes": 33,
+  "source_trays": 37,
+  "candidate_image_size": [
+    224,
+    224
+  ],
+  "total_files": 1058,
+  "total_size_mb": 119.17
+}
