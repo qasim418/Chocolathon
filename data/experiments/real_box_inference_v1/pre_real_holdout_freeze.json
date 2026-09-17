@@ -1,0 +1,50 @@
+{
+  "freeze_name": "chocolathon_pre_real_holdout_v1",
+  "created_utc": "2026-09-17T16:08:04.410136+00:00",
+  "model": "EfficientNet-B0 frozen embeddings with cosine class prototypes",
+  "classes": 34,
+  "confidence_threshold": 0.005,
+  "synthetic_validation_top1": 0.998688,
+  "synthetic_integration_slots": 102,
+  "synthetic_integration_accuracy": 1.0,
+  "synthetic_count_absolute_error": 0,
+  "real_filled_box_used": false,
+  "real_holdout_status": "reserved",
+  "artifacts": {
+    "backbone": {
+      "path": "/homes/mxqasim/Chocolathon/data/experiments/synthetic_slot_embeddings_v1/deployment/efficientnet_b0_feature_extractor.pt",
+      "size_bytes": 16332779,
+      "sha256": "36d2fa7fff0ed0338b3d82609512e85833122de9471d1c4cc91fa4a77aeae693"
+    },
+    "prototypes": {
+      "path": "/homes/mxqasim/Chocolathon/data/experiments/synthetic_slot_embeddings_v1/deployment/slot_class_prototypes.npz",
+      "size_bytes": 162480,
+      "sha256": "d21cffc167c0e665b6627c9d960e5195f5842f2664fe2de3d13064afba011b27"
+    },
+    "class_catalog": {
+      "path": "/homes/mxqasim/Chocolathon/data/experiments/synthetic_slot_embeddings_v1/deployment/class_catalog.csv",
+      "size_bytes": 1962,
+      "sha256": "4ea28861dc90e998d7e6ed3030be94305695e76c4a1b4be708a6aad8b35ce5b7"
+    },
+    "deployment_config": {
+      "path": "/homes/mxqasim/Chocolathon/data/experiments/synthetic_slot_embeddings_v1/deployment/deployment_config.json",
+      "size_bytes": 667,
+      "sha256": "e05abefc8b5af5f838ba55dfcf8e596f0cc11816c67c220e7de89c4b4162f113"
+    },
+    "synthetic_manifest": {
+      "path": "/homes/mxqasim/Chocolathon/data/synthetic_slots/v1/dataset/synthetic_slot_manifest.csv",
+      "size_bytes": 964386,
+      "sha256": "f0cc90b60cf655c84207cb50ee9183e71e51aa49d9f6234a4480e1bec353c638"
+    },
+    "integration_predictions": {
+      "path": "/homes/mxqasim/Chocolathon/data/experiments/real_box_inference_v1/synthetic_integration/outputs/synthetic_box_slot_predictions.csv",
+      "size_bytes": 29516,
+      "sha256": "7750e1e60e8c874a9abf5642f089d32475b79a22f8065a08cb9187d9cdcb9c0c"
+    },
+    "integration_counts": {
+      "path": "/homes/mxqasim/Chocolathon/data/experiments/real_box_inference_v1/synthetic_integration/outputs/synthetic_box_count_comparison.csv",
+      "size_bytes": 2888,
+      "sha256": "a70894faaf8b3b85450bc0640f415fe19301b62e5df9d039b45385dc218665f1"
+    }
+  }
+}
