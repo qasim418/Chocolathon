@@ -1,0 +1,98 @@
+{
+  "sample_id": "IMG_1986_c001",
+  "flavor_id": "truffle_maple_cream",
+  "flavor_name": "Maple Cream",
+  "source_file": "IMG_1986.jpg",
+  "crop_expansion": 1.35,
+  "crop_size": [
+    320,
+    320
+  ],
+  "points": [
+    [
+      44,
+      136
+    ],
+    [
+      54,
+      116
+    ],
+    [
+      78,
+      88
+    ],
+    [
+      124,
+      70
+    ],
+    [
+      168,
+      74
+    ],
+    [
+      196,
+      93
+    ],
+    [
+      226,
+      118
+    ],
+    [
+      249,
+      146
+    ],
+    [
+      260,
+      198
+    ],
+    [
+      260,
+      238
+    ],
+    [
+      246,
+      268
+    ],
+    [
+      229,
+      296
+    ],
+    [
+      195,
+      314
+    ],
+    [
+      159,
+      317
+    ],
+    [
+      110,
+      314
+    ],
+    [
+      80,
+      293
+    ],
+    [
+      54,
+      262
+    ],
+    [
+      38,
+      226
+    ],
+    [
+      35,
+      188
+    ],
+    [
+      40,
+      162
+    ],
+    [
+      44,
+      135
+    ]
+  ],
+  "foreground_path": "data/synthetic_slots/v1/donor_foregrounds_manual/truffle_maple_cream/IMG_1986_c001.png"
+}

@@ -1,0 +1,98 @@
+{
+  "sample_id": "IMG_1975_c004",
+  "flavor_id": "truffle_grey_salt_caramel",
+  "flavor_name": "Grey Salt Caramel",
+  "source_file": "IMG_1975.jpg",
+  "crop_expansion": 1.35,
+  "crop_size": [
+    320,
+    320
+  ],
+  "points": [
+    [
+      62,
+      90
+    ],
+    [
+      109,
+      84
+    ],
+    [
+      172,
+      80
+    ],
+    [
+      234,
+      77
+    ],
+    [
+      252,
+      88
+    ],
+    [
+      257,
+      117
+    ],
+    [
+      258,
+      162
+    ],
+    [
+      259,
+      220
+    ],
+    [
+      259,
+      262
+    ],
+    [
+      234,
+      275
+    ],
+    [
+      190,
+      280
+    ],
+    [
+      142,
+      282
+    ],
+    [
+      76,
+      280
+    ],
+    [
+      58,
+      272
+    ],
+    [
+      58,
+      240
+    ],
+    [
+      56,
+      202
+    ],
+    [
+      54,
+      158
+    ],
+    [
+      54,
+      126
+    ],
+    [
+      62,
+      93
+    ],
+    [
+      62,
+      93
+    ],
+    [
+      63,
+      88
+    ]
+  ],
+  "foreground_path": "data/synthetic_slots/v1/donor_foregrounds_manual/truffle_grey_salt_caramel/IMG_1975_c004.png"
+}

@@ -1,0 +1,98 @@
+{
+  "sample_id": "IMG_1961_c001",
+  "flavor_id": "truffle_dulce_de_leche",
+  "flavor_name": "Dulce de Leche",
+  "source_file": "IMG_1961.jpg",
+  "crop_expansion": 1.35,
+  "crop_size": [
+    320,
+    320
+  ],
+  "points": [
+    [
+      13,
+      238
+    ],
+    [
+      18,
+      206
+    ],
+    [
+      32,
+      176
+    ],
+    [
+      52,
+      150
+    ],
+    [
+      84,
+      109
+    ],
+    [
+      122,
+      91
+    ],
+    [
+      168,
+      90
+    ],
+    [
+      208,
+      104
+    ],
+    [
+      228,
+      134
+    ],
+    [
+      244,
+      166
+    ],
+    [
+      246,
+      204
+    ],
+    [
+      242,
+      257
+    ],
+    [
+      226,
+      296
+    ],
+    [
+      210,
+      314
+    ],
+    [
+      184,
+      316
+    ],
+    [
+      136,
+      314
+    ],
+    [
+      84,
+      316
+    ],
+    [
+      52,
+      318
+    ],
+    [
+      34,
+      309
+    ],
+    [
+      22,
+      276
+    ],
+    [
+      13,
+      238
+    ]
+  ],
+  "foreground_path": "data/synthetic_slots/v1/donor_foregrounds_manual/truffle_dulce_de_leche/IMG_1961_c001.png"
+}

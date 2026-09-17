@@ -1,0 +1,14 @@
+sample_id,source_file,flavor_id,flavor_name,u2net_max_edge,isnet_foreground_fraction,isnet_max_edge,isnet_touched_sides,strict_clean,foreground_path
+IMG_1977_c005,IMG_1977.jpg,cocoashot_old_fashioned,Old Fashioned,0.45625,0.59021484375,0.74375,3,False,data/synthetic_slots/v1/donor_foregrounds_isnet_test/cocoashot_old_fashioned/IMG_1977_c005.png
+IMG_1981_c015,IMG_1981.jpg,cocoashot_tequila,Tequila,0.178125,0.46884765625,0.0,0,True,data/synthetic_slots/v1/donor_foregrounds_isnet_test/cocoashot_tequila/IMG_1981_c015.png
+IMG_1960_c010,IMG_1960.jpg,truffle_bananas_foster,Bananas Foster,0.275,0.46623046875,0.3625,2,False,data/synthetic_slots/v1/donor_foregrounds_isnet_test/truffle_bananas_foster/IMG_1960_c010.png
+IMG_1974_c009,IMG_1974.jpg,truffle_champagne,Champagne,0.228125,0.423046875,0.215625,1,False,data/synthetic_slots/v1/donor_foregrounds_isnet_test/truffle_champagne/IMG_1974_c009.png
+IMG_1992_c025,IMG_1992.jpg,truffle_cookies_cream,Cookies & Cream,0.165625,0.445830078125,0.190625,1,False,data/synthetic_slots/v1/donor_foregrounds_isnet_test/truffle_cookies_cream/IMG_1992_c025.png
+IMG_1989_c011,IMG_1989.jpg,truffle_creamsicle,Creamsicle,0.771875,0.4155078125,0.0,0,True,data/synthetic_slots/v1/donor_foregrounds_isnet_test/truffle_creamsicle/IMG_1989_c011.png
+IMG_1961_c010,IMG_1961.jpg,truffle_dulce_de_leche,Dulce de Leche,0.08125,0.404638671875,0.0,0,True,data/synthetic_slots/v1/donor_foregrounds_isnet_test/truffle_dulce_de_leche/IMG_1961_c010.png
+IMG_1975_c009,IMG_1975.jpg,truffle_grey_salt_caramel,Grey Salt Caramel,0.75,0.4052734375,0.75,2,False,data/synthetic_slots/v1/donor_foregrounds_isnet_test/truffle_grey_salt_caramel/IMG_1975_c009.png
+IMG_1995_c022,IMG_1995.jpg,truffle_key_lime_pie,Key Lime Pie,0.70625,0.536005859375,0.71875,1,False,data/synthetic_slots/v1/donor_foregrounds_isnet_test/truffle_key_lime_pie/IMG_1995_c022.png
+IMG_1965_c026,IMG_1965.jpg,truffle_manhattan,Manhattan,0.125,0.361416015625,0.0,0,True,data/synthetic_slots/v1/donor_foregrounds_isnet_test/truffle_manhattan/IMG_1965_c026.png
+IMG_1986_c001,IMG_1986.jpg,truffle_maple_cream,Maple Cream,0.26875,0.434208984375,0.284375,1,False,data/synthetic_slots/v1/donor_foregrounds_isnet_test/truffle_maple_cream/IMG_1986_c001.png
+IMG_1971_c015,IMG_1971.jpg,truffle_s_mores,S'mores,0.521875,0.155576171875,0.1,1,False,data/synthetic_slots/v1/donor_foregrounds_isnet_test/truffle_s_mores/IMG_1971_c015.png
+IMG_1967_c005,IMG_1967.jpg,truffle_salted_caramel,Salted Caramel,0.24375,0.40470703125,0.259375,1,False,data/synthetic_slots/v1/donor_foregrounds_isnet_test/truffle_salted_caramel/IMG_1967_c005.png

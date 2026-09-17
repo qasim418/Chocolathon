@@ -1,0 +1,98 @@
+{
+  "sample_id": "IMG_1967_c004",
+  "flavor_id": "truffle_salted_caramel",
+  "flavor_name": "Salted Caramel",
+  "source_file": "IMG_1967.jpg",
+  "crop_expansion": 1.35,
+  "crop_size": [
+    320,
+    320
+  ],
+  "points": [
+    [
+      40,
+      202
+    ],
+    [
+      54,
+      166
+    ],
+    [
+      71,
+      122
+    ],
+    [
+      105,
+      98
+    ],
+    [
+      152,
+      86
+    ],
+    [
+      188,
+      92
+    ],
+    [
+      210,
+      103
+    ],
+    [
+      230,
+      126
+    ],
+    [
+      244,
+      152
+    ],
+    [
+      254,
+      198
+    ],
+    [
+      260,
+      234
+    ],
+    [
+      252,
+      270
+    ],
+    [
+      236,
+      294
+    ],
+    [
+      218,
+      312
+    ],
+    [
+      176,
+      313
+    ],
+    [
+      139,
+      318
+    ],
+    [
+      86,
+      313
+    ],
+    [
+      68,
+      298
+    ],
+    [
+      49,
+      264
+    ],
+    [
+      38,
+      230
+    ],
+    [
+      40,
+      202
+    ]
+  ],
+  "foreground_path": "data/synthetic_slots/v1/donor_foregrounds_manual/truffle_salted_caramel/IMG_1967_c004.png"
+}

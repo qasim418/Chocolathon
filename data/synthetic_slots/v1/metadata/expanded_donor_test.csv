@@ -1,0 +1,34 @@
+sample_id,source_file,flavor_id,flavor_name,old_max_edge,new_foreground_fraction,new_max_edge,new_touched_sides,strict_clean,foreground_path
+IMG_1978_c006,IMG_1978.jpg,cocoashot_amaretto,Amaretto,0.0,0.287099609375,0.0,0,True,data/synthetic_slots/v1/donor_foregrounds_v2/cocoashot_amaretto/IMG_1978_c006.png
+IMG_1984_c010,IMG_1984.jpg,cocoashot_bourbon,Bourbon,0.3794642857142857,0.366416015625,0.0,0,True,data/synthetic_slots/v1/donor_foregrounds_v2/cocoashot_bourbon/IMG_1984_c010.png
+IMG_1982_c007,IMG_1982.jpg,cocoashot_chocolate_cake,Chocolate Cake,0.0,0.264599609375,0.0,0,True,data/synthetic_slots/v1/donor_foregrounds_v2/cocoashot_chocolate_cake/IMG_1982_c007.png
+IMG_1977_c005,IMG_1977.jpg,cocoashot_old_fashioned,Old Fashioned,0.6741071428571429,0.475947265625,0.45625,2,False,data/synthetic_slots/v1/donor_foregrounds_v2/cocoashot_old_fashioned/IMG_1977_c005.png
+IMG_1981_c015,IMG_1981.jpg,cocoashot_tequila,Tequila,0.48214285714285715,0.497900390625,0.178125,1,False,data/synthetic_slots/v1/donor_foregrounds_v2/cocoashot_tequila/IMG_1981_c015.png
+IMG_1983_c010,IMG_1983.jpg,cocoashot_whiskey,Whiskey,0.0,0.296015625,0.0,0,True,data/synthetic_slots/v1/donor_foregrounds_v2/cocoashot_whiskey/IMG_1983_c010.png
+IMG_1970_c020,IMG_1970.jpg,truffle_amaretto,Amaretto,0.33482142857142855,0.3733984375,0.0,0,True,data/synthetic_slots/v1/donor_foregrounds_v2/truffle_amaretto/IMG_1970_c020.png
+IMG_1960_c010,IMG_1960.jpg,truffle_bananas_foster,Bananas Foster,0.5892857142857143,0.4632421875,0.275,2,False,data/synthetic_slots/v1/donor_foregrounds_v2/truffle_bananas_foster/IMG_1960_c010.png
+IMG_1976_c016,IMG_1976.jpg,truffle_brownie_batter,Brownie Batter,0.26339285714285715,0.402158203125,0.0,0,True,data/synthetic_slots/v1/donor_foregrounds_v2/truffle_brownie_batter/IMG_1976_c016.png
+IMG_1964_c006,IMG_1964.jpg,truffle_caramel_apple_cider,Caramel Apple Cider,0.03125,0.28041015625,0.0,0,True,data/synthetic_slots/v1/donor_foregrounds_v2/truffle_caramel_apple_cider/IMG_1964_c006.png
+IMG_1974_c009,IMG_1974.jpg,truffle_champagne,Champagne,0.38839285714285715,0.43416015625,0.228125,1,False,data/synthetic_slots/v1/donor_foregrounds_v2/truffle_champagne/IMG_1974_c009.png
+IMG_1988_c006,IMG_1988.jpg,truffle_cheesecake,Cheesecake,0.29017857142857145,0.457119140625,0.0,0,True,data/synthetic_slots/v1/donor_foregrounds_v2/truffle_cheesecake/IMG_1988_c006.png
+IMG_1994_c012,IMG_1994.jpg,truffle_confetti_cake,Confetti Cake,0.26339285714285715,0.40498046875,0.0,0,True,data/synthetic_slots/v1/donor_foregrounds_v2/truffle_confetti_cake/IMG_1994_c012.png
+IMG_1992_c025,IMG_1992.jpg,truffle_cookies_cream,Cookies & Cream,0.6339285714285714,0.446328125,0.165625,1,False,data/synthetic_slots/v1/donor_foregrounds_v2/truffle_cookies_cream/IMG_1992_c025.png
+IMG_1989_c011,IMG_1989.jpg,truffle_creamsicle,Creamsicle,0.39285714285714285,0.609306640625,0.771875,1,False,data/synthetic_slots/v1/donor_foregrounds_v2/truffle_creamsicle/IMG_1989_c011.png
+IMG_1973_c019,IMG_1973.jpg,truffle_creme_brulee,Crème Brûlée,0.0,0.35140625,0.0,0,True,data/synthetic_slots/v1/donor_foregrounds_v2/truffle_creme_brulee/IMG_1973_c019.png
+IMG_1961_c010,IMG_1961.jpg,truffle_dulce_de_leche,Dulce de Leche,0.33035714285714285,0.422802734375,0.08125,1,False,data/synthetic_slots/v1/donor_foregrounds_v2/truffle_dulce_de_leche/IMG_1961_c010.png
+IMG_1972_c020,IMG_1972.jpg,truffle_espresso_martini,Espresso Martini,0.0,0.376103515625,0.0,0,True,data/synthetic_slots/v1/donor_foregrounds_v2/truffle_espresso_martini/IMG_1972_c020.png
+IMG_1975_c009,IMG_1975.jpg,truffle_grey_salt_caramel,Grey Salt Caramel,0.8169642857142857,0.396904296875,0.75,2,False,data/synthetic_slots/v1/donor_foregrounds_v2/truffle_grey_salt_caramel/IMG_1975_c009.png
+IMG_1995_c022,IMG_1995.jpg,truffle_key_lime_pie,Key Lime Pie,0.6294642857142857,0.529638671875,0.70625,1,False,data/synthetic_slots/v1/donor_foregrounds_v2/truffle_key_lime_pie/IMG_1995_c022.png
+IMG_1991_c008,IMG_1991.jpg,truffle_lemon,Lemon,0.4642857142857143,0.377392578125,0.0,0,True,data/synthetic_slots/v1/donor_foregrounds_v2/truffle_lemon/IMG_1991_c008.png
+IMG_1965_c026,IMG_1965.jpg,truffle_manhattan,Manhattan,0.34375,0.390791015625,0.125,1,False,data/synthetic_slots/v1/donor_foregrounds_v2/truffle_manhattan/IMG_1965_c026.png
+IMG_1986_c001,IMG_1986.jpg,truffle_maple_cream,Maple Cream,0.5357142857142857,0.45017578125,0.26875,1,False,data/synthetic_slots/v1/donor_foregrounds_v2/truffle_maple_cream/IMG_1986_c001.png
+IMG_1966_c012,IMG_1966.jpg,truffle_peanut_butter_caramel,Peanut Butter Caramel,0.0,0.4022265625,0.0,0,True,data/synthetic_slots/v1/donor_foregrounds_v2/truffle_peanut_butter_caramel/IMG_1966_c012.png
+IMG_1997_c016,IMG_1997.jpg,truffle_pineapple_moscato,Pineapple & Moscato,0.39285714285714285,0.389931640625,0.0,0,True,data/synthetic_slots/v1/donor_foregrounds_v2/truffle_pineapple_moscato/IMG_1997_c016.png
+IMG_1987_c008,IMG_1987.jpg,truffle_pistachio,Pistachio,0.1875,0.407265625,0.0,0,True,data/synthetic_slots/v1/donor_foregrounds_v2/truffle_pistachio/IMG_1987_c008.png
+IMG_1963_c011,IMG_1963.jpg,truffle_pumpkin_spice_latte,Pumpkin Spice Latte,0.17410714285714285,0.373046875,0.0,0,True,data/synthetic_slots/v1/donor_foregrounds_v2/truffle_pumpkin_spice_latte/IMG_1963_c011.png
+IMG_1969_c016,IMG_1969.jpg,truffle_raspberry,Raspberry,0.22767857142857142,0.40564453125,0.0,0,True,data/synthetic_slots/v1/donor_foregrounds_v2/truffle_raspberry/IMG_1969_c016.png
+IMG_1971_c015,IMG_1971.jpg,truffle_s_mores,S'mores,0.09375,0.2586328125,0.521875,1,False,data/synthetic_slots/v1/donor_foregrounds_v2/truffle_s_mores/IMG_1971_c015.png
+IMG_1967_c005,IMG_1967.jpg,truffle_salted_caramel,Salted Caramel,0.4107142857142857,0.40533203125,0.24375,1,False,data/synthetic_slots/v1/donor_foregrounds_v2/truffle_salted_caramel/IMG_1967_c005.png
+IMG_1990_c018,IMG_1990.jpg,truffle_strawberry_shortcake,Strawberry Shortcake,0.27232142857142855,0.4008984375,0.0,0,True,data/synthetic_slots/v1/donor_foregrounds_v2/truffle_strawberry_shortcake/IMG_1990_c018.png
+IMG_1959_c020,IMG_1959.jpg,truffle_tea_honey,Tea & Honey,0.38392857142857145,0.402626953125,0.0,0,True,data/synthetic_slots/v1/donor_foregrounds_v2/truffle_tea_honey/IMG_1959_c020.png
+IMG_1968_c007,IMG_1968.jpg,truffle_turtle,Turtle,0.42410714285714285,0.39099609375,0.0,0,True,data/synthetic_slots/v1/donor_foregrounds_v2/truffle_turtle/IMG_1968_c007.png

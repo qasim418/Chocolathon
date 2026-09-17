@@ -1,0 +1,86 @@
+{
+  "sample_id": "IMG_1995_c011",
+  "flavor_id": "truffle_key_lime_pie",
+  "flavor_name": "Key Lime Pie",
+  "source_file": "IMG_1995.jpg",
+  "crop_expansion": 1.35,
+  "crop_size": [
+    320,
+    320
+  ],
+  "points": [
+    [
+      28,
+      192
+    ],
+    [
+      38,
+      158
+    ],
+    [
+      66,
+      124
+    ],
+    [
+      108,
+      98
+    ],
+    [
+      164,
+      94
+    ],
+    [
+      195,
+      106
+    ],
+    [
+      220,
+      131
+    ],
+    [
+      239,
+      171
+    ],
+    [
+      244,
+      210
+    ],
+    [
+      232,
+      259
+    ],
+    [
+      216,
+      278
+    ],
+    [
+      180,
+      304
+    ],
+    [
+      137,
+      314
+    ],
+    [
+      100,
+      306
+    ],
+    [
+      66,
+      291
+    ],
+    [
+      39,
+      268
+    ],
+    [
+      27,
+      236
+    ],
+    [
+      30,
+      192
+    ]
+  ],
+  "foreground_path": "data/synthetic_slots/v1/donor_foregrounds_manual/truffle_key_lime_pie/IMG_1995_c011.png"
+}

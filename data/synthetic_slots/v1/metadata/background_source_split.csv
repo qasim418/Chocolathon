@@ -1,0 +1,17 @@
+source_file,box_size,split
+IMG_2019.jpg,6,train
+IMG_2020.jpg,6,validation
+IMG_2021.jpg,6,train
+IMG_2022.jpg,16,train
+IMG_2023.jpg,16,validation
+IMG_2024.jpg,16,train
+IMG_2025.jpg,16,train
+IMG_2026.jpg,16,train
+IMG_2027.jpg,30,train
+IMG_2028.jpg,30,train
+IMG_2029.jpg,30,train
+IMG_2030.jpg,30,validation
+IMG_2031.jpg,50,train
+IMG_2032.jpg,50,train
+IMG_2033.jpg,50,train
+IMG_2034.jpg,50,validation
