@@ -1,0 +1,5 @@
+true_flavor_id,true_flavor_name,samples,top1_correct,top3_correct,mean_similarity,mean_margin,top1_accuracy,top3_accuracy
+cocoashot_bourbon,Bourbon,12,12,12,0.6962088942527771,0.17023908098538718,1.0,1.0
+cocoashot_tequila,Tequila,22,21,22,0.8041410310701891,0.05643492124297402,0.9545454545454546,1.0
+truffle_creamsicle,Creamsicle,27,27,27,0.7470430422712255,0.16474974155426025,1.0,1.0
+truffle_s_mores,S'mores,28,25,28,0.7243733874389103,0.0547640642949513,0.8928571428571429,1.0

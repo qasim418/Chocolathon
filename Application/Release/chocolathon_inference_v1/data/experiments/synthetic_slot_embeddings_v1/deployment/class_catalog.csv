@@ -1,0 +1,35 @@
+flavor_id,flavor_name,label_type,train,validation,class_index,total_samples
+cocoashot_amaretto,Amaretto,occupied,80,20,0,100
+cocoashot_bourbon,Bourbon,occupied,80,20,1,100
+cocoashot_chocolate_cake,Chocolate Cake,occupied,80,20,2,100
+cocoashot_old_fashioned,Old Fashioned,occupied,80,20,3,100
+cocoashot_tequila,Tequila,occupied,80,20,4,100
+cocoashot_whiskey,Whiskey,occupied,80,20,5,100
+empty,Empty,empty,316,102,6,418
+truffle_amaretto,Amaretto,occupied,80,20,7,100
+truffle_bananas_foster,Bananas Foster,occupied,80,20,8,100
+truffle_brownie_batter,Brownie Batter,occupied,80,20,9,100
+truffle_caramel_apple_cider,Caramel Apple Cider,occupied,80,20,10,100
+truffle_champagne,Champagne,occupied,80,20,11,100
+truffle_cheesecake,Cheesecake,occupied,80,20,12,100
+truffle_confetti_cake,Confetti Cake,occupied,80,20,13,100
+truffle_cookies_cream,Cookies & Cream,occupied,80,20,14,100
+truffle_creamsicle,Creamsicle,occupied,80,20,15,100
+truffle_creme_brulee,Crème Brûlée,occupied,80,20,16,100
+truffle_dulce_de_leche,Dulce de Leche,occupied,80,20,17,100
+truffle_espresso_martini,Espresso Martini,occupied,80,20,18,100
+truffle_grey_salt_caramel,Grey Salt Caramel,occupied,80,20,19,100
+truffle_key_lime_pie,Key Lime Pie,occupied,80,20,20,100
+truffle_lemon,Lemon,occupied,80,20,21,100
+truffle_manhattan,Manhattan,occupied,80,20,22,100
+truffle_maple_cream,Maple Cream,occupied,80,20,23,100
+truffle_peanut_butter_caramel,Peanut Butter Caramel,occupied,80,20,24,100
+truffle_pineapple_moscato,Pineapple & Moscato,occupied,80,20,25,100
+truffle_pistachio,Pistachio,occupied,80,20,26,100
+truffle_pumpkin_spice_latte,Pumpkin Spice Latte,occupied,80,20,27,100
+truffle_raspberry,Raspberry,occupied,80,20,28,100
+truffle_s_mores,S'mores,occupied,80,20,29,100
+truffle_salted_caramel,Salted Caramel,occupied,80,20,30,100
+truffle_strawberry_shortcake,Strawberry Shortcake,occupied,80,20,31,100
+truffle_tea_honey,Tea & Honey,occupied,80,20,32,100
+truffle_turtle,Turtle,occupied,80,20,33,100

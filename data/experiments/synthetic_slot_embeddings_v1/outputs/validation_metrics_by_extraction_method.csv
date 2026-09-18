@@ -1,0 +1,4 @@
+extraction_method,samples,occupied_samples,empty_samples,top1_accuracy,occupancy_accuracy,errors
+expanded_isnet,80.0,80.0,0.0,1.0,1.0,0.0
+expanded_u2net,400.0,400.0,0.0,1.0,1.0,0.0
+manual_polygon,180.0,180.0,0.0,1.0,1.0,0.0

@@ -1,0 +1,24 @@
+{
+  "file": "IMG_2032.jpg",
+  "box_size": 50,
+  "rows": 10,
+  "columns": 5,
+  "anchors": {
+    "top_left": [
+      62.58,
+      201.96
+    ],
+    "top_right": [
+      1015.47,
+      216.18
+    ],
+    "bottom_right": [
+      1024.0,
+      2329.6
+    ],
+    "bottom_left": [
+      68.27,
+      2346.67
+    ]
+  }
+}

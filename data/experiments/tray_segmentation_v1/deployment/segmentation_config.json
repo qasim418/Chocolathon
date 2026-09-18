@@ -1,0 +1,26 @@
+{
+  "architecture": "efficientnet_b0_unet",
+  "model_file": "efficientnet_b0_tray_segmenter.pt",
+  "input_size": 320,
+  "mask_threshold": 0.5,
+  "corner_order": [
+    "top_left",
+    "top_right",
+    "bottom_right",
+    "bottom_left"
+  ],
+  "capacities": [
+    6,
+    16,
+    30,
+    50
+  ],
+  "primary_localizer": "segmentation",
+  "fallback_localizer": "routed_corner_regressor",
+  "training_images": 48,
+  "validation_images": 16,
+  "validation_dice": 0.9837332218885422,
+  "validation_corner_error_normalized": 0.0056745156172722105,
+  "synthetic_v4_exact_count_accuracy": 1.0,
+  "synthetic_v4_count_error": 0
+}

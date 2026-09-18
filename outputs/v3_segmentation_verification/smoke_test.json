@@ -1,0 +1,57 @@
+{
+  "box_size_output": [
+    1,
+    4
+  ],
+  "segmentation_output": [
+    1,
+    1,
+    320,
+    320
+  ],
+  "corner_outputs": {
+    "efficientnet_b0_corner_regressor_large.pt": [
+      1,
+      8
+    ],
+    "efficientnet_b0_corner_regressor_small.pt": [
+      1,
+      8
+    ]
+  },
+  "feature_output": [
+    1,
+    1280
+  ],
+  "prototype_shape": [
+    34,
+    1280
+  ],
+  "corner_routing": {
+    "6": "efficientnet_b0_corner_regressor_small.pt",
+    "16": "efficientnet_b0_corner_regressor_small.pt",
+    "30": "efficientnet_b0_corner_regressor_large.pt",
+    "50": "efficientnet_b0_corner_regressor_large.pt"
+  },
+  "model_roles": {
+    "box_size_classifier": "predict 6/16/30/50 slot capacity",
+    "tray_segmenter": "primary automatic tray localization for all capacities",
+    "corner_regressor_6_16": "fallback tray corners for 6-slot and 16-slot boxes",
+    "corner_regressor_30_50": "fallback tray corners for 30-slot and 50-slot boxes",
+    "slot_feature_extractor": "produce normalized 1280-D slot embeddings",
+    "slot_class_prototypes": "cosine-match 34 classes including empty"
+  },
+  "artifact_validation": "PASS",
+  "artifacts": {
+    "localization_config": "/homes/mxqasim/Chocolathon/data/experiments/box_localization_v3/deployment/localization_config.json",
+    "segmentation_config": "/homes/mxqasim/Chocolathon/data/experiments/tray_segmentation_v1/deployment/segmentation_config.json",
+    "tray_segmenter": "/homes/mxqasim/Chocolathon/data/experiments/tray_segmentation_v1/deployment/efficientnet_b0_tray_segmenter.pt",
+    "box_size_classifier": "/homes/mxqasim/Chocolathon/data/experiments/box_localization_v3/deployment/efficientnet_b0_box_size_classifier.pt",
+    "corner_regressor_6_16": "/homes/mxqasim/Chocolathon/data/experiments/box_localization_v3/deployment/efficientnet_b0_corner_regressor_small.pt",
+    "corner_regressor_30_50": "/homes/mxqasim/Chocolathon/data/experiments/box_localization_v3/deployment/efficientnet_b0_corner_regressor_large.pt",
+    "slot_feature_extractor": "/homes/mxqasim/Chocolathon/data/experiments/synthetic_slot_embeddings_v1/deployment/efficientnet_b0_feature_extractor.pt",
+    "slot_prototypes": "/homes/mxqasim/Chocolathon/data/experiments/synthetic_slot_embeddings_v1/deployment/slot_class_prototypes.npz",
+    "class_catalog": "/homes/mxqasim/Chocolathon/data/experiments/synthetic_slot_embeddings_v1/deployment/class_catalog.csv",
+    "slot_deployment_config": "/homes/mxqasim/Chocolathon/data/experiments/synthetic_slot_embeddings_v1/deployment/deployment_config.json"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "file": "IMG_2025.jpg",
+  "box_size": 16,
+  "rows": 4,
+  "columns": 4,
+  "anchors": {
+    "top_left": [
+      115.57,
+      190.17
+    ],
+    "top_right": [
+      782.63,
+      197.49
+    ],
+    "bottom_right": [
+      784.09,
+      845.53
+    ],
+    "bottom_left": [
+      95.09,
+      845.53
+    ]
+  }
+}

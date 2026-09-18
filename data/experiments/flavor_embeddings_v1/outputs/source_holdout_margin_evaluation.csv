@@ -1,0 +1,2 @@
+margin_threshold,test_samples,confident_samples,top3_review_samples,automatic_coverage,confident_top1_accuracy,errors_sent_to_top3,errors_left_confident,overall_top3_accuracy
+0.01,89,87,2,0.9775280898876404,0.9770114942528736,2,2,1.0

@@ -1,0 +1,5 @@
+test_box_id,box_size,slots,correct,review_slots,slot_accuracy
+IMG_2020,6,6,6,0,1.0
+IMG_2023,16,16,16,0,1.0
+IMG_2030,30,30,30,0,1.0
+IMG_2034,50,50,50,0,1.0

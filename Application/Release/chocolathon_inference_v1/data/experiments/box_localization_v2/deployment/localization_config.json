@@ -1,0 +1,35 @@
+{
+  "version": "box_localization_v2_routed",
+  "capacities": [
+    6,
+    16,
+    30,
+    50
+  ],
+  "capacity_class_order": [
+    6,
+    16,
+    30,
+    50
+  ],
+  "size_classifier": "efficientnet_b0_box_size_classifier.pt",
+  "corner_routing": {
+    "6": "efficientnet_b0_corner_regressor_small.pt",
+    "16": "efficientnet_b0_corner_regressor_small.pt",
+    "30": "efficientnet_b0_corner_regressor_large.pt",
+    "50": "efficientnet_b0_corner_regressor_large.pt"
+  },
+  "validation": {
+    "old_size_accuracy": 0.625,
+    "new_size_accuracy": 1.0,
+    "old_corner_normalized_error": 0.04928206722252071,
+    "new_corner_normalized_error": 0.061967486748471856,
+    "hybrid_corner_normalized_error": 0.04551775
+  },
+  "notes": [
+    "The new size classifier is used for all capacities.",
+    "The old corner regressor is used for 6-slot and 16-slot boxes.",
+    "The new corner regressor is used for 30-slot and 50-slot boxes.",
+    "The original deployment artifacts were not overwritten."
+  ]
+}

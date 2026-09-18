@@ -1,0 +1,2 @@
+combined_top1_accuracy,combined_top3_accuracy,combined_macro_f1,occupancy_accuracy,occupancy_precision,occupancy_recall,occupancy_f1,empty_accuracy,occupied_flavor_top1,occupied_flavor_top3,validation_samples
+0.9986876640419947,1.0,0.9991377543447993,0.9986876640419947,0.9984871406959153,1.0,0.9992429977289932,0.9901960784313726,1.0,1.0,762

@@ -1,0 +1,22 @@
+{
+  "package_version": "1.0-development-frozen",
+  "backbone": "efficientnet_b0",
+  "weights_origin": "IMAGENET1K_V1",
+  "local_backbone_file": "efficientnet_b0_feature_extractor.pt",
+  "prototype_file": "slot_class_prototypes.npz",
+  "class_catalog_file": "class_catalog.csv",
+  "image_size": [
+    224,
+    224
+  ],
+  "embedding_dimension": 1280,
+  "embedding_normalization": "l2",
+  "similarity": "cosine",
+  "prediction_rule": "nearest_class_prototype",
+  "classes": 34,
+  "empty_class_id": "empty",
+  "provisional_margin_threshold": 0.005,
+  "threshold_status": "synthetic_validation_only",
+  "real_filled_box_used": false,
+  "final_real_holdout_pending": true
+}

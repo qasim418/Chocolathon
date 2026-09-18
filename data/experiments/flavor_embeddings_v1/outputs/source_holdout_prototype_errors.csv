@@ -1,0 +1,5 @@
+sample_id,source_file,true_flavor_id,true_flavor_name,predicted_flavor_id,predicted_flavor_name,top1_similarity,correct_similarity,similarity_margin,top2_flavor_id,top3_flavor_id,top1_correct,top3_correct
+IMG_1981_c014,IMG_1981.jpg,cocoashot_tequila,Tequila,cocoashot_old_fashioned,Old Fashioned,0.731431245803833,0.721725344657898,0.009705901145935059,cocoashot_tequila,cocoashot_chocolate_cake,False,True
+IMG_1985_c022,IMG_1985.jpg,truffle_s_mores,S'mores,truffle_maple_cream,Maple Cream,0.6958669424057007,0.638598620891571,0.0427473783493042,truffle_peanut_butter_caramel,truffle_s_mores,False,True
+IMG_1985_c027,IMG_1985.jpg,truffle_s_mores,S'mores,truffle_maple_cream,Maple Cream,0.7531362175941467,0.7466068863868713,0.006529331207275391,truffle_s_mores,truffle_manhattan,False,True
+IMG_1985_c028,IMG_1985.jpg,truffle_s_mores,S'mores,truffle_maple_cream,Maple Cream,0.7430655360221863,0.6970808506011963,0.04598468542098999,truffle_s_mores,truffle_manhattan,False,True

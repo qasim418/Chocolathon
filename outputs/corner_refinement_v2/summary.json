@@ -1,0 +1,38 @@
+{
+  "all": {
+    "images": 48,
+    "accepted": 41,
+    "raw_corner_error": 0.035377602760123195,
+    "refined_corner_error": 0.041435939578152205,
+    "raw_flavor_accuracy": 0.7304625199362041,
+    "refined_flavor_accuracy": 0.60207336523126,
+    "raw_false_empty": 3,
+    "refined_false_empty": 3,
+    "raw_count_error": 283,
+    "refined_count_error": 387
+  },
+  "train": {
+    "images": 36,
+    "accepted": 32,
+    "raw_corner_error": 0.0349286942465175,
+    "refined_corner_error": 0.04102944663382502,
+    "raw_flavor_accuracy": 0.7827004219409283,
+    "refined_flavor_accuracy": 0.5938818565400844,
+    "raw_false_empty": 2,
+    "refined_false_empty": 3,
+    "raw_count_error": 210,
+    "refined_count_error": 299
+  },
+  "validation": {
+    "images": 12,
+    "accepted": 9,
+    "raw_corner_error": 0.036724328300940294,
+    "refined_corner_error": 0.04265541841113377,
+    "raw_flavor_accuracy": 0.5686274509803921,
+    "refined_flavor_accuracy": 0.6274509803921569,
+    "raw_false_empty": 1,
+    "refined_false_empty": 0,
+    "raw_count_error": 73,
+    "refined_count_error": 88
+  }
+}

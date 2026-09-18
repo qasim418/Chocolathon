@@ -1,0 +1,110 @@
+{
+  "image": "/homes/mxqasim/Chocolathon/data/boxes/raw/IMG_2019.jpg",
+  "geometry_mode": "automatic_uniform",
+  "capacity": 6,
+  "predicted_capacity": 6,
+  "size_probabilities": {
+    "6": 0.9999991655349731,
+    "16": 5.822088269269443e-07,
+    "30": 2.2399426313768345e-07,
+    "50": 1.6187064133532658e-08
+  },
+  "corners": [
+    [
+      196.04046630859375,
+      954.283935546875
+    ],
+    [
+      1270.5174560546875,
+      1086.53076171875
+    ],
+    [
+      1230.5579833984375,
+      2594.622802734375
+    ],
+    [
+      183.9632568359375,
+      2698.439697265625
+    ]
+  ],
+  "occupied": 0,
+  "empty": 6,
+  "review_slots": 0,
+  "flavor_counts": {},
+  "slots": [
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.7636961340904236,
+      "margin": 0.36012232303619385,
+      "occupancy_score_gap": -0.36012232303619385,
+      "needs_review": false,
+      "row": 1,
+      "column": 1
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.6952670216560364,
+      "margin": 0.25653091073036194,
+      "occupancy_score_gap": -0.25653091073036194,
+      "needs_review": false,
+      "row": 1,
+      "column": 2
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.7784730195999146,
+      "margin": 0.40711846947669983,
+      "occupancy_score_gap": -0.40711846947669983,
+      "needs_review": false,
+      "row": 2,
+      "column": 1
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.7296273708343506,
+      "margin": 0.42353555560112,
+      "occupancy_score_gap": -0.42353555560112,
+      "needs_review": false,
+      "row": 2,
+      "column": 2
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.7278020977973938,
+      "margin": 0.3545016944408417,
+      "occupancy_score_gap": -0.3545016944408417,
+      "needs_review": false,
+      "row": 3,
+      "column": 1
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.7261892557144165,
+      "margin": 0.356248676776886,
+      "occupancy_score_gap": -0.356248676776886,
+      "needs_review": false,
+      "row": 3,
+      "column": 2
+    }
+  ],
+  "non_review_occupied": 0,
+  "non_review_empty": 6,
+  "warnings": [
+    "Counts are raw predictions, including review slots.",
+    "Real filled-box accuracy is not established.",
+    "Automatic uniform crops differ from the manually centered training crops."
+  ],
+  "seconds": 0.622686477843672
+}

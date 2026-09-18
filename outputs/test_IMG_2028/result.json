@@ -1,0 +1,376 @@
+{
+  "image": "/homes/mxqasim/Chocolathon/data/synthetic_filled_boxes/v3/images/IMG_2028_size30_render00.jpg",
+  "geometry_mode": "automatic_training-centers",
+  "empty_mode": "capacity",
+  "capacity": 30,
+  "predicted_capacity": 30,
+  "size_probabilities": {
+    "6": 6.32370406039584e-11,
+    "16": 1.2845921548709782e-10,
+    "30": 1.0,
+    "50": 1.0706108888314247e-08
+  },
+  "corners": [
+    [
+      1025.9434814453125,
+      644.0165405273438
+    ],
+    [
+      2957.6025390625,
+      708.2489013671875
+    ],
+    [
+      2938.341796875,
+      3260.685546875
+    ],
+    [
+      943.0126953125,
+      3295.310546875
+    ]
+  ],
+  "occupied": 0,
+  "empty": 30,
+  "review_slots": 0,
+  "flavor_counts": {},
+  "slots": [
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.7867093086242676,
+      "margin": 0.4031306207180023,
+      "occupancy_score_gap": -0.4031306207180023,
+      "needs_review": false,
+      "row": 1,
+      "column": 1
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.8415348529815674,
+      "margin": 0.5086262226104736,
+      "occupancy_score_gap": -0.5086262226104736,
+      "needs_review": false,
+      "row": 1,
+      "column": 2
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.8441814184188843,
+      "margin": 0.4612618386745453,
+      "occupancy_score_gap": -0.4612618386745453,
+      "needs_review": false,
+      "row": 1,
+      "column": 3
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.8539078235626221,
+      "margin": 0.44245269894599915,
+      "occupancy_score_gap": -0.44245269894599915,
+      "needs_review": false,
+      "row": 1,
+      "column": 4
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.6483445167541504,
+      "margin": 0.26779499650001526,
+      "occupancy_score_gap": -0.26779499650001526,
+      "needs_review": false,
+      "row": 1,
+      "column": 5
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.9247019290924072,
+      "margin": 0.5344803333282471,
+      "occupancy_score_gap": -0.5344803333282471,
+      "needs_review": false,
+      "row": 2,
+      "column": 1
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.9233375787734985,
+      "margin": 0.5083202123641968,
+      "occupancy_score_gap": -0.5083201825618744,
+      "needs_review": false,
+      "row": 2,
+      "column": 2
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.8554469347000122,
+      "margin": 0.4542825520038605,
+      "occupancy_score_gap": -0.4542825520038605,
+      "needs_review": false,
+      "row": 2,
+      "column": 3
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.8376808166503906,
+      "margin": 0.46099862456321716,
+      "occupancy_score_gap": -0.46099862456321716,
+      "needs_review": false,
+      "row": 2,
+      "column": 4
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.6559320092201233,
+      "margin": 0.23728898167610168,
+      "occupancy_score_gap": -0.23728898167610168,
+      "needs_review": false,
+      "row": 2,
+      "column": 5
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.8838680982589722,
+      "margin": 0.4725307822227478,
+      "occupancy_score_gap": -0.4725307822227478,
+      "needs_review": false,
+      "row": 3,
+      "column": 1
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.8319635987281799,
+      "margin": 0.3945026993751526,
+      "occupancy_score_gap": -0.3945026993751526,
+      "needs_review": false,
+      "row": 3,
+      "column": 2
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.842195451259613,
+      "margin": 0.4347568154335022,
+      "occupancy_score_gap": -0.4347568154335022,
+      "needs_review": false,
+      "row": 3,
+      "column": 3
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.8492898941040039,
+      "margin": 0.44687819480895996,
+      "occupancy_score_gap": -0.44687819480895996,
+      "needs_review": false,
+      "row": 3,
+      "column": 4
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.6653820276260376,
+      "margin": 0.25326451659202576,
+      "occupancy_score_gap": -0.25326451659202576,
+      "needs_review": false,
+      "row": 3,
+      "column": 5
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.830968976020813,
+      "margin": 0.39247000217437744,
+      "occupancy_score_gap": -0.39247000217437744,
+      "needs_review": false,
+      "row": 4,
+      "column": 1
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.8018521666526794,
+      "margin": 0.36670973896980286,
+      "occupancy_score_gap": -0.36670973896980286,
+      "needs_review": false,
+      "row": 4,
+      "column": 2
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.804834246635437,
+      "margin": 0.3615378141403198,
+      "occupancy_score_gap": -0.3615378141403198,
+      "needs_review": false,
+      "row": 4,
+      "column": 3
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.7939767241477966,
+      "margin": 0.3803943693637848,
+      "occupancy_score_gap": -0.3803943693637848,
+      "needs_review": false,
+      "row": 4,
+      "column": 4
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.6767200231552124,
+      "margin": 0.3217875063419342,
+      "occupancy_score_gap": -0.3217875063419342,
+      "needs_review": false,
+      "row": 4,
+      "column": 5
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.8157216906547546,
+      "margin": 0.4072248637676239,
+      "occupancy_score_gap": -0.4072248637676239,
+      "needs_review": false,
+      "row": 5,
+      "column": 1
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.7925496697425842,
+      "margin": 0.3803679645061493,
+      "occupancy_score_gap": -0.3803679645061493,
+      "needs_review": false,
+      "row": 5,
+      "column": 2
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.7299723029136658,
+      "margin": 0.35173237323760986,
+      "occupancy_score_gap": -0.35173237323760986,
+      "needs_review": false,
+      "row": 5,
+      "column": 3
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.7955951690673828,
+      "margin": 0.3731060326099396,
+      "occupancy_score_gap": -0.3731060326099396,
+      "needs_review": false,
+      "row": 5,
+      "column": 4
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.658676266670227,
+      "margin": 0.2974366545677185,
+      "occupancy_score_gap": -0.2974366545677185,
+      "needs_review": false,
+      "row": 5,
+      "column": 5
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.6728768348693848,
+      "margin": 0.27498865127563477,
+      "occupancy_score_gap": -0.27498865127563477,
+      "needs_review": false,
+      "row": 6,
+      "column": 1
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.7565901875495911,
+      "margin": 0.32599106431007385,
+      "occupancy_score_gap": -0.32599106431007385,
+      "needs_review": false,
+      "row": 6,
+      "column": 2
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.7075051069259644,
+      "margin": 0.2797545790672302,
+      "occupancy_score_gap": -0.2797545790672302,
+      "needs_review": false,
+      "row": 6,
+      "column": 3
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.7088749408721924,
+      "margin": 0.30347245931625366,
+      "occupancy_score_gap": -0.30347245931625366,
+      "needs_review": false,
+      "row": 6,
+      "column": 4
+    },
+    {
+      "flavor_id": "empty",
+      "flavor_name": "Empty",
+      "label_type": "empty",
+      "similarity": 0.61585533618927,
+      "margin": 0.21192002296447754,
+      "occupancy_score_gap": -0.21192002296447754,
+      "needs_review": false,
+      "row": 6,
+      "column": 5
+    }
+  ],
+  "non_review_occupied": 0,
+  "non_review_empty": 30,
+  "warnings": [
+    "Counts are raw predictions, including review slots.",
+    "Real filled-box accuracy is not established.",
+    "Automatic slot geometry is approximate and requires validation on new boxes.",
+    "Experimental four-reference empty classifier; the review threshold needs revalidation on real boxes."
+  ],
+  "seconds": 2.807048450689763
+}

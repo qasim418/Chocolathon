@@ -1,0 +1,59 @@
+{
+  "validation_by_capacity": {
+    "30": {
+      "current_v2": {
+        "images": 3,
+        "corner_error": 0.07995389302571615,
+        "flavor_accuracy": 0.34444444444444444,
+        "false_empty": 1,
+        "count_error": 43,
+        "exact_count_accuracy": 0.0
+      },
+      "candidate_v3": {
+        "images": 3,
+        "corner_error": 0.055553371691829945,
+        "flavor_accuracy": 0.2777777777777778,
+        "false_empty": 1,
+        "count_error": 47,
+        "exact_count_accuracy": 0.0
+      },
+      "gates": {
+        "corner_improved": true,
+        "flavor_not_worse": false,
+        "count_error_not_worse": false,
+        "false_empty_not_worse": true,
+        "exact_counts_not_worse": true
+      }
+    },
+    "50": {
+      "current_v2": {
+        "images": 3,
+        "corner_error": 0.04461819885899781,
+        "flavor_accuracy": 0.5133333333333333,
+        "false_empty": 0,
+        "count_error": 30,
+        "exact_count_accuracy": 0.0
+      },
+      "candidate_v3": {
+        "images": 3,
+        "corner_error": 0.02981846017181558,
+        "flavor_accuracy": 0.5,
+        "false_empty": 0,
+        "count_error": 42,
+        "exact_count_accuracy": 0.0
+      },
+      "gates": {
+        "corner_improved": true,
+        "flavor_not_worse": false,
+        "count_error_not_worse": false,
+        "false_empty_not_worse": true,
+        "exact_counts_not_worse": true
+      }
+    }
+  },
+  "capacity_decisions": {
+    "30": "current_v2",
+    "50": "current_v2"
+  },
+  "fully_accepted": false
+}

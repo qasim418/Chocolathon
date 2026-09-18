@@ -1,0 +1,61 @@
+test_box_id,flavor_id,true_count,predicted_count,absolute_error,flavor_name
+IMG_2020,empty,3,3,0,Empty
+IMG_2020,truffle_cookies_cream,1,1,0,Cookies & Cream
+IMG_2020,truffle_lemon,1,1,0,Lemon
+IMG_2020,truffle_pistachio,1,1,0,Pistachio
+IMG_2023,cocoashot_amaretto,1,1,0,Amaretto
+IMG_2023,cocoashot_chocolate_cake,1,1,0,Chocolate Cake
+IMG_2023,cocoashot_whiskey,1,1,0,Whiskey
+IMG_2023,empty,5,5,0,Empty
+IMG_2023,truffle_champagne,1,1,0,Champagne
+IMG_2023,truffle_cheesecake,1,1,0,Cheesecake
+IMG_2023,truffle_creamsicle,1,1,0,Creamsicle
+IMG_2023,truffle_manhattan,1,1,0,Manhattan
+IMG_2023,truffle_pumpkin_spice_latte,1,1,0,Pumpkin Spice Latte
+IMG_2023,truffle_tea_honey,1,1,0,Tea & Honey
+IMG_2023,truffle_turtle,2,2,0,Turtle
+IMG_2030,cocoashot_old_fashioned,1,1,0,Old Fashioned
+IMG_2030,cocoashot_whiskey,1,1,0,Whiskey
+IMG_2030,empty,5,5,0,Empty
+IMG_2030,truffle_amaretto,1,1,0,Amaretto
+IMG_2030,truffle_bananas_foster,1,1,0,Bananas Foster
+IMG_2030,truffle_cheesecake,1,1,0,Cheesecake
+IMG_2030,truffle_confetti_cake,2,2,0,Confetti Cake
+IMG_2030,truffle_cookies_cream,2,2,0,Cookies & Cream
+IMG_2030,truffle_creamsicle,1,1,0,Creamsicle
+IMG_2030,truffle_creme_brulee,1,1,0,Crème Brûlée
+IMG_2030,truffle_espresso_martini,1,1,0,Espresso Martini
+IMG_2030,truffle_key_lime_pie,1,1,0,Key Lime Pie
+IMG_2030,truffle_lemon,2,2,0,Lemon
+IMG_2030,truffle_maple_cream,2,2,0,Maple Cream
+IMG_2030,truffle_pineapple_moscato,1,1,0,Pineapple & Moscato
+IMG_2030,truffle_pumpkin_spice_latte,1,1,0,Pumpkin Spice Latte
+IMG_2030,truffle_raspberry,3,3,0,Raspberry
+IMG_2030,truffle_s_mores,1,1,0,S'mores
+IMG_2030,truffle_strawberry_shortcake,1,1,0,Strawberry Shortcake
+IMG_2030,truffle_tea_honey,1,1,0,Tea & Honey
+IMG_2034,cocoashot_bourbon,1,1,0,Bourbon
+IMG_2034,cocoashot_chocolate_cake,2,2,0,Chocolate Cake
+IMG_2034,cocoashot_tequila,1,1,0,Tequila
+IMG_2034,empty,9,9,0,Empty
+IMG_2034,truffle_amaretto,1,1,0,Amaretto
+IMG_2034,truffle_bananas_foster,3,3,0,Bananas Foster
+IMG_2034,truffle_caramel_apple_cider,1,1,0,Caramel Apple Cider
+IMG_2034,truffle_champagne,2,2,0,Champagne
+IMG_2034,truffle_cheesecake,2,2,0,Cheesecake
+IMG_2034,truffle_cookies_cream,1,1,0,Cookies & Cream
+IMG_2034,truffle_creamsicle,1,1,0,Creamsicle
+IMG_2034,truffle_creme_brulee,3,3,0,Crème Brûlée
+IMG_2034,truffle_dulce_de_leche,2,2,0,Dulce de Leche
+IMG_2034,truffle_espresso_martini,1,1,0,Espresso Martini
+IMG_2034,truffle_grey_salt_caramel,3,3,0,Grey Salt Caramel
+IMG_2034,truffle_key_lime_pie,1,1,0,Key Lime Pie
+IMG_2034,truffle_lemon,3,3,0,Lemon
+IMG_2034,truffle_manhattan,2,2,0,Manhattan
+IMG_2034,truffle_maple_cream,1,1,0,Maple Cream
+IMG_2034,truffle_pineapple_moscato,1,1,0,Pineapple & Moscato
+IMG_2034,truffle_pistachio,1,1,0,Pistachio
+IMG_2034,truffle_pumpkin_spice_latte,2,2,0,Pumpkin Spice Latte
+IMG_2034,truffle_raspberry,1,1,0,Raspberry
+IMG_2034,truffle_salted_caramel,3,3,0,Salted Caramel
+IMG_2034,truffle_turtle,2,2,0,Turtle

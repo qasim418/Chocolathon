@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#24150f"><title>Chocolathon</title>
+  <style>
+    :root{--bg:#f7f1e8;--card:#fffdf9;--ink:#261a15;--muted:#75665f;--brown:#5b2d1d;--gold:#d39b45;--red:#b53b35;--line:#e7d9c9;--shadow:0 16px 45px #40201018}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#fff9ed 0,var(--bg) 45%);color:var(--ink);font:15px/1.45 system-ui,-apple-system,Segoe UI,sans-serif}.shell{width:min(900px,100%);margin:auto;padding:24px 16px 50px}header{text-align:center;margin:8px 0 24px}h1{margin:0;font-size:clamp(30px,7vw,48px);letter-spacing:-1.5px;color:var(--brown)}header p{margin:6px 0;color:var(--muted)}.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:var(--shadow);margin-bottom:16px}.picker{display:grid;place-items:center;min-height:210px;border:2px dashed #c7a57a;border-radius:17px;background:#fffaf2;cursor:pointer;overflow:hidden;text-align:center}.picker img{width:100%;height:280px;object-fit:contain;background:#17110e}.picker span{padding:30px}.picker b{display:block;font-size:18px;margin:8px}.picker small{color:var(--muted)}input[type=file]{display:none}.controls{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}label.field{font-size:13px;color:var(--muted)}select,button{width:100%;border-radius:13px;padding:13px 14px;font:inherit}select{display:block;margin-top:5px;background:white;border:1px solid var(--line);color:var(--ink)}button{align-self:end;border:0;background:linear-gradient(135deg,var(--brown),#88472d);color:white;font-weight:750;cursor:pointer;box-shadow:0 8px 20px #5b2d1d33}button:disabled{opacity:.55;cursor:not-allowed}.status{display:none;padding:13px;border-radius:12px;margin-top:14px}.status.show{display:block}.status.loading{background:#fff1d9;color:#7b5011}.status.error{background:#fde8e5;color:var(--red)}.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.metric{padding:14px 8px;border-radius:15px;background:#fbf5eb;text-align:center}.metric b{display:block;font-size:23px;color:var(--brown)}.metric small{color:var(--muted)}h2{font-size:19px;margin:4px 0 14px}.flavors{display:grid;gap:8px}.flavor{display:flex;align-items:center;justify-content:space-between;padding:11px 13px;border:1px solid var(--line);border-radius:12px;background:white}.flavor b:last-child{background:#f2dfc0;color:var(--brown);min-width:30px;padding:3px 8px;border-radius:99px;text-align:center}.details{margin-top:14px;color:var(--muted);font-size:13px}.pipeline{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.stage{overflow:hidden;border:1px solid var(--line);border-radius:16px;background:#fff}.stage>img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:#17110e;cursor:zoom-in}.stage>img:hover{filter:brightness(1.06)}.stage-copy{display:grid;grid-template-columns:30px 1fr;gap:9px;padding:11px}.stage-number{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--brown);color:white;font-weight:800}.stage b,.stage small{display:block}.stage small{color:var(--muted);margin-top:2px}.zoom-hint{color:var(--brown)!important;font-weight:650}.slot-grid{display:grid;gap:6px}.slot{min-width:0;padding:8px 4px;border-radius:9px;background:#f5ead9;text-align:center}.slot b{display:block;color:var(--brown)}.slot small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10px}.review{outline:2px solid var(--gold)}[hidden]{display:none!important}
+
+    .viewer{position:fixed;inset:0;z-index:1000;display:grid;grid-template-rows:auto 1fr;background:#100d0bea;color:white}.viewer-toolbar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#211813;border-bottom:1px solid #ffffff22}.viewer-title{min-width:0;margin-right:auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:750}.viewer-toolbar button{width:auto;min-width:44px;padding:8px 12px;background:#5b2d1d;box-shadow:none}.viewer-toolbar .close{background:#a63d36}.viewer-canvas{display:grid;place-items:center;overflow:auto;padding:24px;cursor:grab}.viewer-canvas.dragging{cursor:grabbing;user-select:none}.viewer-image{display:block;max-width:none;height:auto;border-radius:8px;box-shadow:0 12px 50px #000a}.zoom-level{min-width:58px;text-align:center;font-variant-numeric:tabular-nums}
+
+    @media(max-width:600px){.shell{padding:15px 11px 35px}.card{padding:14px;border-radius:18px}.controls,.pipeline{grid-template-columns:1fr}.summary{gap:6px}.metric b{font-size:19px}.picker img{height:235px}.viewer-toolbar{padding:8px;gap:5px}.viewer-toolbar button{min-width:38px;padding:8px}.viewer-title{display:none}.viewer-canvas{padding:10px}}
+  </style>
+</head>
+<body>
+<main class="shell">
+  <header><h1>Chocolathon</h1><p>Photograph a filled chocolate box to count every flavor.</p></header>
+
+  <section class="card">
+    <label class="picker" for="photo">
+      <span id="prompt">📷<b>Take or choose a photo</b><small>JPEG or PNG · maximum 25 MB</small></span>
+      <img id="preview" alt="Selected chocolate box" hidden>
+    </label>
+    <input id="photo" type="file" accept="image/jpeg,image/png" capture="environment">
+    <div class="controls">
+      <label class="field">Box capacity
+        <select id="capacity">
+          <option value="">Detect automatically</option>
+          <option>6</option><option>10</option><option>16</option><option>30</option><option>50</option>
+        </select>
+      </label>
+      <button id="analyze" disabled>Analyze box</button>
+    </div>
+    <div id="status" class="status"></div>
+  </section>
+
+  <section id="results" hidden>
+    <div class="card">
+      <h2>Result</h2>
+      <div class="summary">
+        <div class="metric"><b id="capacityOut">—</b><small>slots</small></div>
+        <div class="metric"><b id="occupiedOut">—</b><small>chocolates</small></div>
+        <div class="metric"><b id="timeOut">—</b><small>seconds</small></div>
+      </div>
+      <div id="details" class="details"></div>
+    </div>
+    <div class="card"><h2>How the image was processed</h2><div id="pipeline" class="pipeline"></div></div>
+    <div class="card"><h2>Flavor counts</h2><div id="flavors" class="flavors"></div></div>
+    <div class="card"><h2>Slot map</h2><div id="slots" class="slot-grid"></div></div>
+  </section>
+</main>
+
+<div id="viewer" class="viewer" hidden role="dialog" aria-modal="true" aria-label="Image viewer">
+  <div class="viewer-toolbar">
+    <span id="viewerTitle" class="viewer-title">Processing image</span>
+    <button id="zoomOut" type="button" title="Zoom out">−</button>
+    <span id="zoomLevel" class="zoom-level">100%</span>
+    <button id="zoomIn" type="button" title="Zoom in">+</button>
+    <button id="zoomFit" type="button">Fit</button>
+    <button id="zoomActual" type="button">100%</button>
+    <button id="viewerClose" class="close" type="button">Close</button>
+  </div>
+  <div id="viewerCanvas" class="viewer-canvas"><img id="viewerImage" class="viewer-image" alt=""></div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id),photo=$('photo'),preview=$('preview'),prompt=$('prompt'),analyze=$('analyze'),status=$('status'),results=$('results');
+const viewer=$('viewer'),viewerCanvas=$('viewerCanvas'),viewerImage=$('viewerImage'),zoomLevel=$('zoomLevel');
+let zoom=1,fitZoom=1,dragging=false,dragX=0,dragY=0,scrollX=0,scrollY=0;
+
+photo.onchange=()=>{
+  const file=photo.files[0];
+  analyze.disabled=!file;
+  if(!file)return;
+  preview.src=URL.createObjectURL(file);
+  preview.hidden=false;
+  prompt.hidden=true;
+  results.hidden=true;
+  setStatus('','');
+};
+
+function setStatus(text,type){status.textContent=text;status.className=`status${text?' show '+type:''}`}
+function layout(capacity){return capacity===6?[3,2]:capacity===10?[5,2]:capacity===16?[4,4]:capacity===30?[6,5]:[10,5]}
+
+function render(data){
+  $('capacityOut').textContent=data.capacity;
+  $('occupiedOut').textContent=data.occupied;
+  $('timeOut').textContent=(data.api_seconds??data.seconds).toFixed(2);
+  $('details').textContent=`${data.capacity_source==='override'?'Known':'Detected'} capacity · ${data.geometry_mode.replace('automatic_','')} localization · ${data.review_slots} review slots`;
+
+  const visuals=data.visualizations||{};
+  const stages=[
+    ['input','Input photograph','Original image received by the API'],
+    ['localized','Tray localization',`${data.capacity_source==='override'?'Known':'Detected'} ${data.capacity}-slot box and four tray corners`],
+    ['grid','Slot extraction',`${layout(data.capacity)[0]} × ${layout(data.capacity)[1]} rectified slot grid`],
+    ['labeled','Flavor classification','Predicted flavor placed on every chocolate']
+  ];
+
+  $('pipeline').innerHTML=stages.filter(([key])=>visuals[key]).map(([key,title,caption],i)=>`
+    <article class="stage">
+      <img src="${visuals[key]}" alt="${title}" data-title="${title}" tabindex="0">
+      <div class="stage-copy">
+        <span class="stage-number">${i+1}</span>
+        <div><b>${title}</b><small>${caption}</small><small class="zoom-hint">Click image to enlarge</small></div>
+      </div>
+    </article>`).join('');
+
+  $('flavors').innerHTML=Object.entries(data.flavor_counts)
+    .sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0]))
+    .map(([name,count])=>`<div class="flavor"><b>${name.replaceAll('_',' ')}</b><b>${count}</b></div>`).join('');
+
+  const [rows,cols]=layout(data.capacity);
+  $('slots').style.gridTemplateColumns=`repeat(${cols},1fr)`;
+  $('slots').innerHTML=data.slots.sort((a,b)=>a.row-b.row||a.column-b.column)
+    .map(s=>`<div class="slot${s.needs_review?' review':''}" title="${s.flavor_name}"><b>${s.row},${s.column}</b><small>${s.flavor_name}</small></div>`).join('');
+
+  results.hidden=false;
+  results.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function applyZoom(value){
+  zoom=Math.min(5,Math.max(.1,value));
+  viewerImage.style.width=`${viewerImage.naturalWidth*zoom}px`;
+  zoomLevel.textContent=`${Math.round(zoom*100)}%`;
+}
+
+function fitImage(){
+  if(!viewerImage.naturalWidth)return;
+  fitZoom=Math.min((viewerCanvas.clientWidth-40)/viewerImage.naturalWidth,(viewerCanvas.clientHeight-40)/viewerImage.naturalHeight,1);
+  applyZoom(fitZoom);
+  viewerCanvas.scrollTo(0,0);
+}
+
+function openViewer(image){
+  viewer.hidden=false;
+  document.body.style.overflow='hidden';
+  $('viewerTitle').textContent=image.dataset.title||image.alt;
+  viewerImage.alt=image.alt;
+  viewerImage.onload=fitImage;
+  viewerImage.src=image.src;
+}
+
+function closeViewer(){
+  viewer.hidden=true;
+  document.body.style.overflow='';
+  viewerImage.src='';
+}
+
+$('pipeline').addEventListener('click',event=>{if(event.target.matches('.stage>img'))openViewer(event.target)});
+$('pipeline').addEventListener('keydown',event=>{if(event.target.matches('.stage>img')&&(event.key==='Enter'||event.key===' ')){event.preventDefault();openViewer(event.target)}});
+$('zoomIn').onclick=()=>applyZoom(zoom*1.25);
+$('zoomOut').onclick=()=>applyZoom(zoom/1.25);
+$('zoomFit').onclick=fitImage;
+$('zoomActual').onclick=()=>applyZoom(1);
+$('viewerClose').onclick=closeViewer;
+
+viewerCanvas.addEventListener('wheel',event=>{
+  event.preventDefault();
+  applyZoom(zoom*(event.deltaY<0?1.12:.89));
+},{passive:false});
+
+viewerCanvas.addEventListener('mousedown',event=>{
+  dragging=true;
+  dragX=event.clientX;
+  dragY=event.clientY;
+  scrollX=viewerCanvas.scrollLeft;
+  scrollY=viewerCanvas.scrollTop;
+  viewerCanvas.classList.add('dragging');
+});
+
+window.addEventListener('mousemove',event=>{
+  if(!dragging)return;
+  viewerCanvas.scrollLeft=scrollX-(event.clientX-dragX);
+  viewerCanvas.scrollTop=scrollY-(event.clientY-dragY);
+});
+
+window.addEventListener('mouseup',()=>{
+  dragging=false;
+  viewerCanvas.classList.remove('dragging');
+});
+
+viewer.addEventListener('click',event=>{if(event.target===viewer)closeViewer()});
+window.addEventListener('keydown',event=>{
+  if(viewer.hidden)return;
+  if(event.key==='Escape')closeViewer();
+  if(event.key==='+')applyZoom(zoom*1.25);
+  if(event.key==='-')applyZoom(zoom/1.25);
+});
+
+analyze.onclick=async()=>{
+  const file=photo.files[0];
+  if(!file)return;
+  analyze.disabled=true;
+  setStatus('Analyzing the box…','loading');
+  results.hidden=true;
+
+  const form=new FormData();
+  form.append('image',file);
+  form.append('filled_only','true');
+  if($('capacity').value)form.append('capacity',$('capacity').value);
+
+  try{
+    const response=await fetch('predict',{method:'POST',body:form});
+    const data=await response.json();
+    if(!response.ok)throw new Error(data.detail||`Request failed (${response.status})`);
+    render(data);
+    setStatus('Analysis complete.','loading');
+  }catch(error){
+    setStatus(error.message,'error');
+  }finally{
+    analyze.disabled=false;
+  }
+};
+</script>
+</body>
+</html>

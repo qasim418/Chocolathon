@@ -1,0 +1,181 @@
+#!/usr/bin/env python3
+"""FastAPI service for the frozen Chocolathon inference pipeline."""
+import asyncio
+import io
+import logging
+import os
+import sys
+import tempfile
+import time
+import uuid
+from pathlib import Path
+from typing import Optional
+
+from fastapi import FastAPI, File, Form, HTTPException, UploadFile
+from fastapi.responses import FileResponse
+from PIL import Image, UnidentifiedImageError
+
+API_DIR = Path(__file__).resolve().parent
+ROOT_CANDIDATES = (API_DIR, API_DIR.parent, API_DIR.parent / "releases" / "chocolathon_inference_v1")
+DEFAULT_RELEASE_ROOT = next((path for path in ROOT_CANDIDATES if (path / "chocolathon_inference.py").exists()), ROOT_CANDIDATES[-1])
+PROJECT_ROOT = Path(os.getenv("CHOCOLATHON_ROOT", DEFAULT_RELEASE_ROOT)).resolve()
+if not (PROJECT_ROOT / "chocolathon_inference.py").exists():
+    raise RuntimeError(f"Chocolathon release not found at {PROJECT_ROOT}. Set CHOCOLATHON_ROOT to the release directory.")
+sys.path.insert(0, str(PROJECT_ROOT))
+from chocolathon_inference import Chocolathon, LAYOUTS
+
+
+logging.basicConfig(level=os.getenv("CHOCOLATHON_LOG_LEVEL", "INFO"), format="%(asctime)s %(levelname)s %(name)s: %(message)s")
+LOGGER = logging.getLogger("chocolathon.api")
+
+DEVICE = os.getenv("CHOCOLATHON_DEVICE", "cpu")
+THREADS = int(os.getenv("CHOCOLATHON_THREADS", "1"))
+BATCH_SIZE = int(os.getenv("CHOCOLATHON_BATCH_SIZE", "8"))
+MAX_UPLOAD_BYTES = int(os.getenv("CHOCOLATHON_MAX_UPLOAD_MB", "25")) * 1024 * 1024
+MAX_IMAGE_PIXELS = int(os.getenv("CHOCOLATHON_MAX_IMAGE_PIXELS", "50000000"))
+ALLOWED_TYPES = {"image/jpeg": ".jpg", "image/jpg": ".jpg", "image/png": ".png"}
+
+if DEVICE not in {"cpu", "cuda"}: raise RuntimeError("CHOCOLATHON_DEVICE must be cpu or cuda")
+if THREADS < 1 or BATCH_SIZE < 1: raise RuntimeError("CHOCOLATHON_THREADS and CHOCOLATHON_BATCH_SIZE must be positive")
+
+app = FastAPI(
+    title="Chocolathon Inference API",
+    version="1.0.0",
+    description="Offline tray localization and filled-box chocolate flavor counting.",
+)
+app.state.engine = None
+app.state.started_at = None
+app.state.inference_lock = asyncio.Lock()
+
+
+@app.on_event("startup")
+def load_engine():
+    started = time.perf_counter()
+    LOGGER.info("Loading Chocolathon models from %s", PROJECT_ROOT)
+    app.state.engine = Chocolathon(
+        PROJECT_ROOT,
+        device=DEVICE,
+        threads=THREADS,
+        batch_size=BATCH_SIZE,
+        empty_mode="original",
+        geometry="uniform",
+        localizer="segmentation",
+    )
+    smoke = app.state.engine.smoke_test()
+    app.state.started_at = time.time()
+    app.state.smoke = smoke
+    LOGGER.info("Models loaded in %.3f seconds", time.perf_counter() - started)
+
+
+@app.get("/")
+def service_info():
+    frontend = API_DIR / "index.html"
+    if frontend.exists(): return FileResponse(frontend)
+    raise HTTPException(status_code=503, detail="Frontend file index.html is missing")
+
+
+@app.get("/api")
+def api_info():
+    return {
+        "service": "Chocolathon Inference API",
+        "version": app.version,
+        "status": "ready" if app.state.engine is not None else "loading",
+        "documentation": "/docs",
+        "health": "/health",
+        "predict": "/predict",
+    }
+
+
+@app.get("/health")
+def health():
+    if app.state.engine is None: raise HTTPException(status_code=503, detail="Models are not loaded")
+    return {
+        "status": "ready",
+        "device": DEVICE,
+        "threads": THREADS,
+        "batch_size": BATCH_SIZE,
+        "supported_capacities": list(LAYOUTS),
+        "primary_localizer": "segmentation",
+        "fallback_localizer": "routed_corner_regression",
+        "filled_only_default": True,
+        "uptime_seconds": time.time() - app.state.started_at,
+        "artifact_validation": app.state.smoke["artifact_validation"],
+    }
+
+
+def validate_image(payload):
+    try:
+        with Image.open(io.BytesIO(payload)) as image:
+            width, height = image.size
+            image.verify()
+    except (UnidentifiedImageError, OSError, ValueError) as error:
+        raise HTTPException(status_code=422, detail="Uploaded file is not a valid JPEG or PNG image") from error
+    if width < 32 or height < 32: raise HTTPException(status_code=422, detail="Image dimensions are too small")
+    if width * height > MAX_IMAGE_PIXELS: raise HTTPException(status_code=413, detail="Image exceeds the configured pixel limit")
+    return width, height
+
+
+def run_prediction(path, capacity, filled_only):
+    engine = app.state.engine
+    if engine is None: raise RuntimeError("Models are not loaded")
+    result, _, _, _ = engine.predict(path, filled_only=filled_only, capacity_override=capacity)
+    return result
+
+
+@app.post("/predict")
+async def predict(
+    image: UploadFile = File(..., description="JPEG or PNG box photograph"),
+    capacity: Optional[int] = Form(None, description="Known capacity: 6, 16, 30 or 50"),
+    filled_only: bool = Form(True, description="Assign a chocolate flavor to every slot"),
+):
+    request_id = str(uuid.uuid4())
+    content_type = image.content_type
+    original_filename = Path(image.filename or "upload").name
+    if content_type not in ALLOWED_TYPES: raise HTTPException(status_code=415, detail="Only JPEG and PNG images are supported")
+    if capacity is not None and capacity not in LAYOUTS: raise HTTPException(status_code=422, detail="Capacity must be 6, 16, 30 or 50")
+
+    payload = await image.read(MAX_UPLOAD_BYTES + 1)
+    await image.close()
+    if not payload: raise HTTPException(status_code=422, detail="Uploaded image is empty")
+    if len(payload) > MAX_UPLOAD_BYTES: raise HTTPException(status_code=413, detail="Image exceeds the configured upload limit")
+    width, height = validate_image(payload)
+
+    temporary_path = None
+    started = time.perf_counter()
+    try:
+        with tempfile.NamedTemporaryFile(prefix="chocolathon_", suffix=ALLOWED_TYPES[content_type], delete=False) as temporary:
+            temporary.write(payload)
+            temporary_path = Path(temporary.name)
+        del payload
+
+        async with app.state.inference_lock:
+            result = await asyncio.to_thread(run_prediction, temporary_path, capacity, filled_only)
+
+        result["request_id"] = request_id
+        result["input"] = {
+            "filename": original_filename,
+            "content_type": content_type,
+            "width": width,
+            "height": height,
+            "capacity_override": capacity,
+        }
+        result["api_seconds"] = time.perf_counter() - started
+        result.pop("image", None)
+        LOGGER.info("request=%s capacity=%s occupied=%s seconds=%.3f", request_id, result["capacity"], result["occupied"], result["api_seconds"])
+        return result
+    except HTTPException:
+        raise
+    except (ValueError, FileNotFoundError) as error:
+        LOGGER.warning("request=%s rejected: %s", request_id, error)
+        raise HTTPException(status_code=422, detail=str(error)) from error
+    except Exception as error:
+        LOGGER.exception("request=%s inference failure", request_id)
+        raise HTTPException(status_code=500, detail="Inference failed") from error
+    finally:
+        if temporary_path is not None: temporary_path.unlink(missing_ok=True)
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("chocolathon_api:app", host=os.getenv("CHOCOLATHON_HOST", "127.0.0.1"),
+                port=int(os.getenv("CHOCOLATHON_PORT", "8000")), reload=False)

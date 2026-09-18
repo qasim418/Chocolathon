@@ -1,0 +1,24 @@
+{
+  "file": "IMG_2034.jpg",
+  "box_size": 50,
+  "rows": 10,
+  "columns": 5,
+  "anchors": {
+    "top_left": [
+      150.76,
+      207.64
+    ],
+    "top_right": [
+      1112.18,
+      216.18
+    ],
+    "bottom_right": [
+      1095.11,
+      2360.89
+    ],
+    "bottom_left": [
+      164.98,
+      2343.82
+    ]
+  }
+}

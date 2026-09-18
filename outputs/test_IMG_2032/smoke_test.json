@@ -1,0 +1,33 @@
+{
+  "box_size_output": [
+    1,
+    4
+  ],
+  "corner_output": [
+    1,
+    8
+  ],
+  "feature_output": [
+    1,
+    1280
+  ],
+  "prototype_shape": [
+    34,
+    1280
+  ],
+  "model_roles": {
+    "box_size_classifier": "predict 6/16/30/50 slot capacity",
+    "spatial_corner_regressor": "predict TL/TR/BR/BL tray corners",
+    "slot_feature_extractor": "produce 1280-D slot embeddings",
+    "slot_class_prototypes": "cosine-match 34 classes including empty"
+  },
+  "artifact_validation": "PASS",
+  "artifacts": {
+    "box_size_classifier": "/homes/mxqasim/Chocolathon/data/experiments/box_localization_v1/outputs/efficientnet_b0_box_size_classifier.pt",
+    "spatial_corner_regressor": "/homes/mxqasim/Chocolathon/data/experiments/box_localization_v1/outputs/efficientnet_b0_spatial_corner_regressor.pt",
+    "slot_feature_extractor": "/homes/mxqasim/Chocolathon/data/experiments/synthetic_slot_embeddings_v1/deployment/efficientnet_b0_feature_extractor.pt",
+    "slot_prototypes": "/homes/mxqasim/Chocolathon/data/experiments/synthetic_slot_embeddings_v1/deployment/slot_class_prototypes.npz",
+    "class_catalog": "/homes/mxqasim/Chocolathon/data/experiments/synthetic_slot_embeddings_v1/deployment/class_catalog.csv",
+    "deployment_config": "/homes/mxqasim/Chocolathon/data/experiments/synthetic_slot_embeddings_v1/deployment/deployment_config.json"
+  }
+}

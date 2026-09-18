@@ -1,0 +1,28 @@
+{
+  "experiment": "synthetic_slot_embeddings_v1",
+  "backbone": "EfficientNet-B0",
+  "weights": "IMAGENET1K_V1",
+  "embedding_dimension": 1280,
+  "classifier": "cosine_class_prototypes",
+  "classes": 34,
+  "flavor_classes": 33,
+  "training_samples": 2956,
+  "validation_samples": 762,
+  "combined_top1_accuracy": 0.998688,
+  "combined_top3_accuracy": 1.0,
+  "combined_macro_f1": 0.999138,
+  "occupancy_accuracy": 0.998688,
+  "empty_accuracy": 0.990196,
+  "occupied_flavor_top1": 1.0,
+  "occupied_flavor_top3": 1.0,
+  "validation_errors": 1,
+  "provisional_margin_threshold": 0.005,
+  "automatic_coverage_at_threshold": 0.998688,
+  "confident_accuracy_at_threshold": 1.0,
+  "validation_protocol": "whole-source-box background holdout",
+  "limitations": [
+    "Chocolate donor identities are shared between synthetic training and validation.",
+    "Synthetic validation does not measure independent chocolate appearance generalization.",
+    "The confidence threshold must be checked on real filled-box images."
+  ]
+}

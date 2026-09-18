@@ -1,0 +1,28 @@
+{
+  "images": 26,
+  "capacity_accuracy": 0.9615384615384616,
+  "mean_corner_error_pixels": 189.80229612497183,
+  "mean_corner_error_normalized": 0.03765918573908171,
+  "automatic": {
+    "images": 26,
+    "comparable_images": 25,
+    "slot_occupancy_accuracy": 0.9388489208633094,
+    "occupied_flavor_accuracy": 0.6690647482014388,
+    "exact_flavor_count_accuracy": 0.5384615384615384,
+    "false_empty": 18,
+    "flavor_count_abs_error": 148
+  },
+  "ground_truth_geometry": {
+    "images": 26,
+    "comparable_images": 26,
+    "slot_occupancy_accuracy": 1.0,
+    "occupied_flavor_accuracy": 1.0,
+    "exact_flavor_count_accuracy": 1.0,
+    "false_empty": 0,
+    "flavor_count_abs_error": 0
+  },
+  "diagnosis": {
+    "false_empty_removed_by_gt_geometry": 18,
+    "flavor_errors_removed_by_gt_geometry": 148
+  }
+}

@@ -1,0 +1,34 @@
+flavor_id,flavor_name,precision,recall,f1,support
+truffle_dulce_de_leche,Dulce de Leche,1.0,0.75,0.8571428571428571,4
+truffle_tea_honey,Tea & Honey,0.8333333333333334,1.0,0.9090909090909091,5
+cocoashot_amaretto,Amaretto,1.0,1.0,1.0,2
+truffle_amaretto,Amaretto,1.0,1.0,1.0,4
+truffle_bananas_foster,Bananas Foster,1.0,1.0,1.0,4
+cocoashot_bourbon,Bourbon,1.0,1.0,1.0,5
+truffle_brownie_batter,Brownie Batter,1.0,1.0,1.0,4
+truffle_caramel_apple_cider,Caramel Apple Cider,1.0,1.0,1.0,4
+truffle_champagne,Champagne,1.0,1.0,1.0,4
+truffle_cheesecake,Cheesecake,1.0,1.0,1.0,4
+cocoashot_chocolate_cake,Chocolate Cake,1.0,1.0,1.0,2
+truffle_confetti_cake,Confetti Cake,1.0,1.0,1.0,4
+truffle_cookies_cream,Cookies & Cream,1.0,1.0,1.0,4
+truffle_creamsicle,Creamsicle,1.0,1.0,1.0,8
+truffle_creme_brulee,Crème Brûlée,1.0,1.0,1.0,4
+truffle_espresso_martini,Espresso Martini,1.0,1.0,1.0,3
+truffle_grey_salt_caramel,Grey Salt Caramel,1.0,1.0,1.0,2
+truffle_key_lime_pie,Key Lime Pie,1.0,1.0,1.0,4
+truffle_lemon,Lemon,1.0,1.0,1.0,3
+truffle_manhattan,Manhattan,1.0,1.0,1.0,4
+truffle_maple_cream,Maple Cream,1.0,1.0,1.0,4
+cocoashot_old_fashioned,Old Fashioned,1.0,1.0,1.0,4
+truffle_peanut_butter_caramel,Peanut Butter Caramel,1.0,1.0,1.0,4
+truffle_pineapple_moscato,Pineapple & Moscato,1.0,1.0,1.0,3
+truffle_pistachio,Pistachio,1.0,1.0,1.0,4
+truffle_pumpkin_spice_latte,Pumpkin Spice Latte,1.0,1.0,1.0,4
+truffle_raspberry,Raspberry,1.0,1.0,1.0,4
+truffle_s_mores,S'mores,1.0,1.0,1.0,8
+truffle_salted_caramel,Salted Caramel,1.0,1.0,1.0,4
+truffle_strawberry_shortcake,Strawberry Shortcake,1.0,1.0,1.0,3
+cocoashot_tequila,Tequila,1.0,1.0,1.0,7
+truffle_turtle,Turtle,1.0,1.0,1.0,4
+cocoashot_whiskey,Whiskey,1.0,1.0,1.0,2

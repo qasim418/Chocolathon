@@ -1,0 +1,93 @@
+{
+  "comparison": {
+    "all": {
+      "current_v2": {
+        "images": 48,
+        "capacity_accuracy": 1.0,
+        "corner_error": 0.035377602760123195,
+        "flavor_accuracy": 0.7304625199362041,
+        "false_empty": 3,
+        "count_error": 283,
+        "exact_count_accuracy": 0.4375
+      },
+      "candidate_v3": {
+        "images": 48,
+        "capacity_accuracy": 1.0,
+        "corner_error": 0.023787583339781985,
+        "flavor_accuracy": 0.8708133971291866,
+        "false_empty": 1,
+        "count_error": 129,
+        "exact_count_accuracy": 0.6666666666666666
+      }
+    },
+    "large_validation": {
+      "current_v2": {
+        "images": 6,
+        "capacity_accuracy": 1.0,
+        "corner_error": 0.06228604594235698,
+        "flavor_accuracy": 0.45,
+        "false_empty": 1,
+        "count_error": 73,
+        "exact_count_accuracy": 0.0
+      },
+      "candidate_v3": {
+        "images": 6,
+        "capacity_accuracy": 1.0,
+        "corner_error": 0.042685915931822756,
+        "flavor_accuracy": 0.4166666666666667,
+        "false_empty": 1,
+        "count_error": 89,
+        "exact_count_accuracy": 0.0
+      }
+    },
+    "capacity_30": {
+      "current_v2": {
+        "images": 12,
+        "capacity_accuracy": 1.0,
+        "corner_error": 0.04865721596611871,
+        "flavor_accuracy": 0.6638888888888889,
+        "false_empty": 3,
+        "count_error": 111,
+        "exact_count_accuracy": 0.25
+      },
+      "candidate_v3": {
+        "images": 12,
+        "capacity_accuracy": 1.0,
+        "corner_error": 0.029517642341593583,
+        "flavor_accuracy": 0.8,
+        "false_empty": 1,
+        "count_error": 61,
+        "exact_count_accuracy": 0.5
+      }
+    },
+    "capacity_50": {
+      "current_v2": {
+        "images": 12,
+        "capacity_accuracy": 1.0,
+        "corner_error": 0.04634748716202994,
+        "flavor_accuracy": 0.66,
+        "false_empty": 0,
+        "count_error": 150,
+        "exact_count_accuracy": 0.0
+      },
+      "candidate_v3": {
+        "images": 12,
+        "capacity_accuracy": 1.0,
+        "corner_error": 0.019126983105190214,
+        "flavor_accuracy": 0.8716666666666667,
+        "false_empty": 0,
+        "count_error": 46,
+        "exact_count_accuracy": 0.6666666666666666
+      }
+    }
+  },
+  "gates": {
+    "validation_corner_improved": true,
+    "overall_corner_improved": true,
+    "flavor_accuracy_not_worse": true,
+    "count_error_not_worse": true,
+    "false_empty_not_worse": true,
+    "capacity_preserved": true
+  },
+  "accepted": true
+}

@@ -1,0 +1,147 @@
+{
+  "test_scope": "Development empty-box diagnostics, NOT independent or filled-box accuracy",
+  "empty_mode": "original",
+  "geometry": "uniform",
+  "saved_crop_summary": {
+    "total": 418,
+    "false_occupied": 22,
+    "empty_accuracy": 0.9473684210526316
+  },
+  "automatic_summary": {
+    "images": 16,
+    "capacity_correct": 16,
+    "false_occupied": 12
+  },
+  "saved_crops": {
+    "6": {
+      "total": 18,
+      "false_occupied": 0
+    },
+    "16": {
+      "total": 80,
+      "false_occupied": 22
+    },
+    "30": {
+      "total": 120,
+      "false_occupied": 0
+    },
+    "50": {
+      "total": 200,
+      "false_occupied": 0
+    }
+  },
+  "automatic": [
+    {
+      "image": "IMG_2019.jpg",
+      "expected_capacity": 6,
+      "predicted_capacity": 6,
+      "false_occupied": 0,
+      "review_slots": 0
+    },
+    {
+      "image": "IMG_2020.jpg",
+      "expected_capacity": 6,
+      "predicted_capacity": 6,
+      "false_occupied": 0,
+      "review_slots": 0
+    },
+    {
+      "image": "IMG_2021.jpg",
+      "expected_capacity": 6,
+      "predicted_capacity": 6,
+      "false_occupied": 0,
+      "review_slots": 0
+    },
+    {
+      "image": "IMG_2022.jpg",
+      "expected_capacity": 16,
+      "predicted_capacity": 16,
+      "false_occupied": 0,
+      "review_slots": 2
+    },
+    {
+      "image": "IMG_2023.jpg",
+      "expected_capacity": 16,
+      "predicted_capacity": 16,
+      "false_occupied": 2,
+      "review_slots": 1
+    },
+    {
+      "image": "IMG_2024.jpg",
+      "expected_capacity": 16,
+      "predicted_capacity": 16,
+      "false_occupied": 3,
+      "review_slots": 0
+    },
+    {
+      "image": "IMG_2025.jpg",
+      "expected_capacity": 16,
+      "predicted_capacity": 16,
+      "false_occupied": 4,
+      "review_slots": 0
+    },
+    {
+      "image": "IMG_2026.jpg",
+      "expected_capacity": 16,
+      "predicted_capacity": 16,
+      "false_occupied": 3,
+      "review_slots": 1
+    },
+    {
+      "image": "IMG_2027.jpg",
+      "expected_capacity": 30,
+      "predicted_capacity": 30,
+      "false_occupied": 0,
+      "review_slots": 0
+    },
+    {
+      "image": "IMG_2028.jpg",
+      "expected_capacity": 30,
+      "predicted_capacity": 30,
+      "false_occupied": 0,
+      "review_slots": 0
+    },
+    {
+      "image": "IMG_2029.jpg",
+      "expected_capacity": 30,
+      "predicted_capacity": 30,
+      "false_occupied": 0,
+      "review_slots": 0
+    },
+    {
+      "image": "IMG_2030.jpg",
+      "expected_capacity": 30,
+      "predicted_capacity": 30,
+      "false_occupied": 0,
+      "review_slots": 0
+    },
+    {
+      "image": "IMG_2031.jpg",
+      "expected_capacity": 50,
+      "predicted_capacity": 50,
+      "false_occupied": 0,
+      "review_slots": 0
+    },
+    {
+      "image": "IMG_2032.jpg",
+      "expected_capacity": 50,
+      "predicted_capacity": 50,
+      "false_occupied": 0,
+      "review_slots": 0
+    },
+    {
+      "image": "IMG_2033.jpg",
+      "expected_capacity": 50,
+      "predicted_capacity": 50,
+      "false_occupied": 0,
+      "review_slots": 0
+    },
+    {
+      "image": "IMG_2034.jpg",
+      "expected_capacity": 50,
+      "predicted_capacity": 50,
+      "false_occupied": 0,
+      "review_slots": 0
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "file": "IMG_2029.jpg",
+  "box_size": 30,
+  "rows": 6,
+  "columns": 5,
+  "anchors": {
+    "top_left": [
+      104.23,
+      199.31
+    ],
+    "top_right": [
+      1031.31,
+      201.14
+    ],
+    "bottom_right": [
+      1025.83,
+      1338.51
+    ],
+    "bottom_left": [
+      118.86,
+      1340.34
+    ]
+  }
+}
