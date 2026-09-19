@@ -1,6 +1,6 @@
-# CocoaVision — Know Every Piece in Every Box
+# CocoaLens — Know Every Piece in Every Box
 
-CocoaVision is an offline, photo-based application built for the **Cocoa Dolce Chocolate Vision Build Track**. A cashier uploads one photograph of a completed chocolate box, and the app detects the box, identifies each chocolate, counts the flavors, and returns one structured record for the sale.
+CocoaLens is an offline, photo-based application built for the **Cocoa Dolce Chocolate Vision Build Track**. A cashier uploads one photograph of a completed chocolate box, and the app detects the box, identifies each chocolate, counts the flavors, and returns one structured record for the sale.
 
 ## What We Built
 
