@@ -1,6 +1,6 @@
-# CocoaVision — Technical Details
+# CocoaLens — Technical Details
 
-CocoaVision is an offline, photo-based chocolate box capture system built for the **Cocoa Dolce Chocolate Vision Build Track**. A cashier photographs a completed box, and the application detects the box size, localizes the tray, identifies every chocolate, counts each flavor, and produces one structured record for the sale. If a prediction is wrong, the cashier can correct that slot before saving; the correction is logged for future model improvement.
+CocoaLens is an offline, photo-based chocolate box capture system built for the **Cocoa Dolce Chocolate Vision Build Track**. A cashier photographs a completed box, and the application detects the box size, localizes the tray, identifies every chocolate, counts each flavor, and produces one structured record for the sale. If a prediction is wrong, the cashier can correct that slot before saving; the correction is logged for future model improvement.
 
 ## The Problem
 
@@ -9,7 +9,7 @@ Cocoa Dolce records each sale, but not the individual chocolates placed in each 
 ## Our Solution
 
 1. The cashier takes or uploads one photograph of the completed box.
-2. CocoaVision automatically predicts a **6, 10, 16, 30, or 50-piece** layout. The cashier may also select a known size.
+2. CocoaLens automatically predicts a **6, 10, 16, 30, or 50-piece** layout. The cashier may also select a known size.
 3. Tray segmentation finds the box, with routed corner-regression models as fallback.
 4. Perspective correction converts the photographed tray into a clean, orientation-aware grid.
 5. Each slot is matched to Cocoa Dolce flavor references using learned image embeddings.
@@ -450,6 +450,6 @@ Aggregated box records can then support the challenge’s stretch goal:
 
 ## Summary
 
-CocoaVision implements the complete capture flow from a single box photograph to a structured flavor record. It supports five box capacities, automatic tray localization, orientation-aware slot extraction, per-piece flavor recognition, human correction, and persistent feedback logging while running locally on CPU.
+CocoaLens implements the complete capture flow from a single box photograph to a structured flavor record. It supports five box capacities, automatic tray localization, orientation-aware slot extraction, per-piece flavor recognition, human correction, and persistent feedback logging while running locally on CPU.
 
 The project demonstrates a working Build Track prototype while clearly separating generated development results from real-world deployment claims.
