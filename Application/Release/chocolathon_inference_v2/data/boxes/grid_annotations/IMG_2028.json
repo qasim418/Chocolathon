@@ -1,0 +1,24 @@
+{
+  "file": "IMG_2028.jpg",
+  "box_size": 30,
+  "rows": 6,
+  "columns": 5,
+  "anchors": {
+    "top_left": [
+      138.97,
+      202.97
+    ],
+    "top_right": [
+      1058.74,
+      202.97
+    ],
+    "bottom_right": [
+      1036.8,
+      1344.0
+    ],
+    "bottom_left": [
+      148.11,
+      1327.54
+    ]
+  }
+}

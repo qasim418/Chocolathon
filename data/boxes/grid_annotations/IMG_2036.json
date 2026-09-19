@@ -1,0 +1,24 @@
+{
+  "file": "IMG_2036.jpg",
+  "box_size": 10,
+  "rows": 5,
+  "columns": 2,
+  "anchors": {
+    "top_left": [
+      170.67,
+      256.0
+    ],
+    "top_right": [
+      422.4,
+      265.96
+    ],
+    "bottom_right": [
+      401.07,
+      1187.56
+    ],
+    "bottom_left": [
+      149.33,
+      1204.62
+    ]
+  }
+}

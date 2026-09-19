@@ -1,0 +1,24 @@
+{
+  "file": "IMG_2030.jpg",
+  "box_size": 30,
+  "rows": 6,
+  "columns": 5,
+  "anchors": {
+    "top_left": [
+      71.31,
+      219.43
+    ],
+    "top_right": [
+      981.94,
+      215.77
+    ],
+    "bottom_right": [
+      974.63,
+      1334.86
+    ],
+    "bottom_left": [
+      78.63,
+      1327.54
+    ]
+  }
+}

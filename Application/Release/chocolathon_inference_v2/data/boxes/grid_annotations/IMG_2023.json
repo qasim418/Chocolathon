@@ -1,0 +1,24 @@
+{
+  "file": "IMG_2023.jpg",
+  "box_size": 16,
+  "rows": 4,
+  "columns": 4,
+  "anchors": {
+    "top_left": [
+      191.63,
+      182.86
+    ],
+    "top_right": [
+      879.18,
+      179.93
+    ],
+    "bottom_right": [
+      879.18,
+      873.33
+    ],
+    "bottom_left": [
+      187.25,
+      867.47
+    ]
+  }
+}

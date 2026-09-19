@@ -11,13 +11,16 @@ from pathlib import Path
 
 
 RUNTIME_DIRECTORIES = [
-    "data/experiments/box_localization_v3/deployment",
+    "Application/Runtime",
+    "Application/Deployment",
+    "data/experiments/box_localization_v4/deployment",
     "data/experiments/tray_segmentation_v1/deployment",
     "data/experiments/synthetic_slot_embeddings_v1/deployment",
 ]
 
 VALIDATION_DIRECTORIES = [
     "data/synthetic_filled_boxes/v4",
+    "data/synthetic_filled_boxes/v5_10_slot",
     "data/experiments/synthetic_slot_embeddings_v1/outputs",
     "data/boxes/raw",
     "data/boxes/annotations",
@@ -27,13 +30,17 @@ VALIDATION_DIRECTORIES = [
 ]
 
 REQUIRED_FILES = [
-    "chocolathon_inference.py",
+    "Application/Runtime/chocolathon_inference.py",
+    "Application/Deployment/chocolathon_api.py",
+    "Application/Deployment/index.html",
+    "Application/Deployment/requirements-api.txt",
     "data/boxes/manifest.csv",
-    "data/experiments/box_localization_v3/deployment/localization_config.json",
+    "data/experiments/box_localization_v4/deployment/localization_config.json",
     "data/experiments/tray_segmentation_v1/deployment/segmentation_config.json",
     "data/experiments/tray_segmentation_v1/deployment/efficientnet_b0_tray_segmenter.pt",
     "data/experiments/synthetic_slot_embeddings_v1/deployment/deployment_config.json",
     "data/synthetic_filled_boxes/v4/manifest.csv",
+    "data/synthetic_filled_boxes/v5_10_slot/manifest.csv",
 ]
 
 OPTIONAL_REPORTS = [
@@ -41,10 +48,10 @@ OPTIONAL_REPORTS = [
     "data/experiments/tray_segmentation_v1/training_history.csv",
     "data/experiments/tray_segmentation_v1/corner_evaluation.csv",
     "data/experiments/tray_segmentation_v1/downstream_comparison.csv",
-    "outputs/v3_regression_verification/synthetic_report.json",
-    "outputs/v3_regression_verification/synthetic_results.csv",
-    "outputs/v3_segmentation_verification/synthetic_report.json",
-    "outputs/v3_segmentation_verification/synthetic_results.csv",
+    "outputs/v4_old_sizes_orientation_final/synthetic_report.json",
+    "outputs/v4_old_sizes_orientation_final/synthetic_results.csv",
+    "outputs/v4_10slot_orientation_final/synthetic_report.json",
+    "outputs/v4_10slot_orientation_final/synthetic_results.csv",
 ]
 
 
@@ -57,7 +64,7 @@ def sha256(path, chunk_size=1024 * 1024):
 
 def copy_path(source, destination):
     if source.is_dir():
-        shutil.copytree(source, destination, ignore=shutil.ignore_patterns("__pycache__", ".ipynb_checkpoints", "*.pyc"))
+        shutil.copytree(source, destination, ignore=shutil.ignore_patterns("__pycache__", ".ipynb_checkpoints", "*.pyc", "*.bak"))
     else:
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(source, destination)
@@ -71,25 +78,22 @@ Created: `{created_at}`
 
 ## Status
 
-This bundle freezes the finalized offline inference pipeline and its reproducible synthetic-v4 validation set. The complete automatic pipeline achieved:
+This bundle freezes the finalized offline filled-box pipeline for capacities 6, 10, 16, 30 and 50.
 
-| Metric | Result |
-|---|---:|
-| Synthetic v4 images | 48 |
-| Capacity accuracy | 100% |
-| Exact flavor-count accuracy | 100% |
-| False-empty slots | 0 |
-| Total flavor-count error | 0 |
-| Mean CPU inference time | 0.676 seconds/image |
+| Validation set | Images | Capacity accuracy | Exact flavor counts | Count error |
+|---|---:|---:|---:|---:|
+| Original sizes, synthetic v4 | 48 | 100% | 100% | 0 |
+| 10-slot, synthetic v5 | 9 | 100% | 100% | 0 |
+| Combined | 57 | 100% | 100% | 0 |
 
-These are synthetic-v4 development results. Accuracy on independent real filled boxes is not yet established. The preserved real filled box must remain a blind end-to-end test.
+All 19 original empty boxes passed capacity detection. One real filled 10-slot photograph passed automatic capacity selection, segmentation and orientation-aware cropping. Independent real filled-box accuracy is not established.
 
 ## Final pipeline
 
-1. Optional known capacity (`6`, `16`, `30`, or `50`), otherwise EfficientNet-B0 capacity classification.
+1. Optional known capacity (`6`, `10`, `16`, `30`, or `50`), otherwise EfficientNet-B0 capacity classification.
 2. EfficientNet-B0 U-Net tray segmentation for primary automatic localization.
 3. Polygon extraction into `TL, TR, BR, BL` corners.
-4. Routed 6/16 and 30/50 corner regressors only if segmentation fails.
+4. Routed 6/10/16 and 30/50 corner regressors only if segmentation fails.
 5. Perspective rectification and capacity-specific uniform grid extraction.
 6. EfficientNet-B0 1280-dimensional slot embeddings.
 7. Cosine matching against the deployed flavor prototypes.
@@ -100,9 +104,9 @@ These are synthetic-v4 development results. Accuracy on independent real filled 
 | Artifact | Purpose |
 |---|---|
 | `data/experiments/tray_segmentation_v1/deployment/efficientnet_b0_tray_segmenter.pt` | Primary tray mask and corner localization |
-| `data/experiments/box_localization_v3/deployment/efficientnet_b0_box_size_classifier.pt` | Automatic 6/16/30/50 capacity selection |
-| `data/experiments/box_localization_v3/deployment/efficientnet_b0_corner_regressor_small.pt` | 6/16 localization fallback |
-| `data/experiments/box_localization_v3/deployment/efficientnet_b0_corner_regressor_large.pt` | 30/50 localization fallback |
+| `data/experiments/box_localization_v4/deployment/efficientnet_b0_box_size_classifier.pt` | Automatic 6/10/16/30/50 capacity selection |
+| `data/experiments/box_localization_v4/deployment/efficientnet_b0_corner_regressor_small.pt` | 6/10/16 localization fallback |
+| `data/experiments/box_localization_v4/deployment/efficientnet_b0_corner_regressor_large.pt` | 30/50 localization fallback |
 | Slot deployment backbone | Produces slot embeddings |
 | Slot prototype matrix and catalog | Converts embeddings into flavor labels and counts |
 
@@ -111,12 +115,13 @@ These are synthetic-v4 development results. Accuracy on independent real filled 
 | Path | Contents |
 |---|---|
 | `data/experiments/*/deployment` | Final inference configurations and weights |
-| `data/synthetic_filled_boxes/v4` | 48 synthetic filled boxes, manifest and slot ground truths |
+| `data/synthetic_filled_boxes/v4` | 48 synthetic boxes for capacities 6/16/30/50 |
+| `data/synthetic_filled_boxes/v5_10_slot` | 9 synthetic 10-slot boxes |
 | `data/boxes/annotations` | Original outer tray-corner annotations |
 | `data/boxes/grid_annotations` | Historical internal grid annotations; not segmentation masks |
 | `data/boxes/slots` | Empty-slot diagnostic crops and manifest |
 | `validation` | Final evaluation reports copied when available |
-| `api` | Reserved location for the inference API |
+| `Application/Deployment` | FastAPI service and browser application |
 
 ## Environment
 
@@ -124,13 +129,13 @@ Create or activate a Python environment and install the included requirements fi
 
 ```bash
 source .venv/bin/activate
-python -m py_compile chocolathon_inference.py
+python -m py_compile Application/Runtime/chocolathon_inference.py Application/Deployment/chocolathon_api.py
 ```
 
 ## Synthetic release test
 
 ```bash
-python chocolathon_inference.py \
+python Application/Runtime/chocolathon_inference.py \
   --test-synthetic \
   --synthetic-root data/synthetic_filled_boxes/v4 \
   --filled-only \
@@ -156,7 +161,7 @@ total_flavor_count_abs_error: 0
 Use the known capacity and do not supply manual corners:
 
 ```bash
-python chocolathon_inference.py \
+python Application/Runtime/chocolathon_inference.py \
   --image /absolute/path/to/blind_real_box.jpg \
   --capacity 30 \
   --filled-only \
@@ -169,12 +174,12 @@ python chocolathon_inference.py \
 
 Before running, record the hidden ground-truth slot arrangement and flavor counts separately. Do not tune any model or threshold using this image before reporting its result.
 
-## API contract to implement
+## API
 
-The API should initialize one persistent `Chocolathon` engine and accept:
+The included API initializes one persistent `Chocolathon` engine and accepts:
 
 - Image upload
-- Optional known capacity: `6`, `16`, `30`, or `50`
+- Optional known capacity: `6`, `10`, `16`, `30`, or `50`
 - `filled_only`, normally `true` for the intended deployment
 
 It should return capacity, localization mode, four corners, per-slot predictions, flavor counts, review flags, warnings and inference time. Do not reload models for each request.
@@ -191,12 +196,12 @@ It should return capacity, localization mode, four corners, per-slot predictions
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path.cwd(), help="Chocolathon project root")
-    parser.add_argument("--name", default="chocolathon_inference_v1", help="New release folder name")
+    parser.add_argument("--name", default="chocolathon_inference_v2", help="New release folder name")
     parser.add_argument("--no-archive", action="store_true", help="Do not create a tar.gz beside the release folder")
     args = parser.parse_args()
 
     root = args.root.resolve()
-    release_parent = root / "releases"
+    release_parent = root / "Application/Release"
     release = release_parent / args.name
     archive = release_parent / f"{args.name}.tar.gz"
 
@@ -206,14 +211,13 @@ def main():
     missing = [relative for relative in REQUIRED_FILES + RUNTIME_DIRECTORIES + VALIDATION_DIRECTORIES if not (root / relative).exists()]
     if missing: raise FileNotFoundError("Missing required release inputs:\n" + "\n".join(missing))
 
-    inference_text = (root / "chocolathon_inference.py").read_text()
-    required_markers = ["TraySegmenter", "automatic_segmentation", "--localizer", "--capacity", "filled_only"]
+    inference_text = (root / "Application/Runtime/chocolathon_inference.py").read_text()
+    required_markers = ["AUTO_CAPACITIES = (6, 10, 16, 30, 50)", "box_localization_v4", "TraySegmenter", "oriented_layout", "automatic_segmentation", "filled_only"]
     absent_markers = [marker for marker in required_markers if marker not in inference_text]
     if absent_markers: raise ValueError("Inference script is not the finalized segmentation version: " + ", ".join(absent_markers))
 
     release.mkdir(parents=True)
     try:
-        copy_path(root / "chocolathon_inference.py", release / "chocolathon_inference.py")
         for requirement in sorted(root.glob("requirements*.txt")): copy_path(requirement, release / requirement.name)
         for relative in RUNTIME_DIRECTORIES + VALIDATION_DIRECTORIES: copy_path(root / relative, release / relative)
         copy_path(root / "data/boxes/manifest.csv", release / "data/boxes/manifest.csv")
@@ -230,8 +234,6 @@ def main():
 
         created_at = datetime.now(timezone.utc).isoformat()
         (release / "README.md").write_text(build_readme(args.name, created_at))
-        (release / "api").mkdir()
-        (release / "api/README.md").write_text("# API\n\nReserved for the frozen-pipeline API implementation. See the release README for the required contract.\n")
 
         entries = []
         for path in sorted(p for p in release.rglob("*") if p.is_file()):
@@ -242,9 +244,15 @@ def main():
             "release": args.name,
             "created_at_utc": created_at,
             "source_root": str(root),
-            "pipeline": "capacity -> tray segmentation -> corner fallback -> rectification -> slots -> embeddings -> prototypes",
-            "synthetic_v4_validation": {"images": 48, "capacity_accuracy": 1.0, "exact_flavor_count_accuracy": 1.0, "false_empty": 0, "flavor_count_abs_error": 0, "mean_cpu_seconds": 0.6033910983145082},
+            "pipeline": "five-class capacity -> tray segmentation -> corner fallback -> orientation-aware rectification -> slots -> embeddings -> prototypes",
+            "supported_capacities": [6, 10, 16, 30, 50],
+            "synthetic_validation": {
+                "original_sizes": {"images": 48, "capacity_accuracy": 1.0, "exact_flavor_count_accuracy": 1.0, "false_empty": 0, "flavor_count_abs_error": 0, "mean_cpu_seconds": 0.5501029797402831},
+                "ten_slot": {"images": 9, "capacity_accuracy": 1.0, "exact_flavor_count_accuracy": 1.0, "false_empty": 0, "flavor_count_abs_error": 0, "mean_cpu_seconds": 0.2598585590409736}
+            },
+            "real_filled_10_slot_smoke_test_passed": True,
             "real_filled_box_accuracy_established": False,
+            "deployment_mode": "filled_only",
             "optional_reports_copied": copied_reports,
             "files": entries,
         }

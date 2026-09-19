@@ -1,0 +1,24 @@
+{
+  "file": "IMG_2037.jpg",
+  "box_size": 10,
+  "rows": 5,
+  "columns": 2,
+  "anchors": {
+    "top_left": [
+      72.53,
+      157.87
+    ],
+    "top_right": [
+      324.27,
+      164.98
+    ],
+    "bottom_right": [
+      305.78,
+      1110.76
+    ],
+    "bottom_left": [
+      88.18,
+      1132.09
+    ]
+  }
+}

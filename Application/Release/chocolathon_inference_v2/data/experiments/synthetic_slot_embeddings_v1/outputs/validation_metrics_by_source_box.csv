@@ -1,0 +1,5 @@
+empty_source_file,box_size,samples,occupied_samples,empty_samples,top1_accuracy,occupancy_accuracy,errors
+IMG_2020.jpg,6,171.0,165.0,6.0,1.0,1.0,0.0
+IMG_2023.jpg,16,181.0,165.0,16.0,0.994475138121547,0.994475138121547,1.0
+IMG_2030.jpg,30,195.0,165.0,30.0,1.0,1.0,0.0
+IMG_2034.jpg,50,215.0,165.0,50.0,1.0,1.0,0.0

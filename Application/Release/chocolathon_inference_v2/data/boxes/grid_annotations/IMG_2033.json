@@ -1,0 +1,24 @@
+{
+  "file": "IMG_2033.jpg",
+  "box_size": 50,
+  "rows": 10,
+  "columns": 5,
+  "anchors": {
+    "top_left": [
+      164.98,
+      201.96
+    ],
+    "top_right": [
+      1129.24,
+      204.8
+    ],
+    "bottom_right": [
+      1100.8,
+      2360.89
+    ],
+    "bottom_left": [
+      173.51,
+      2346.67
+    ]
+  }
+}

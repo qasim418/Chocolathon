@@ -1,0 +1,24 @@
+{
+  "file": "IMG_2035.jpg",
+  "box_size": 10,
+  "rows": 5,
+  "columns": 2,
+  "anchors": {
+    "top_left": [
+      85.33,
+      179.2
+    ],
+    "top_right": [
+      317.16,
+      179.2
+    ],
+    "bottom_right": [
+      314.31,
+      1115.02
+    ],
+    "bottom_left": [
+      73.96,
+      1106.49
+    ]
+  }
+}
