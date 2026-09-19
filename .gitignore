@@ -1,51 +1,43 @@
-# .venv/
-# .venv-gpu/
-# .venv_jupyter/
-# __pycache__/
-# *.pyc
-# .ipynb_checkpoints/
 
-# data/boxes/raw/
-# data/boxes/previews/
-# outputs/
-
-# # Reproducible box-processing artifacts
+*~
 # data/boxes/oriented_images/
-
-
-# Python environments
-.venv/
-.venv-*/
-.venv_*/
-venv/
-env/
-
-# Python caches
-__pycache__/
+data/boxes/oriented_images/
+# data/boxes/previews/
+data/boxes/previews/
+# data/boxes/raw/
+data/feedback/
 Deployment/__pycache__
+.DS_Store
+# Duplicate packaged archives
+# Editors and operating-system files
+env/
+.idea/
+# .ipynb_checkpoints/
+.ipynb_checkpoints/
+# Jupyter temporary files
+*.log
+# Logs and temporary files
+.mypy_cache/
+# outputs/
+# *.pyc
+# __pycache__/
+__pycache__/
 *.py[cod]
 .pytest_cache/
-.mypy_cache/
-.ruff_cache/
-
-# Jupyter temporary files
-.ipynb_checkpoints/
-
-# Editors and operating-system files
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
-
-# Logs and temporary files
-*.log
-*.tmp
-*.temp
-*~
-
-# Duplicate packaged archives
-*.tar.gz
-
+# Python caches
+# Python environments
+# # Reproducible box-processing artifacts
 # Reproducible intermediate image artifacts
-data/boxes/previews/
-data/boxes/oriented_images/
+.ruff_cache/
+*.tar.gz
+*.temp
+Thumbs.db
+*.tmp
+# .venv/
+.venv-*/
+.venv/
+.venv_*/
+venv/
+# .venv-gpu/
+# .venv_jupyter/
+.vscode/

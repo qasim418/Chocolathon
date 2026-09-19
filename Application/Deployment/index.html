@@ -1,220 +1,3 @@
-<!-- <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#24150f"><title>Chocolathon</title>
-  <style>
-    :root{--bg:#f7f1e8;--card:#fffdf9;--ink:#261a15;--muted:#75665f;--brown:#5b2d1d;--gold:#d39b45;--red:#b53b35;--line:#e7d9c9;--shadow:0 16px 45px #40201018}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#fff9ed 0,var(--bg) 45%);color:var(--ink);font:15px/1.45 system-ui,-apple-system,Segoe UI,sans-serif}.shell{width:min(900px,100%);margin:auto;padding:24px 16px 50px}header{text-align:center;margin:8px 0 24px}h1{margin:0;font-size:clamp(30px,7vw,48px);letter-spacing:-1.5px;color:var(--brown)}header p{margin:6px 0;color:var(--muted)}.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:var(--shadow);margin-bottom:16px}.picker{display:grid;place-items:center;min-height:210px;border:2px dashed #c7a57a;border-radius:17px;background:#fffaf2;cursor:pointer;overflow:hidden;text-align:center}.picker img{width:100%;height:280px;object-fit:contain;background:#17110e}.picker span{padding:30px}.picker b{display:block;font-size:18px;margin:8px}.picker small{color:var(--muted)}input[type=file]{display:none}.controls{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}label.field{font-size:13px;color:var(--muted)}select,button{width:100%;border-radius:13px;padding:13px 14px;font:inherit}select{display:block;margin-top:5px;background:white;border:1px solid var(--line);color:var(--ink)}button{align-self:end;border:0;background:linear-gradient(135deg,var(--brown),#88472d);color:white;font-weight:750;cursor:pointer;box-shadow:0 8px 20px #5b2d1d33}button:disabled{opacity:.55;cursor:not-allowed}.status{display:none;padding:13px;border-radius:12px;margin-top:14px}.status.show{display:block}.status.loading{background:#fff1d9;color:#7b5011}.status.error{background:#fde8e5;color:var(--red)}.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.metric{padding:14px 8px;border-radius:15px;background:#fbf5eb;text-align:center}.metric b{display:block;font-size:23px;color:var(--brown)}.metric small{color:var(--muted)}h2{font-size:19px;margin:4px 0 14px}.flavors{display:grid;gap:8px}.flavor{display:flex;align-items:center;justify-content:space-between;padding:11px 13px;border:1px solid var(--line);border-radius:12px;background:white}.flavor b:last-child{background:#f2dfc0;color:var(--brown);min-width:30px;padding:3px 8px;border-radius:99px;text-align:center}.details{margin-top:14px;color:var(--muted);font-size:13px}.pipeline{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.stage{overflow:hidden;border:1px solid var(--line);border-radius:16px;background:#fff}.stage>img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:#17110e;cursor:zoom-in}.stage>img:hover{filter:brightness(1.06)}.stage-copy{display:grid;grid-template-columns:30px 1fr;gap:9px;padding:11px}.stage-number{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--brown);color:white;font-weight:800}.stage b,.stage small{display:block}.stage small{color:var(--muted);margin-top:2px}.zoom-hint{color:var(--brown)!important;font-weight:650}.slot-grid{display:grid;gap:6px}.slot{min-width:0;padding:8px 4px;border-radius:9px;background:#f5ead9;text-align:center}.slot b{display:block;color:var(--brown)}.slot small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10px}.review{outline:2px solid var(--gold)}[hidden]{display:none!important}
-
-    .viewer{position:fixed;inset:0;z-index:1000;display:grid;grid-template-rows:auto 1fr;background:#100d0bea;color:white}.viewer-toolbar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#211813;border-bottom:1px solid #ffffff22}.viewer-title{min-width:0;margin-right:auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:750}.viewer-toolbar button{width:auto;min-width:44px;padding:8px 12px;background:#5b2d1d;box-shadow:none}.viewer-toolbar .close{background:#a63d36}.viewer-canvas{display:grid;place-items:center;overflow:auto;padding:24px;cursor:grab}.viewer-canvas.dragging{cursor:grabbing;user-select:none}.viewer-image{display:block;max-width:none;height:auto;border-radius:8px;box-shadow:0 12px 50px #000a}.zoom-level{min-width:58px;text-align:center;font-variant-numeric:tabular-nums}
-
-    @media(max-width:600px){.shell{padding:15px 11px 35px}.card{padding:14px;border-radius:18px}.controls,.pipeline{grid-template-columns:1fr}.summary{gap:6px}.metric b{font-size:19px}.picker img{height:235px}.viewer-toolbar{padding:8px;gap:5px}.viewer-toolbar button{min-width:38px;padding:8px}.viewer-title{display:none}.viewer-canvas{padding:10px}}
-  </style>
-</head>
-<body>
-<main class="shell">
-  <header><h1>Chocolathon</h1><p>Photograph a filled chocolate box to count every flavor.</p></header>
-
-  <section class="card">
-    <label class="picker" for="photo">
-      <span id="prompt">📷<b>Take or choose a photo</b><small>JPEG or PNG · maximum 25 MB</small></span>
-      <img id="preview" alt="Selected chocolate box" hidden>
-    </label>
-    <input id="photo" type="file" accept="image/jpeg,image/png" capture="environment">
-    <div class="controls">
-      <label class="field">Box capacity
-        <select id="capacity">
-          <option value="">Detect automatically</option>
-          <option>6</option><option>10</option><option>16</option><option>30</option><option>50</option>
-        </select>
-      </label>
-      <button id="analyze" disabled>Analyze box</button>
-    </div>
-    <div id="status" class="status"></div>
-  </section>
-
-  <section id="results" hidden>
-    <div class="card">
-      <h2>Result</h2>
-      <div class="summary">
-        <div class="metric"><b id="capacityOut">—</b><small>slots</small></div>
-        <div class="metric"><b id="occupiedOut">—</b><small>chocolates</small></div>
-        <div class="metric"><b id="timeOut">—</b><small>seconds</small></div>
-      </div>
-      <div id="details" class="details"></div>
-    </div>
-    <div class="card"><h2>How the image was processed</h2><div id="pipeline" class="pipeline"></div></div>
-    <div class="card"><h2>Flavor counts</h2><div id="flavors" class="flavors"></div></div>
-    <div class="card"><h2>Slot map</h2><div id="slots" class="slot-grid"></div></div>
-  </section>
-</main>
-
-<div id="viewer" class="viewer" hidden role="dialog" aria-modal="true" aria-label="Image viewer">
-  <div class="viewer-toolbar">
-    <span id="viewerTitle" class="viewer-title">Processing image</span>
-    <button id="zoomOut" type="button" title="Zoom out">−</button>
-    <span id="zoomLevel" class="zoom-level">100%</span>
-    <button id="zoomIn" type="button" title="Zoom in">+</button>
-    <button id="zoomFit" type="button">Fit</button>
-    <button id="zoomActual" type="button">100%</button>
-    <button id="viewerClose" class="close" type="button">Close</button>
-  </div>
-  <div id="viewerCanvas" class="viewer-canvas"><img id="viewerImage" class="viewer-image" alt=""></div>
-</div>
-
-<script>
-const $=id=>document.getElementById(id),photo=$('photo'),preview=$('preview'),prompt=$('prompt'),analyze=$('analyze'),status=$('status'),results=$('results');
-const viewer=$('viewer'),viewerCanvas=$('viewerCanvas'),viewerImage=$('viewerImage'),zoomLevel=$('zoomLevel');
-let zoom=1,fitZoom=1,dragging=false,dragX=0,dragY=0,scrollX=0,scrollY=0;
-
-photo.onchange=()=>{
-  const file=photo.files[0];
-  analyze.disabled=!file;
-  if(!file)return;
-  preview.src=URL.createObjectURL(file);
-  preview.hidden=false;
-  prompt.hidden=true;
-  results.hidden=true;
-  setStatus('','');
-};
-
-function setStatus(text,type){status.textContent=text;status.className=`status${text?' show '+type:''}`}
-function layout(capacity){return capacity===6?[3,2]:capacity===10?[5,2]:capacity===16?[4,4]:capacity===30?[6,5]:[10,5]}
-
-function render(data){
-  $('capacityOut').textContent=data.capacity;
-  $('occupiedOut').textContent=data.occupied;
-  $('timeOut').textContent=(data.api_seconds??data.seconds).toFixed(2);
-  $('details').textContent=`${data.capacity_source==='override'?'Known':'Detected'} capacity · ${data.geometry_mode.replace('automatic_','')} localization · ${data.review_slots} review slots`;
-
-  const visuals=data.visualizations||{};
-  const stages=[
-    ['input','Input photograph','Original image received by the API'],
-    ['localized','Tray localization',`${data.capacity_source==='override'?'Known':'Detected'} ${data.capacity}-slot box and four tray corners`],
-    ['grid','Slot extraction',`${layout(data.capacity)[0]} × ${layout(data.capacity)[1]} rectified slot grid`],
-    ['labeled','Flavor classification','Predicted flavor placed on every chocolate']
-  ];
-
-  $('pipeline').innerHTML=stages.filter(([key])=>visuals[key]).map(([key,title,caption],i)=>`
-    <article class="stage">
-      <img src="${visuals[key]}" alt="${title}" data-title="${title}" tabindex="0">
-      <div class="stage-copy">
-        <span class="stage-number">${i+1}</span>
-        <div><b>${title}</b><small>${caption}</small><small class="zoom-hint">Click image to enlarge</small></div>
-      </div>
-    </article>`).join('');
-
-  $('flavors').innerHTML=Object.entries(data.flavor_counts)
-    .sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0]))
-    .map(([name,count])=>`<div class="flavor"><b>${name.replaceAll('_',' ')}</b><b>${count}</b></div>`).join('');
-
-  const [rows,cols]=layout(data.capacity);
-  $('slots').style.gridTemplateColumns=`repeat(${cols},1fr)`;
-  $('slots').innerHTML=data.slots.sort((a,b)=>a.row-b.row||a.column-b.column)
-    .map(s=>`<div class="slot${s.needs_review?' review':''}" title="${s.flavor_name}"><b>${s.row},${s.column}</b><small>${s.flavor_name}</small></div>`).join('');
-
-  results.hidden=false;
-  results.scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-function applyZoom(value){
-  zoom=Math.min(5,Math.max(.1,value));
-  viewerImage.style.width=`${viewerImage.naturalWidth*zoom}px`;
-  zoomLevel.textContent=`${Math.round(zoom*100)}%`;
-}
-
-function fitImage(){
-  if(!viewerImage.naturalWidth)return;
-  fitZoom=Math.min((viewerCanvas.clientWidth-40)/viewerImage.naturalWidth,(viewerCanvas.clientHeight-40)/viewerImage.naturalHeight,1);
-  applyZoom(fitZoom);
-  viewerCanvas.scrollTo(0,0);
-}
-
-function openViewer(image){
-  viewer.hidden=false;
-  document.body.style.overflow='hidden';
-  $('viewerTitle').textContent=image.dataset.title||image.alt;
-  viewerImage.alt=image.alt;
-  viewerImage.onload=fitImage;
-  viewerImage.src=image.src;
-}
-
-function closeViewer(){
-  viewer.hidden=true;
-  document.body.style.overflow='';
-  viewerImage.src='';
-}
-
-$('pipeline').addEventListener('click',event=>{if(event.target.matches('.stage>img'))openViewer(event.target)});
-$('pipeline').addEventListener('keydown',event=>{if(event.target.matches('.stage>img')&&(event.key==='Enter'||event.key===' ')){event.preventDefault();openViewer(event.target)}});
-$('zoomIn').onclick=()=>applyZoom(zoom*1.25);
-$('zoomOut').onclick=()=>applyZoom(zoom/1.25);
-$('zoomFit').onclick=fitImage;
-$('zoomActual').onclick=()=>applyZoom(1);
-$('viewerClose').onclick=closeViewer;
-
-viewerCanvas.addEventListener('wheel',event=>{
-  event.preventDefault();
-  applyZoom(zoom*(event.deltaY<0?1.12:.89));
-},{passive:false});
-
-viewerCanvas.addEventListener('mousedown',event=>{
-  dragging=true;
-  dragX=event.clientX;
-  dragY=event.clientY;
-  scrollX=viewerCanvas.scrollLeft;
-  scrollY=viewerCanvas.scrollTop;
-  viewerCanvas.classList.add('dragging');
-});
-
-window.addEventListener('mousemove',event=>{
-  if(!dragging)return;
-  viewerCanvas.scrollLeft=scrollX-(event.clientX-dragX);
-  viewerCanvas.scrollTop=scrollY-(event.clientY-dragY);
-});
-
-window.addEventListener('mouseup',()=>{
-  dragging=false;
-  viewerCanvas.classList.remove('dragging');
-});
-
-viewer.addEventListener('click',event=>{if(event.target===viewer)closeViewer()});
-window.addEventListener('keydown',event=>{
-  if(viewer.hidden)return;
-  if(event.key==='Escape')closeViewer();
-  if(event.key==='+')applyZoom(zoom*1.25);
-  if(event.key==='-')applyZoom(zoom/1.25);
-});
-
-analyze.onclick=async()=>{
-  const file=photo.files[0];
-  if(!file)return;
-  analyze.disabled=true;
-  setStatus('Analyzing the box…','loading');
-  results.hidden=true;
-
-  const form=new FormData();
-  form.append('image',file);
-  form.append('filled_only','true');
-  if($('capacity').value)form.append('capacity',$('capacity').value);
-
-  try{
-    const response=await fetch('predict',{method:'POST',body:form});
-    const data=await response.json();
-    if(!response.ok)throw new Error(data.detail||`Request failed (${response.status})`);
-    render(data);
-    setStatus('Analysis complete.','loading');
-  }catch(error){
-    setStatus(error.message,'error');
-  }finally{
-    analyze.disabled=false;
-  }
-};
-</script>
-</body>
-</html> -->
-
-
 <!doctype html>
 <html lang="en" data-theme="dark">
 <head>
@@ -223,1039 +6,447 @@ analyze.onclick=async()=>{
 <meta name="theme-color" content="#0d0908">
 <title>Chocolathon · Count every flavor</title>
 <style>
-/* ============================================================
-   TOKENS
-   ============================================================ */
-:root{
-  --r-lg:26px; --r-md:18px; --r-sm:13px;
-  --ease:cubic-bezier(.22,.61,.36,1);
-  --ease-out:cubic-bezier(.16,1,.3,1);
-}
-html[data-theme="dark"]{
-  --bg:#0d0908;
-  --card:rgba(34,22,17,.62);
-  --card-solid:#1b1310;
-  --surface:rgba(255,240,225,.05);
-  --surface-2:rgba(255,240,225,.09);
-  --ink:#f8efe4;
-  --muted:#ab9280;
-  --line:rgba(255,236,214,.10);
-  --line-2:rgba(255,236,214,.24);
-  --gold:#e6b869;
-  --gold-2:#fbe0ab;
-  --gold-deep:#b07a30;
-  --ink-on-gold:#2a1707;
-  --danger:#ff8172;
-  --success:#7fd8ac;
-  --img-bg:#080605;
-  --shadow:0 30px 70px -22px rgba(0,0,0,.85);
-  --blob1:#8f4715; --blob2:#0f4640; --blob3:#4d1f31; --aurora-o:.5;
-  --highlight:rgba(255,255,255,.20);
-  --title-grad:linear-gradient(100deg,#f7dda6,#e6b869 30%,#c98a4b 55%,#f7dda6);
-  --btn-grad:linear-gradient(135deg,#f4d19a,#e6b869 42%,#b3742f);
-}
-html[data-theme="light"]{
-  --bg:#f8f2e9;
-  --card:rgba(255,253,249,.82);
-  --card-solid:#fffdf9;
-  --surface:rgba(91,45,29,.045);
-  --surface-2:rgba(91,45,29,.08);
-  --ink:#2a1a12;
-  --muted:#8a7568;
-  --line:rgba(91,45,29,.13);
-  --line-2:rgba(91,45,29,.28);
-  --gold:#b8802f;
-  --gold-2:#e0b063;
-  --gold-deep:#8c5c17;
-  --ink-on-gold:#2a1707;
-  --danger:#c0392b;
-  --success:#227a55;
-  --img-bg:#1a1310;
-  --shadow:0 26px 55px -26px rgba(70,35,15,.45);
-  --blob1:#ffd7a3; --blob2:#c9e8e2; --blob3:#f7d2dd; --aurora-o:.85;
-  --highlight:rgba(255,255,255,.75);
-  --title-grad:linear-gradient(100deg,#8c5c17,#b8802f 38%,#6d3f12 68%,#a9761f);
-  --btn-grad:linear-gradient(135deg,#e9c489,#c8933c 45%,#96631d);
-}
-
-*,*::before,*::after{box-sizing:border-box}
-[hidden]{display:none!important}
-
-body{
-  margin:0;min-height:100dvh;background:var(--bg);color:var(--ink);
-  font:15px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  -webkit-font-smoothing:antialiased;overflow-x:hidden;
-  transition:background .6s var(--ease),color .6s var(--ease);
-}
-body::before{
-  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background:radial-gradient(130% 70% at 50% -12%,rgba(255,214,150,.13),transparent 62%);
-}
-
-/* ============================================================
-   AMBIENT BACKGROUND
-   ============================================================ */
-.aurora{position:fixed;inset:-25vh -25vw;z-index:-3;pointer-events:none;filter:blur(90px);opacity:var(--aurora-o);transition:opacity .8s}
-.aurora i{position:absolute;display:block;border-radius:50%}
-.aurora i:nth-child(1){width:52vw;height:52vw;top:-6%;left:-8%;background:radial-gradient(circle,var(--blob1),transparent 68%);animation:drift 26s ease-in-out infinite}
-.aurora i:nth-child(2){width:46vw;height:46vw;top:28%;right:-12%;background:radial-gradient(circle,var(--blob2),transparent 68%);animation:drift 32s ease-in-out infinite reverse}
-.aurora i:nth-child(3){width:40vw;height:40vw;bottom:-12%;left:22%;background:radial-gradient(circle,var(--blob3),transparent 68%);animation:drift 38s ease-in-out infinite}
-@keyframes drift{
-  0%,100%{transform:translate3d(0,0,0) scale(1)}
-  33%{transform:translate3d(6%,-5%,0) scale(1.12)}
-  66%{transform:translate3d(-5%,6%,0) scale(.94)}
-}
-.grain{
-  position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.04;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-/* ============================================================
-   SHELL
-   ============================================================ */
-.shell{width:min(940px,100%);margin:auto;padding:26px 16px 64px}
-
-/* ---------- header ---------- */
-header{position:relative;text-align:center;margin:14px 0 30px}
-.brand{display:inline-flex;align-items:center;gap:14px}
-.brand-mark{
-  display:grid;place-items:center;width:52px;height:52px;flex:none;
-  border-radius:16px;color:var(--gold);
-  background:linear-gradient(150deg,var(--surface-2),transparent);
-  border:1px solid var(--line-2);
-  box-shadow:inset 0 1px 0 var(--highlight),0 10px 26px -12px rgba(0,0,0,.7);
-}
-.brand-mark svg{width:26px;height:26px}
-h1{
-  margin:0;font-family:ui-serif,Georgia,"Iowan Old Style","Times New Roman",serif;
-  font-size:clamp(34px,8.2vw,58px);font-weight:700;letter-spacing:-.025em;line-height:1;
-  background:var(--title-grad);background-size:220% 100%;
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  animation:shine 9s linear infinite;
-}
-@keyframes shine{to{background-position:220% 0}}
-header p{margin:12px auto 0;max-width:46ch;color:var(--muted);font-size:14.5px}
-
-.icon-btn{
-  position:absolute;top:2px;right:0;
-  display:grid;place-items:center;width:42px;height:42px;padding:0;
-  border-radius:13px;border:1px solid var(--line);background:var(--surface);
-  color:var(--ink);cursor:pointer;
-  transition:background .25s,border-color .25s,transform .25s var(--ease);
-}
-.icon-btn:hover{background:var(--surface-2);border-color:var(--line-2);transform:translateY(-2px)}
-.icon-btn svg{width:19px;height:19px}
-html[data-theme="dark"] .i-sun{display:none}
-html[data-theme="light"] .i-moon{display:none}
-
-/* ---------- cards ---------- */
-.card{
-  position:relative;margin-bottom:18px;padding:22px;
-  border-radius:var(--r-lg);border:1px solid var(--line);
-  background:var(--card);backdrop-filter:blur(16px) saturate(1.25);
-  -webkit-backdrop-filter:blur(16px) saturate(1.25);
-  box-shadow:var(--shadow);overflow:hidden;
-  transition:background .6s var(--ease),border-color .6s var(--ease);
-}
-.card::after{
-  content:"";position:absolute;top:0;left:12%;right:12%;height:1px;
-  background:linear-gradient(90deg,transparent,var(--highlight),transparent);
-  pointer-events:none;
-}
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .75s var(--ease-out),transform .75s var(--ease-out)}
-.reveal.in{opacity:1;transform:none}
-
-h2{
-  margin:0 0 16px;font-size:15px;font-weight:800;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--muted);
-  display:flex;align-items:center;gap:10px;
-}
-h2::before{content:"";width:18px;height:2px;border-radius:2px;background:var(--gold);opacity:.85}
-
-/* ============================================================
-   PICKER
-   ============================================================ */
-.picker{
-  position:relative;display:grid;place-items:center;min-height:270px;
-  border:2px dashed var(--line-2);border-radius:20px;cursor:pointer;overflow:hidden;
-  background:linear-gradient(180deg,var(--surface),transparent 70%);
-  transition:border-color .35s var(--ease),transform .35s var(--ease),background .35s;
-}
-.picker:hover{border-color:var(--gold);transform:translateY(-2px)}
-.picker:focus-within{outline:2px solid var(--gold);outline-offset:3px}
-.picker.drag{
-  border-color:var(--gold);background:radial-gradient(circle at 50% 50%,rgba(230,184,105,.15),transparent 70%);
-  transform:scale(1.012);
-}
-.picker.has-image{border-style:solid;border-color:var(--line);transform:none;cursor:default}
-.picker-inner{padding:34px 22px;text-align:center;pointer-events:none}
-.picker-icon{
-  display:grid;place-items:center;width:74px;height:74px;margin:0 auto 18px;
-  border-radius:24px;color:var(--gold);
-  background:linear-gradient(150deg,var(--surface-2),transparent);
-  border:1px solid var(--line-2);
-  box-shadow:inset 0 1px 0 var(--highlight);
-  animation:breathe 4.5s ease-in-out infinite;
-}
-@keyframes breathe{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-.picker-icon svg{width:34px;height:34px}
-.picker-inner b{display:block;font-size:17.5px;letter-spacing:-.01em}
-.picker-inner small{display:block;margin-top:7px;color:var(--muted);font-size:13px}
-#preview{
-  display:block;width:100%;height:310px;object-fit:contain;
-  background:var(--img-bg);border-radius:18px;
-  animation:fadeIn .5s var(--ease);
-}
-@keyframes fadeIn{from{opacity:0;transform:scale(.985)}to{opacity:1;transform:none}}
-
-.scanline{
-  position:absolute;left:0;right:0;height:34%;opacity:0;pointer-events:none;
-  background:linear-gradient(180deg,transparent,rgba(230,184,105,.28),transparent);
-  border-bottom:1px solid rgba(230,184,105,.55);
-}
-.picker.analyzing .scanline{opacity:1;animation:scan 2s cubic-bezier(.5,0,.5,1) infinite}
-@keyframes scan{0%{top:-35%}100%{top:105%}}
-
-/* ============================================================
-   CONTROLS
-   ============================================================ */
-.controls{
-  display:grid;grid-template-columns:minmax(0,1fr) minmax(150px,auto);
-  gap:12px;margin-top:16px;align-items:end;
-}
-.field{display:block;min-width:0}
-.field>span{
-  display:block;font-size:11px;font-weight:800;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--muted);
-}
-.select-wrap{position:relative;margin-top:7px}
-.select-wrap svg{
-  position:absolute;right:15px;top:50%;transform:translateY(-50%);
-  width:14px;height:14px;pointer-events:none;opacity:.65;
-}
-select{
-  appearance:none;-webkit-appearance:none;width:100%;
-  padding:14px 42px 14px 15px;border-radius:var(--r-sm);
-  border:1px solid var(--line);background:var(--surface);color:var(--ink);
-  font:inherit;font-weight:600;cursor:pointer;
-  transition:border-color .25s,background .25s,box-shadow .25s;
-}
-select:hover{border-color:var(--line-2);background:var(--surface-2)}
-select:focus-visible{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(230,184,105,.22)}
-select:disabled{opacity:.5;cursor:not-allowed}
-option{background:var(--card-solid);color:var(--ink)}
-
-.btn-primary{
-  position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:9px;
-  padding:15px 24px;border:0;border-radius:var(--r-sm);
-  background:var(--btn-grad);color:var(--ink-on-gold);
-  font:inherit;font-weight:800;letter-spacing:.01em;white-space:nowrap;cursor:pointer;
-  box-shadow:0 12px 30px -10px rgba(190,130,50,.7),inset 0 1px 0 rgba(255,255,255,.55);
-  transition:transform .25s var(--ease),box-shadow .3s,filter .3s;
-}
-.btn-primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 18px 40px -12px rgba(190,130,50,.85),inset 0 1px 0 rgba(255,255,255,.6)}
-.btn-primary:active:not(:disabled){transform:translateY(0) scale(.985)}
-.btn-primary:disabled{opacity:.45;cursor:not-allowed;filter:saturate(.5)}
-.btn-primary::after{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(110deg,transparent 32%,rgba(255,255,255,.65) 50%,transparent 68%);
-  transform:translateX(-130%);
-}
-.btn-primary:hover:not(:disabled)::after{transform:translateX(130%);transition:transform .8s var(--ease)}
-.btn-primary:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-
-.spinner{
-  display:none;width:15px;height:15px;flex:none;border-radius:50%;
-  border:2px solid rgba(42,23,7,.28);border-top-color:rgba(42,23,7,.95);
-  animation:spin .7s linear infinite;
-}
-.btn-primary.loading .spinner{display:block}
-.btn-primary.loading{pointer-events:none}
-@keyframes spin{to{transform:rotate(360deg)}}
-
-/* ============================================================
-   STATUS
-   ============================================================ */
-.status{
-  display:none;align-items:center;gap:11px;margin-top:16px;padding:13px 15px;
-  border-radius:var(--r-sm);font-size:14px;font-weight:600;
-  border:1px solid transparent;
-}
-.status.show{display:flex;animation:slideIn .4s var(--ease-out)}
-@keyframes slideIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
-.status-icon{display:grid;place-items:center;width:22px;height:22px;flex:none;border-radius:50%;font-size:12px;font-weight:900}
-.status.loading{background:rgba(230,184,105,.12);border-color:rgba(230,184,105,.3);color:var(--gold)}
-.status.loading .status-icon{background:rgba(230,184,105,.2)}
-.status.error{background:rgba(255,90,70,.1);border-color:rgba(255,90,70,.32);color:var(--danger)}
-.status.error .status-icon{background:rgba(255,90,70,.2)}
-.status.success{background:rgba(90,220,160,.1);border-color:rgba(90,220,160,.3);color:var(--success)}
-.status.success .status-icon{background:rgba(90,220,160,.2)}
-.dots{display:inline-flex;gap:3px}
-.dots i{width:4px;height:4px;border-radius:50%;background:currentColor;animation:bounce 1.2s ease-in-out infinite}
-.dots i:nth-child(2){animation-delay:.15s}
-.dots i:nth-child(3){animation-delay:.3s}
-@keyframes bounce{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-4px);opacity:1}}
-
-/* ============================================================
-   RESULTS
-   ============================================================ */
-.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.metric{
-  position:relative;padding:20px 10px 17px;border-radius:var(--r-md);text-align:center;
-  background:linear-gradient(180deg,var(--surface-2),var(--surface));
-  border:1px solid var(--line);overflow:hidden;
-}
-.metric::before{
-  content:"";position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.7;
-}
-.metric b{
-  display:block;font-family:ui-serif,Georgia,serif;
-  font-size:clamp(26px,6vw,38px);font-weight:700;letter-spacing:-.03em;line-height:1;
-  color:var(--gold);font-variant-numeric:tabular-nums;
-}
-.metric small{display:block;margin-top:8px;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-
-.details{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.chip{
-  display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:99px;
-  font-size:12px;font-weight:700;letter-spacing:.02em;
-  background:var(--surface-2);border:1px solid var(--line);color:var(--muted);
-}
-.chip.warn{color:var(--gold);border-color:rgba(230,184,105,.35);background:rgba(230,184,105,.1)}
-
-/* ---------- pipeline ---------- */
-.pipeline{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.stage{
-  border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;
-  background:var(--surface);animation:pop .6s var(--ease-out) backwards;
-}
-@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
-.stage-media{
-  display:block;position:relative;width:100%;padding:0;border:0;
-  background:var(--img-bg);cursor:zoom-in;overflow:hidden;
-}
-.stage-media img{
-  display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:var(--img-bg);
-  transition:transform .6s var(--ease),filter .4s;
-}
-.stage-media:hover img{transform:scale(1.05);filter:brightness(1.1)}
-.stage-media:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
-.stage-zoom{
-  position:absolute;right:10px;bottom:10px;
-  display:grid;place-items:center;width:30px;height:30px;border-radius:9px;
-  background:rgba(15,10,8,.72);color:#f6e9d8;font-size:14px;backdrop-filter:blur(6px);
-  opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s var(--ease);
-}
-.stage-media:hover .stage-zoom,.stage-media:focus-visible .stage-zoom{opacity:1;transform:none}
-.stage-copy{display:grid;grid-template-columns:30px 1fr;gap:11px;padding:13px}
-.stage-number{
-  display:grid;place-items:center;width:28px;height:28px;border-radius:50%;
-  background:var(--btn-grad);color:var(--ink-on-gold);font-size:12.5px;font-weight:900;
-  box-shadow:0 4px 12px -4px rgba(190,130,50,.8);
-}
-.stage-copy b{display:block;font-size:14px;letter-spacing:-.01em}
-.stage-copy small{display:block;margin-top:3px;color:var(--muted);font-size:12px;line-height:1.4}
-
-/* ---------- flavors ---------- */
-.flavors{display:grid;gap:9px}
-.flavor{
-  display:grid;grid-template-columns:10px minmax(0,1fr) minmax(60px,2fr) 34px;
-  align-items:center;gap:12px;padding:11px 14px;
-  border:1px solid var(--line);border-radius:var(--r-sm);
-  background:var(--surface);transition:background .25s,border-color .25s,transform .25s var(--ease);
-  animation:pop .5s var(--ease-out) backwards;
-}
-.flavor:hover{background:var(--surface-2);border-color:var(--line-2);transform:translateX(3px)}
-.flavor-dot{width:10px;height:10px;border-radius:50%;box-shadow:0 0 0 3px var(--surface-2)}
-.flavor-name{font-weight:700;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.flavor-bar{height:7px;border-radius:99px;background:var(--surface-2);overflow:hidden}
-.flavor-bar i{display:block;height:100%;width:0;border-radius:99px;transition:width 1s var(--ease-out)}
-.flavor-count{
-  justify-self:end;min-width:30px;padding:3px 9px;border-radius:99px;text-align:center;
-  background:rgba(230,184,105,.14);color:var(--gold);font-size:12.5px;font-weight:900;
-  font-variant-numeric:tabular-nums;
-}
-
-/* ---------- slot map ---------- */
-.slot-grid{display:grid;gap:7px}
-.slot{
-  position:relative;aspect-ratio:1;min-width:0;border-radius:13px;
-  display:grid;place-items:center;padding:4px;cursor:pointer;
-  border:1px solid;background:transparent;
-  transition:transform .28s var(--ease),box-shadow .28s,border-color .28s;
-  animation:pop .5s var(--ease-out) backwards;
-}
-.slot:hover,.slot:focus-visible{
-  transform:translateY(-4px) scale(1.07);z-index:6;outline:none;
-  box-shadow:0 16px 28px -12px rgba(0,0,0,.75),0 0 0 1px var(--c);
-}
-.slot-name{
-  font-size:clamp(7px,.95vw,11px);font-weight:800;line-height:1.1;text-align:center;
-  letter-spacing:-.01em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
-  max-width:100%;padding:0 2px;opacity:.92;
-}
-.slot.review{border-style:dashed;border-width:2px}
-.slot.review::after{
-  content:"";position:absolute;inset:-4px;border-radius:16px;
-  border:1px solid var(--gold);opacity:.65;animation:pulse 2s ease-in-out infinite;pointer-events:none;
-}
-@keyframes pulse{0%,100%{opacity:.25;transform:scale(1)}50%{opacity:.75;transform:scale(1.03)}}
-
-.slot-hint{
-  margin-top:14px;padding:11px 14px;border-radius:var(--r-sm);
-  background:var(--surface);border:1px dashed var(--line-2);
-  font-size:12.5px;color:var(--muted);text-align:center;
-  transition:color .25s,border-color .25s;
-}
-.slot-hint b{color:var(--ink)}
-
-/* ============================================================
-   LIGHTBOX
-   ============================================================ */
-.viewer{
-  position:fixed;inset:0;z-index:1000;display:grid;grid-template-rows:auto 1fr;
-  background:rgba(8,5,4,.92);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
-  color:#f7ece0;animation:fadeIn .25s var(--ease);
-}
-.viewer-toolbar{
-  display:flex;align-items:center;gap:8px;padding:11px 14px;
-  background:rgba(30,20,15,.7);border-bottom:1px solid rgba(255,255,255,.1);
-}
-.viewer-title{
-  min-width:0;margin-right:auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
-  font-weight:750;font-size:14px;letter-spacing:-.01em;
-}
-.zoom-group{display:flex;align-items:center;gap:4px;padding:3px;border-radius:12px;background:rgba(255,255,255,.07)}
-.viewer-toolbar button{
-  display:grid;place-items:center;width:auto;min-width:40px;padding:9px 12px;
-  border:0;border-radius:10px;background:rgba(255,255,255,.07);color:#f7ece0;
-  font:inherit;font-weight:700;font-size:13px;cursor:pointer;
-  transition:background .2s,transform .2s var(--ease);
-}
-.viewer-toolbar button:hover{background:rgba(255,255,255,.16);transform:translateY(-1px)}
-.viewer-toolbar button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.viewer-toolbar .close{background:rgba(200,70,60,.85);padding:9px 16px}
-.viewer-toolbar .close:hover{background:rgba(220,85,72,.95)}
-.viewer-toolbar .ghost{background:transparent;border:1px solid rgba(255,255,255,.16)}
-.zoom-level{
-  min-width:62px;text-align:center;font-variant-numeric:tabular-nums;
-  font-size:12.5px;font-weight:800;color:var(--gold-2);
-}
-.viewer-canvas{
-  display:grid;place-items:center;overflow:auto;padding:26px;cursor:grab;
-  scrollbar-width:thin;
-}
-.viewer-canvas.dragging{cursor:grabbing;user-select:none}
-.viewer-canvas::-webkit-scrollbar{width:10px;height:10px}
-.viewer-canvas::-webkit-scrollbar-thumb{background:rgba(255,255,255,.18);border-radius:99px}
-.viewer-image{
-  display:block;max-width:none;height:auto;border-radius:10px;
-  box-shadow:0 24px 80px rgba(0,0,0,.75);
-  animation:fadeIn .35s var(--ease);
-}
-
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-@media(max-width:640px){
-  .shell{padding:16px 12px 44px}
-  header{margin:10px 0 22px}
-  .brand-mark{width:44px;height:44px;border-radius:14px}
-  .brand-mark svg{width:22px;height:22px}
-  .icon-btn{width:38px;height:38px;top:0}
-  .card{padding:16px;border-radius:20px}
-  .controls{grid-template-columns:1fr}
-  .pipeline{grid-template-columns:1fr}
-  .summary{gap:8px}
-  .metric{padding:15px 6px 13px;border-radius:14px}
-  .metric small{font-size:9.5px;letter-spacing:.1em}
-  #preview{height:240px}
-  .picker{min-height:230px}
-  .flavor{grid-template-columns:10px minmax(0,1fr) 34px;gap:10px}
-  .flavor-bar{display:none}
-  .slot-name{display:none}
-  .slot{border-radius:10px}
-  .viewer-toolbar{padding:8px;gap:5px}
-  .viewer-toolbar button{min-width:36px;padding:8px 10px;font-size:12px}
-  .viewer-title{display:none}
-  .viewer-toolbar .ghost{display:none}
-  .viewer-canvas{padding:12px}
-  .zoom-level{min-width:52px}
-}
-@media(max-width:380px){
-  .summary{grid-template-columns:1fr 1fr;gap:8px}
-  .summary .metric:last-child{grid-column:span 2}
-}
-
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
-}
+:root{--bg:#0d0908;--card:#201611e8;--surface:#fff0e10d;--surface2:#fff0e117;--ink:#f8efe4;--muted:#ad9584;--line:#ffecd61c;--line2:#ffecd647;--gold:#e6b869;--brown:#6e391e;--danger:#ff8172;--success:#7fd8ac;--shadow:0 28px 65px -24px #000d;--radius:24px}
+html[data-theme=light]{--bg:#f8f2e9;--card:#fffdf9ed;--surface:#5b2d1d0c;--surface2:#5b2d1d15;--ink:#2a1a12;--muted:#806e63;--line:#5b2d1d21;--line2:#5b2d1d47;--gold:#a96f20;--brown:#6e391e;--danger:#bd3329;--success:#227a55;--shadow:0 25px 55px -28px #46230f70}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at top,#8f471530,transparent 42%),var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+button,select,input{font:inherit}.shell{width:min(940px,100%);margin:auto;padding:25px 16px 60px}
+header{position:relative;text-align:center;margin:12px 0 28px}h1{margin:0;color:var(--gold);font:700 clamp(36px,8vw,58px)/1 Georgia,serif}header p{margin:10px auto;color:var(--muted)}
+.theme{position:absolute;right:0;top:0;width:42px;height:42px;border:1px solid var(--line);border-radius:13px;background:var(--surface);color:var(--ink);cursor:pointer}
+.card{margin-bottom:18px;padding:21px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);backdrop-filter:blur(14px)}
+h2{display:flex;align-items:center;gap:9px;margin:0 0 15px;color:var(--muted);font-size:15px;letter-spacing:.12em;text-transform:uppercase}h2::before{content:"";width:18px;height:2px;background:var(--gold)}
+.picker{position:relative;display:grid;place-items:center;min-height:260px;border:2px dashed var(--line2);border-radius:19px;background:var(--surface);cursor:pointer;overflow:hidden;text-align:center}.picker.drag{border-color:var(--gold)}.picker.has-image{border-style:solid}.picker-copy{padding:34px}.picker-copy b{display:block;font-size:18px}.picker-copy small{color:var(--muted)}#preview{display:block;width:100%;height:310px;object-fit:contain;background:#090605}
+.controls{display:grid;grid-template-columns:1fr auto;gap:12px;margin-top:15px;align-items:end}.field span{display:block;margin-bottom:6px;color:var(--muted);font-size:11px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}
+select,input{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink)}select:focus,input:focus{outline:2px solid #e6b86955;border-color:var(--gold)}option{background:var(--card);color:var(--ink)}
+.btn{padding:14px 21px;border:0;border-radius:12px;background:linear-gradient(135deg,#f3d098,var(--gold),#a96925);color:#2a1707;font-weight:850;cursor:pointer;box-shadow:0 12px 25px -13px #d79a43}.btn:hover:not(:disabled){filter:brightness(1.08);transform:translateY(-1px)}.btn:disabled{opacity:.5;cursor:not-allowed}.btn.secondary{border:1px solid var(--line2);background:var(--surface2);color:var(--ink);box-shadow:none}.btn.danger{background:#7d3028;color:white;box-shadow:none}
+.status{display:none;margin-top:14px;padding:12px 14px;border:1px solid transparent;border-radius:12px}.status.show{display:block}.status.loading{color:var(--gold);background:#e6b86918;border-color:#e6b8694d}.status.success{color:var(--success);background:#52cb9218;border-color:#52cb924d}.status.error{color:var(--danger);background:#ff5a4618;border-color:#ff5a464d}
+.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}.metric{padding:18px 8px;border:1px solid var(--line);border-radius:16px;background:var(--surface);text-align:center}.metric b{display:block;color:var(--gold);font:700 34px/1 Georgia,serif}.metric small{display:block;margin-top:7px;color:var(--muted);font-size:11px;font-weight:800;text-transform:uppercase}
+.details{display:flex;flex-wrap:wrap;gap:7px;margin-top:15px}.chip{padding:6px 11px;border:1px solid var(--line);border-radius:99px;background:var(--surface2);color:var(--muted);font-size:12px;font-weight:700}.chip.warn{color:var(--gold)}
+.pipeline{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.stage{overflow:hidden;border:1px solid var(--line);border-radius:16px;background:var(--surface)}.stage-media{display:block;position:relative;width:100%;padding:0;border:0;background:#090605;cursor:zoom-in}.stage-media img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain}.stage-copy{padding:12px}.stage-copy b{display:block}.stage-copy small{color:var(--muted)}
+.flavors{display:grid;gap:8px}.flavor{display:grid;grid-template-columns:10px minmax(0,1fr) minmax(60px,2fr) 35px;align-items:center;gap:11px;padding:11px 13px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}.flavor-dot{width:10px;height:10px;border-radius:50%}.flavor-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}.flavor-bar{height:7px;border-radius:99px;background:var(--surface2);overflow:hidden}.flavor-bar i{display:block;height:100%;border-radius:99px}.flavor-count{text-align:center;color:var(--gold);font-weight:850}
+.slot-grid{display:grid;gap:7px}.slot{position:relative;aspect-ratio:1;min-width:0;padding:5px;border:1px solid;border-radius:12px;background:var(--surface);color:var(--ink);cursor:pointer;overflow:hidden}.slot:hover,.slot:focus{z-index:2;outline:2px solid var(--gold);transform:translateY(-2px)}.slot.review{border-style:dashed;border-width:2px}.slot.changed::after{content:"Edited";position:absolute;right:3px;top:3px;padding:2px 5px;border-radius:6px;background:var(--gold);color:#2a1707;font-size:8px;font-weight:900}.slot-position{display:block;color:var(--muted);font-size:9px}.slot-name{display:block;margin-top:3px;overflow:hidden;text-overflow:ellipsis;font-size:clamp(8px,1.2vw,12px);font-weight:800}.slot-hint{margin-top:13px;padding:11px;border:1px dashed var(--line2);border-radius:12px;color:var(--muted);text-align:center}
+.correction-top{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end}.correction-note{margin:0 0 15px;color:var(--muted)}.change-list{display:grid;gap:7px;margin-top:14px}.change{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 11px;border:1px solid var(--line);border-radius:10px;background:var(--surface);font-size:12px}.change span{color:var(--muted)}.feedback-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
+.modal{position:fixed;inset:0;z-index:2000;display:grid;place-items:center;padding:18px;background:#080504d9;backdrop-filter:blur(12px)}.modal-card{width:min(520px,100%);padding:22px;border:1px solid var(--line2);border-radius:22px;background:var(--card);box-shadow:0 30px 90px #000}.modal-card h3{margin:0}.modal-card p{margin:6px 0 18px;color:var(--muted)}.modal-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:9px;margin-top:16px}
+.viewer{position:fixed;inset:0;z-index:1500;display:grid;grid-template-rows:auto 1fr;background:#080504ee}.viewer-bar{display:flex;align-items:center;gap:8px;padding:10px 13px;background:#1d130f}.viewer-bar strong{margin-right:auto}.viewer-bar button{padding:8px 11px;border:0;border-radius:9px;background:#ffffff17;color:white;cursor:pointer}.viewer-canvas{display:grid;place-items:center;overflow:auto;padding:22px}.viewer-image{display:block;max-width:none;height:auto}
+@media(max-width:650px){.pipeline{grid-template-columns:1fr}.controls,.correction-top{grid-template-columns:1fr}.summary{gap:6px}.card{padding:15px}.flavor{grid-template-columns:9px minmax(0,1fr) 30px}.flavor-bar{display:none}.shell{padding:16px 10px 40px}}
 </style>
 </head>
 <body>
-
-<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
-<div class="grain" aria-hidden="true"></div>
-
 <main class="shell">
+<header>
+  <button id="theme" class="theme" type="button" title="Change theme">◐</button>
+  <h1>Chocolathon</h1>
+  <p>Photograph a filled chocolate box to identify and count every flavor.</p>
+</header>
 
-  <header>
-    <div class="brand">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round">
-          <rect x="2.5" y="2.5" width="19" height="19" rx="4.5" stroke-width="1.6"/>
-          <path d="M2.5 9.2h19M2.5 14.8h19M9.2 2.5v19M14.8 2.5v19" stroke-width="1.1" opacity=".5"/>
-        </svg>
-      </span>
-      <h1>Chocolathon</h1>
-    </div>
-    <p>Photograph a filled chocolate box and let the model count every flavor, slot by slot.</p>
-    <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle color theme">
-      <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-      <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.2v2.4M12 19.4v2.4M2.2 12h2.4M19.4 12h2.4M5.1 5.1l1.7 1.7M17.2 17.2l1.7 1.7M18.9 5.1l-1.7 1.7M6.8 17.2l-1.7 1.7"/></svg>
-    </button>
-  </header>
-
-  <!-- ===================== UPLOAD ===================== -->
-  <section class="card">
-    <label class="picker" id="picker" for="photo">
-      <span class="picker-inner" id="prompt">
-        <span class="picker-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 8.5A2.5 2.5 0 0 1 6.5 6h1.2a1.6 1.6 0 0 0 1.35-.74l.6-.94A1.6 1.6 0 0 1 11 3.6h2a1.6 1.6 0 0 1 1.35.72l.6.94A1.6 1.6 0 0 0 16.3 6h1.2A2.5 2.5 0 0 1 20 8.5v8A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5z"/>
-            <circle cx="12" cy="12.2" r="3.3"/>
-          </svg>
-        </span>
-        <b>Drop a photo, or tap to browse</b>
-        <small>JPEG or PNG · up to 25 MB · camera supported</small>
-      </span>
-      <img id="preview" alt="Selected chocolate box" hidden>
-      <span class="scanline" aria-hidden="true"></span>
+<section class="card">
+  <label id="picker" class="picker" for="photo">
+    <span id="prompt" class="picker-copy">📷<b>Take or choose a photo</b><small>JPEG or PNG · maximum 25 MB</small></span>
+    <img id="preview" alt="Selected chocolate box" hidden>
+  </label>
+  <input id="photo" type="file" accept="image/jpeg,image/png" capture="environment" hidden>
+  <div class="controls">
+    <label class="field"><span>Box capacity</span>
+      <select id="capacity">
+        <option value="">Detect automatically</option>
+        <option value="6">6 — small box</option>
+        <option value="10">10 — classic box</option>
+        <option value="16">16 — square box</option>
+        <option value="30">30 — large box</option>
+        <option value="50">50 — sharing box</option>
+      </select>
     </label>
-    <input id="photo" type="file" accept="image/jpeg,image/png" capture="environment" hidden>
+    <button id="analyze" class="btn" type="button" disabled>Analyze box</button>
+  </div>
+  <div id="status" class="status"></div>
+</section>
 
-    <div class="controls">
-      <label class="field">
-        <span>Box capacity</span>
-        <span class="select-wrap">
-          <select id="capacity">
-            <option value="">Detect automatically</option>
-            <option value="6">6 — small box</option>
-            <option value="10">10 — classic box</option>
-            <option value="16">16 — square box</option>
-            <option value="30">30 — large box</option>
-            <option value="50">50 — sharing box</option>
-          </select>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-        </span>
+<section id="results" hidden>
+  <section class="card">
+    <h2>Result</h2>
+    <div class="summary">
+      <div class="metric"><b id="capacityOut">—</b><small>Slots</small></div>
+      <div class="metric"><b id="occupiedOut">—</b><small>Chocolates</small></div>
+      <div class="metric"><b id="timeOut">—</b><small>Seconds</small></div>
+    </div>
+    <div id="details" class="details"></div>
+  </section>
+
+  <section class="card">
+    <h2>How the image was processed</h2>
+    <div id="pipeline" class="pipeline"></div>
+  </section>
+
+  <section class="card">
+    <h2>Flavor counts</h2>
+    <div id="flavors" class="flavors"></div>
+  </section>
+
+  <section class="card">
+    <h2>Slot map and corrections</h2>
+    <div id="slots" class="slot-grid"></div>
+    <div id="slotHint" class="slot-hint">Click any slot to correct its flavor or mark it empty.</div>
+  </section>
+
+  <section class="card">
+    <h2>Save model feedback</h2>
+    <p class="correction-note">Review the edited counts, select what went wrong, then save the correction for later model improvement.</p>
+    <div class="correction-top">
+      <label class="field"><span>Issue type</span>
+        <select id="feedbackReason">
+          <option value="wrong_flavor">Wrong flavor prediction</option>
+          <option value="wrong_capacity">Wrong box capacity</option>
+          <option value="bad_localization">Bad tray or slot extraction</option>
+          <option value="bad_photo">Poor photograph</option>
+          <option value="other">Other</option>
+        </select>
       </label>
-      <button id="analyze" class="btn-primary" type="button" disabled>
-        <span class="spinner" aria-hidden="true"></span>
-        <span class="btn-text">Analyze box</span>
-      </button>
+      <button id="resetCorrections" class="btn secondary" type="button">Reset edits</button>
     </div>
-
-    <div id="status" class="status" role="status" aria-live="polite"></div>
+    <div id="changeList" class="change-list"></div>
+    <div class="feedback-actions">
+      <button id="saveFeedback" class="btn" type="button">Save corrections</button>
+    </div>
+    <div id="feedbackStatus" class="status"></div>
   </section>
-
-  <!-- ===================== RESULTS ===================== -->
-  <section id="results" hidden>
-
-    <div class="card reveal">
-      <h2>Result</h2>
-      <div class="summary">
-        <div class="metric"><b id="capacityOut">—</b><small>Slots</small></div>
-        <div class="metric"><b id="occupiedOut">—</b><small>Chocolates</small></div>
-        <div class="metric"><b id="timeOut">—</b><small>Seconds</small></div>
-      </div>
-      <div id="details" class="details"></div>
-    </div>
-
-    <div class="card reveal">
-      <h2>How the image was processed</h2>
-      <div id="pipeline" class="pipeline"></div>
-    </div>
-
-    <div class="card reveal">
-      <h2>Flavor counts</h2>
-      <div id="flavors" class="flavors"></div>
-    </div>
-
-    <div class="card reveal">
-      <h2>Slot map</h2>
-      <div id="slots" class="slot-grid"></div>
-      <div id="slotHint" class="slot-hint">Hover or tap a slot to inspect it</div>
-    </div>
-
-  </section>
+</section>
 </main>
 
-<!-- ===================== LIGHTBOX ===================== -->
-<div id="viewer" class="viewer" hidden role="dialog" aria-modal="true" aria-label="Image viewer">
-  <div class="viewer-toolbar">
-    <span id="viewerTitle" class="viewer-title">Processing image</span>
-    <div class="zoom-group">
-      <button id="zoomOut" type="button" title="Zoom out (−)" aria-label="Zoom out">−</button>
-      <span id="zoomLevel" class="zoom-level">100%</span>
-      <button id="zoomIn" type="button" title="Zoom in (+)" aria-label="Zoom in">+</button>
+<div id="corrector" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="correctorTitle">
+  <div class="modal-card">
+    <h3 id="correctorTitle">Correct slot</h3>
+    <p id="correctorPosition"></p>
+    <label class="field"><span>Choose or type the correct chocolate</span>
+      <input id="flavorInput" list="flavorOptions" maxlength="80" autocomplete="off" placeholder="Start typing a flavor name">
+      <datalist id="flavorOptions"></datalist>
+    </label>
+    <div class="modal-actions">
+      <button id="markEmpty" class="btn danger" type="button">Mark empty</button>
+      <button id="cancelCorrection" class="btn secondary" type="button">Cancel</button>
+      <button id="applyCorrection" class="btn" type="button">Apply correction</button>
     </div>
-    <button id="zoomFit" class="ghost" type="button" title="Fit to screen">Fit</button>
-    <button id="zoomActual" class="ghost" type="button" title="Actual pixels">1:1</button>
-    <button id="viewerClose" class="close" type="button">Close ✕</button>
+  </div>
+</div>
+
+<div id="viewer" class="viewer" hidden>
+  <div class="viewer-bar">
+    <strong id="viewerTitle">Image</strong>
+    <button id="zoomOut" type="button">−</button>
+    <span id="zoomLevel">100%</span>
+    <button id="zoomIn" type="button">+</button>
+    <button id="zoomFit" type="button">Fit</button>
+    <button id="viewerClose" type="button">Close</button>
   </div>
   <div id="viewerCanvas" class="viewer-canvas"><img id="viewerImage" class="viewer-image" alt=""></div>
 </div>
 
 <script>
-/* ============================================================
-   SHORTCUTS + STATE
-   ============================================================ */
-const $ = id => document.getElementById(id);
-const root = document.documentElement;
+const $=id=>document.getElementById(id);
+const photo=$('photo'),preview=$('preview'),promptBox=$('prompt'),picker=$('picker'),analyze=$('analyze'),capacity=$('capacity'),results=$('results');
+const KNOWN_FLAVORS=[
+  'Amaretto','Bananas Foster','Brownie Batter','Caramel Apple Cider','Champagne',
+  'Cheesecake','Chocolate Cake','Confetti Cake','Cookies & Cream','Crème Brûlée',
+  'Creamsicle','Espresso Martini','Grey Salt Caramel','Key Lime Pie','Lemon',
+  'Manhattan','Maple Cream','Peanut Butter Caramel','Pistachio','Pumpkin Spice Latte',
+  "S'mores",'Salted Caramel','Strawberry Shortcake','Tea & Honey','Tequila',
+  'Truffle','Turtle'
+];
+let objectUrl=null,originalPrediction=null,editedPrediction=null,editingSlot=null,zoom=1,fitZoom=1;
 
-const photo   = $('photo'),   preview = $('preview'), prompt = $('prompt'),
-      picker  = $('picker'),  analyze = $('analyze'), status = $('status'),
-      results = $('results'), capacity = $('capacity');
+const clone=value=>JSON.parse(JSON.stringify(value));
+const escapeHtml=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pretty=value=>String(value??'').replace(/_/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+const slug=value=>String(value).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');
+const slotKey=slot=>`${Number(slot.row)},${Number(slot.column)}`;
+const layout=capacity=>capacity===6?[3,2]:capacity===10?[5,2]:capacity===16?[4,4]:capacity===30?[6,5]:[10,5];
 
-const viewer = $('viewer'), viewerCanvas = $('viewerCanvas'),
-      viewerImage = $('viewerImage'), zoomLevel = $('zoomLevel');
-
-let zoom = 1, fitZoom = 1, dragging = false,
-    dragX = 0, dragY = 0, scrollX = 0, scrollY = 0, objectUrl = null;
-
-/* ============================================================
-   THEME
-   ============================================================ */
-(function initTheme(){
-  const saved = localStorage.getItem('chocolathon-theme');
-  if (saved === 'light' || saved === 'dark') root.dataset.theme = saved;
-  syncThemeColor();
-})();
-
-function syncThemeColor(){
-  const meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) meta.setAttribute('content', root.dataset.theme === 'dark' ? '#0d0908' : '#f8f2e9');
+function setStatus(element,text,type=''){
+  element.textContent=text;
+  element.className=`status${text?' show '+type:''}`;
 }
 
-$('themeToggle').addEventListener('click', () => {
-  root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
-  localStorage.setItem('chocolathon-theme', root.dataset.theme);
-  syncThemeColor();
-});
-
-/* ============================================================
-   STATUS
-   ============================================================ */
-function setStatus(text, type){
-  status.className = 'status' + (text ? ' show ' + (type || '') : '');
-  status.textContent = '';
-  if (!text) return;
-
-  const icon = document.createElement('span');
-  icon.className = 'status-icon';
-  if (type === 'loading') icon.innerHTML = '<span class="dots"><i></i><i></i><i></i></span>';
-  else icon.textContent = type === 'error' ? '!' : type === 'success' ? '✓' : 'i';
-
-  const copy = document.createElement('span');
-  copy.textContent = text;
-
-  status.append(icon, copy);
+function flavorColor(name){
+  const palette=['#c98a4b','#8b5a2b','#e8c07d','#a8552f','#6b3f2a','#d9a441','#b9773f','#7a4a2b','#6a8f50','#af4965','#5b7fab','#825fa0'];
+  let hash=0;
+  for(const c of String(name)) hash=(hash*31+c.charCodeAt(0))>>>0;
+  return palette[hash%palette.length];
 }
 
-/* ============================================================
-   FILE HANDLING
-   ============================================================ */
 function handleFile(file){
-  if (!file) return;
-  if (objectUrl) URL.revokeObjectURL(objectUrl);
-  objectUrl = URL.createObjectURL(file);
-
-  preview.src = objectUrl;
-  preview.hidden = false;
-  prompt.hidden = true;
+  if(!file)return;
+  if(objectUrl)URL.revokeObjectURL(objectUrl);
+  objectUrl=URL.createObjectURL(file);
+  preview.src=objectUrl;
+  preview.hidden=false;
+  promptBox.hidden=true;
   picker.classList.add('has-image');
-
-  results.hidden = true;
-  analyze.disabled = false;
-  setStatus('', '');
+  analyze.disabled=false;
+  results.hidden=true;
+  originalPrediction=editedPrediction=null;
+  setStatus($('status'),'');
 }
 
-photo.addEventListener('change', () => handleFile(photo.files[0]));
-
-/* drag & drop */
-['dragenter','dragover'].forEach(evt =>
-  picker.addEventListener(evt, e => { e.preventDefault(); picker.classList.add('drag'); })
-);
-['dragleave','drop'].forEach(evt =>
-  picker.addEventListener(evt, e => {
-    e.preventDefault();
-    if (evt === 'dragleave' && picker.contains(e.relatedTarget)) return;
-    picker.classList.remove('drag');
-  })
-);
-picker.addEventListener('drop', e => {
-  const file = e.dataTransfer?.files?.[0];
-  if (!file) return;
-  if (!/^image\/(jpeg|png)$/i.test(file.type)) {
-    setStatus('That file type is not supported. Please use JPEG or PNG.', 'error');
-    return;
-  }
-  try {
-    const dt = new DataTransfer();
-    dt.items.add(file);
-    photo.files = dt.files;
-  } catch (_) { /* some browsers disallow; preview still works */ }
+photo.addEventListener('change',()=>handleFile(photo.files[0]));
+['dragenter','dragover'].forEach(type=>picker.addEventListener(type,event=>{event.preventDefault();picker.classList.add('drag')}));
+['dragleave','drop'].forEach(type=>picker.addEventListener(type,event=>{event.preventDefault();picker.classList.remove('drag')}));
+picker.addEventListener('drop',event=>{
+  const file=event.dataTransfer?.files?.[0];
+  if(!file)return;
+  if(!/^image\/(jpeg|png)$/i.test(file.type)){setStatus($('status'),'Please use a JPEG or PNG image.','error');return}
+  try{const transfer=new DataTransfer();transfer.items.add(file);photo.files=transfer.files}catch(_){}
   handleFile(file);
 });
 
-/* ============================================================
-   LAYOUT HELPERS
-   ============================================================ */
-function layout(capacity){
-  return capacity === 6  ? [3, 2]
-       : capacity === 10 ? [5, 2]
-       : capacity === 16 ? [4, 4]
-       : capacity === 30 ? [6, 5]
-       : [10, 5];
+function recalculate(result){
+  const counts={};
+  let occupied=0;
+  result.slots.forEach(slot=>{
+    if(slot.label_type==='empty')return;
+    occupied++;
+    counts[slot.flavor_name]=(counts[slot.flavor_name]||0)+1;
+  });
+  result.flavor_counts=counts;
+  result.occupied=occupied;
+  result.empty=result.slots.length-occupied;
 }
 
-/* ============================================================
-   FLAVOR COLOR ENGINE
-   ============================================================ */
-const FLAVOR_RULES = [
-  [/white|vanilla|blanc|cream|ivoire/i,                 '#f0e0c0'],
-  [/coconut|noix de coco|coco/i,                        '#e6d9bd'],
-  [/dark|noir|bittersweet|bitter|intense|cacao|cocoa|70|75|80|85|90|100/i, '#42281a'],
-  [/milk|latte|au lait|milch/i,                         '#b07a4a'],
-  [/caramel|toffee|butterscotch|salted caramel/i,       '#c9832f'],
-  [/praline|gianduja/i,                                 '#a8703c'],
-  [/hazel|noisette/i,                                   '#96683a'],
-  [/almond|amande|marzipan|amaretto/i,                  '#d5b183'],
-  [/pistach/i,                                          '#8fbf5a'],
-  [/rasp|framboise|berry|strawber|fraise|cherry|cerise|cranber/i, '#b8385a'],
-  [/orange|mandarin|clementine|citrus/i,                '#e08a2e'],
-  [/lemon|citron|yuzu/i,                                '#e0c93f'],
-  [/mint|menthe|peppermint/i,                           '#3fae87'],
-  [/coffee|mocha|espresso|tiramisu|latte/i,             '#5d3a26'],
-  [/truffle|ganache/i,                                  '#54341f'],
-  [/nougat|honey|miel/i,                                '#d9b06a'],
-  [/chili|spice|ginger|epice|cinnamon/i,                '#c0452e'],
-  [/apricot|abricot|peach|peche|apple|pomme|pear|poire/i,'#d4693f'],
-  [/matcha|green tea|the vert/i,                        '#7aa85a'],
-  [/salt|fleur de sel/i,                                '#8c93a8'],
-  [/nut|noix|walnut|pecan|pistachio cream/i,            '#9a6b3c'],
-  [/chocolate|chocolat|choco/i,                         '#7a4526']
-];
-const FALLBACK = ['#c98a4b','#8b5a2b','#e8c07d','#a8552f','#6b3f2a','#d9a441',
-                  '#b9773f','#7a4a2b','#e0b07a','#5a3624','#c46a3a','#93643f'];
-
-const colorCache = new Map();
-function flavorColor(name){
-  const key = String(name || '');
-  if (colorCache.has(key)) return colorCache.get(key);
-
-  let hex = null;
-  for (const [re, c] of FLAVOR_RULES) { if (re.test(key)) { hex = c; break; } }
-  if (!hex) {
-    let h = 0;
-    for (let i = 0; i < key.length; i++) h = (h * 31 + key.charCodeAt(i)) >>> 0;
-    hex = FALLBACK[h % FALLBACK.length];
-  }
-  colorCache.set(key, hex);
-  return hex;
-}
-
-function hexToRgb(hex){
-  const h = hex.replace('#','');
-  const n = parseInt(h.length === 3 ? h.split('').map(c=>c+c).join('') : h, 16);
-  return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
-}
-
-const pretty = s => String(s || '')
-  .replace(/_/g, ' ')
-  .replace(/\b\w/g, c => c.toUpperCase());
-
-/* ============================================================
-   COUNT-UP
-   ============================================================ */
-function countUp(el, target, decimals = 0, duration = 950){
-  const value = Number(target);
-  if (!isFinite(value)) { el.textContent = '—'; return; }
-  const start = performance.now();
-  const step = now => {
-    const p = Math.min(1, (now - start) / duration);
-    const eased = 1 - Math.pow(1 - p, 3);
-    el.textContent = (value * eased).toFixed(decimals);
-    if (p < 1) requestAnimationFrame(step);
-    else el.textContent = value.toFixed(decimals);
-  };
-  requestAnimationFrame(step);
-}
-
-/* ============================================================
-   REVEAL OBSERVER
-   ============================================================ */
-let revealObserver = null;
-if ('IntersectionObserver' in window) {
-  revealObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-}
-function observeReveals(){
-  document.querySelectorAll('#results .reveal').forEach(el => {
-    el.classList.remove('in');
-    if (revealObserver) { revealObserver.observe(el); }
-    else el.classList.add('in');
+function currentChanges(){
+  if(!originalPrediction||!editedPrediction)return[];
+  const original=new Map(originalPrediction.slots.map(slot=>[slotKey(slot),slot]));
+  return editedPrediction.slots.flatMap(slot=>{
+    const before=original.get(slotKey(slot));
+    if(!before||before.flavor_name===slot.flavor_name&&before.label_type===slot.label_type)return[];
+    return[{row:slot.row,column:slot.column,before:before.flavor_name,after:slot.flavor_name,before_type:before.label_type,after_type:slot.label_type}];
   });
 }
 
-/* ============================================================
-   RENDER
-   ============================================================ */
-function render(data){
-  const cap = Number(data.capacity) || 0;
-  const fallbackLayout = layout(cap);
-  const rows = Number(data.layout_rows) || fallbackLayout[0];
-  const cols = Number(data.layout_columns) || fallbackLayout[1];
+function renderCounts(data){
+  const entries=Object.entries(data.flavor_counts||{}).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0]));
+  const total=Math.max(1,entries.reduce((sum,[,count])=>sum+count,0));
+  $('flavors').innerHTML=entries.length?entries.map(([name,count])=>{
+    const color=flavorColor(name),width=Math.max(5,Math.round(count/total*100));
+    return`<div class="flavor"><span class="flavor-dot" style="background:${color}"></span><span class="flavor-name">${escapeHtml(pretty(name))}</span><span class="flavor-bar"><i style="width:${width}%;background:${color}"></i></span><span class="flavor-count">${count}</span></div>`;
+  }).join(''):'<div class="slot-hint">No occupied chocolates remain.</div>';
+}
 
-  /* ---- metrics ---- */
-  countUp($('capacityOut'), cap);
-  countUp($('occupiedOut'), Number(data.occupied) || 0);
-  countUp($('timeOut'), Number(data.api_seconds ?? data.seconds ?? 0), 2);
+function renderSlots(data,columns){
+  const changes=new Set(currentChanges().map(change=>`${change.row},${change.column}`));
+  const slots=[...(data.slots||[])].sort((a,b)=>a.row-b.row||a.column-b.column);
+  $('slots').style.gridTemplateColumns=`repeat(${columns},minmax(0,1fr))`;
+  $('slots').innerHTML=slots.map(slot=>{
+    const key=slotKey(slot),label=slot.label_type==='empty'?'Empty':pretty(slot.flavor_name),color=slot.label_type==='empty'?'#777':flavorColor(slot.flavor_name);
+    return`<button class="slot${slot.needs_review?' review':''}${changes.has(key)?' changed':''}" type="button" data-row="${slot.row}" data-column="${slot.column}" style="--c:${color};border-color:${color};background:${color}22" title="Correct row ${slot.row}, column ${slot.column}"><span class="slot-position">${slot.row},${slot.column}</span><span class="slot-name">${escapeHtml(label)}</span></button>`;
+  }).join('');
+}
 
-  /* ---- detail chips ---- */
-  const geo = String(data.geometry_mode || '')
-    .replace('automatic_', '')
-    .replace(/_/g, ' ');
-  const reviews = Number(data.review_slots) || 0;
+function renderChanges(){
+  const changes=currentChanges();
+  $('changeList').innerHTML=changes.length?changes.map(change=>`<div class="change"><b>Slot ${change.row},${change.column}</b><span>${escapeHtml(pretty(change.before))} → ${escapeHtml(pretty(change.after))}</span></div>`).join(''):'<div class="slot-hint">No corrections made yet. You can still report a capacity, localization, or photograph issue.</div>';
+}
 
-  $('details').innerHTML = [
-    `<span class="chip">${data.capacity_source === 'override' ? '◈ Known capacity' : '◈ Auto-detected'}</span>`,
-    `<span class="chip">${geo ? '⌖ ' + geo + ' localization' : '⌖ Localized'}</span>`,
-    `<span class="chip${reviews ? ' warn' : ''}">${reviews ? '⚠ ' + reviews + ' slot' + (reviews === 1 ? '' : 's') + ' need review' : '✓ All slots confident'}</span>`
+function render(data,correction=false){
+  if(!correction){originalPrediction=clone(data);editedPrediction=clone(data)}
+  const cap=Number(data.capacity)||0,fallback=layout(cap),rows=Number(data.layout_rows)||fallback[0],cols=Number(data.layout_columns)||fallback[1];
+
+  $('capacityOut').textContent=cap;
+  $('occupiedOut').textContent=Number(data.occupied)||0;
+  $('timeOut').textContent=Number(data.api_seconds??data.seconds??0).toFixed(2);
+
+  const geo=String(data.geometry_mode||'').replace('automatic_','').replace(/_/g,' ');
+  $('details').innerHTML=[
+    `<span class="chip">${data.capacity_source==='override'?'Known':'Auto-detected'} capacity</span>`,
+    `<span class="chip">${escapeHtml(geo)} localization</span>`,
+    `<span class="chip${data.review_slots?' warn':''}">${Number(data.review_slots)||0} review slots</span>`,
+    `<span class="chip">${rows} × ${cols} layout</span>`
   ].join('');
 
-  /* ---- pipeline ---- */
-  const visuals = data.visualizations || {};
-  const stages = [
-    ['input',     'Input photograph',     'Original image received by the API'],
-    ['localized', 'Tray localization',    `${data.capacity_source === 'override' ? 'Known' : 'Detected'} ${cap}-slot box and its four tray corners`],
-    ['grid',      'Slot extraction',      `${rows} × ${cols} rectified slot grid`],
-    ['labeled',   'Flavor classification','Predicted flavor stamped onto every chocolate']
+  const visuals=data.visualizations||{};
+  const stages=[
+    ['input','Input photograph','Original image received by the API'],
+    ['localized','Tray localization',`${cap}-slot box and four tray corners`],
+    ['grid','Slot extraction',`${rows} × ${cols} rectified grid`],
+    ['labeled','Original model prediction','Labels before your corrections']
   ];
+  $('pipeline').innerHTML=stages.filter(([key])=>visuals[key]).map(([key,title,caption])=>`<article class="stage"><button class="stage-media" type="button" data-title="${escapeHtml(title)}"><img src="${visuals[key]}" alt="${escapeHtml(title)}"></button><div class="stage-copy"><b>${escapeHtml(title)}</b><small>${escapeHtml(caption)}</small></div></article>`).join('');
 
-  $('pipeline').innerHTML = stages
-    .filter(([key]) => visuals[key])
-    .map(([key, title, caption], i) => `
-      <article class="stage" style="animation-delay:${i * 90}ms">
-        <button class="stage-media" type="button" data-title="${title}" aria-label="Enlarge: ${title}">
-          <img src="${visuals[key]}" alt="${title}">
-          <span class="stage-zoom" aria-hidden="true">⤢</span>
-        </button>
-        <div class="stage-copy">
-          <span class="stage-number">${i + 1}</span>
-          <div><b>${title}</b><small>${caption}</small></div>
-        </div>
-      </article>`).join('');
+  renderCounts(data);
+  renderSlots(data,cols);
+  renderChanges();
+  $('slotHint').textContent='Click any slot to choose another chocolate or mark it empty.';
+  results.hidden=false;
+  if(!correction)results.scrollIntoView({behavior:'smooth',block:'start'});
+}
 
-  /* ---- flavor counts ---- */
-  const entries = Object.entries(data.flavor_counts || {})
-    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
-  const total = entries.reduce((sum, [, c]) => sum + c, 0) || 1;
+function openCorrector(row,column){
+  if(!editedPrediction)return;
+  editingSlot=editedPrediction.slots.find(slot=>Number(slot.row)===row&&Number(slot.column)===column);
+  if(!editingSlot)return;
 
-  $('flavors').innerHTML = entries.map(([name, count], i) => {
-    const c = flavorColor(name);
-    const pct = Math.max(4, Math.round((count / total) * 100));
-    return `<div class="flavor" style="animation-delay:${i * 55}ms">
-      <span class="flavor-dot" style="background:${c}"></span>
-      <span class="flavor-name">${pretty(name)}</span>
-      <span class="flavor-bar"><i data-w="${pct}%" style="background:linear-gradient(90deg,${c},${c}b0)"></i></span>
-      <span class="flavor-count">${count}</span>
-    </div>`;
-  }).join('');
+  const available=new Set(KNOWN_FLAVORS);
+  originalPrediction.slots.forEach(slot=>{if(slot.label_type!=='empty')available.add(pretty(slot.flavor_name))});
+  editedPrediction.slots.forEach(slot=>{if(slot.label_type!=='empty')available.add(pretty(slot.flavor_name))});
+  $('flavorOptions').innerHTML=[...available].sort().map(name=>`<option value="${escapeHtml(name)}"></option>`).join('');
 
-  /* ---- slot map ---- */
-  const slots = [...(data.slots || [])].sort((a, b) => a.row - b.row || a.column - b.column);
-  const grid = $('slots');
-  grid.style.gridTemplateColumns = `repeat(${cols}, minmax(0, 1fr))`;
-  grid.innerHTML = slots.map((s, i) => {
-    const c = flavorColor(s.flavor_name);
-    const [r, g, b] = hexToRgb(c);
-    const label = pretty(s.flavor_name);
-    return `<div class="slot${s.needs_review ? ' review' : ''}" tabindex="0"
-      style="--c:${c};background:rgba(${r},${g},${b},.16);border-color:rgba(${r},${g},${b},.48);animation-delay:${i * 14}ms"
-      data-flavor="${label}" data-pos="Row ${s.row} · Col ${s.column}"
-      title="${label} — Row ${s.row}, Col ${s.column}${s.needs_review ? ' (needs review)' : ''}">
-      <span class="slot-name">${label}</span>
-    </div>`;
-  }).join('');
+  $('correctorPosition').textContent=`Row ${row}, column ${column} · current prediction: ${pretty(editingSlot.flavor_name)}`;
+  $('flavorInput').value=editingSlot.label_type==='empty'?'':pretty(editingSlot.flavor_name);
+  $('corrector').hidden=false;
+  setTimeout(()=>$('flavorInput').focus(),30);
+}
 
-  $('slotHint').innerHTML = 'Hover or tap a slot to inspect it';
+function closeCorrector(){$('corrector').hidden=true;editingSlot=null}
 
-  /* ---- reveal + animate bars ---- */
-  results.hidden = false;
-  observeReveals();
+function applyFlavor(value){
+  if(!editingSlot)return;
+  const name=String(value).trim().replace(/[<>]/g,'').slice(0,80);
+  if(!name)return;
 
-  requestAnimationFrame(() => requestAnimationFrame(() => {
-    document.querySelectorAll('.flavor-bar i').forEach(bar => {
-      bar.style.width = bar.dataset.w;
+  editingSlot.flavor_name=name;
+  editingSlot.flavor_id=slug(name);
+  editingSlot.label_type='occupied';
+  editingSlot.needs_review=false;
+  recalculate(editedPrediction);
+  closeCorrector();
+  render(editedPrediction,true);
+  setStatus($('feedbackStatus'),'Correction applied. Save when you finish reviewing.','loading');
+}
+
+$('slots').addEventListener('click',event=>{
+  const slot=event.target.closest('.slot');
+  if(slot)openCorrector(Number(slot.dataset.row),Number(slot.dataset.column));
+});
+$('applyCorrection').addEventListener('click',()=>applyFlavor($('flavorInput').value));
+$('flavorInput').addEventListener('keydown',event=>{if(event.key==='Enter')applyFlavor(event.target.value);if(event.key==='Escape')closeCorrector()});
+$('markEmpty').addEventListener('click',()=>{
+  if(!editingSlot)return;
+  editingSlot.flavor_name='Empty';
+  editingSlot.flavor_id='empty';
+  editingSlot.label_type='empty';
+  editingSlot.needs_review=false;
+  recalculate(editedPrediction);
+  closeCorrector();
+  render(editedPrediction,true);
+  setStatus($('feedbackStatus'),'Slot marked empty. Save when you finish reviewing.','loading');
+});
+$('cancelCorrection').addEventListener('click',closeCorrector);
+$('corrector').addEventListener('click',event=>{if(event.target===$('corrector'))closeCorrector()});
+
+$('resetCorrections').addEventListener('click',()=>{
+  if(!originalPrediction)return;
+  editedPrediction=clone(originalPrediction);
+  render(editedPrediction,true);
+  setStatus($('feedbackStatus'),'All slot corrections were reset.','loading');
+});
+
+function snapshot(result){
+  return{
+    capacity:result.capacity,
+    capacity_source:result.capacity_source,
+    size_probabilities:result.size_probabilities,
+    layout_rows:result.layout_rows,
+    layout_columns:result.layout_columns,
+    occupied:result.occupied,
+    empty:result.empty,
+    flavor_counts:result.flavor_counts,
+    slots:result.slots.map(slot=>({row:slot.row,column:slot.column,flavor_id:slot.flavor_id,flavor_name:slot.flavor_name,label_type:slot.label_type,similarity:slot.similarity,margin:slot.margin}))
+  };
+}
+
+$('saveFeedback').addEventListener('click',async()=>{
+  if(!originalPrediction||!editedPrediction)return;
+  const button=$('saveFeedback'),changes=currentChanges();
+  button.disabled=true;
+  setStatus($('feedbackStatus'),'Saving correction record…','loading');
+
+  try{
+    const response=await fetch('feedback',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        request_id:originalPrediction.request_id,
+        issue_reason:$('feedbackReason').value,
+        changes,
+        original:snapshot(originalPrediction),
+        corrected:snapshot(editedPrediction)
+      })
     });
-  }));
-
-  results.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-/* ============================================================
-   SLOT HINT (hover / tap)
-   ============================================================ */
-$('slots').addEventListener('pointerover', e => {
-  const slot = e.target.closest('.slot');
-  if (!slot) return;
-  const review = slot.classList.contains('review') ? ' · <b>needs review</b>' : '';
-  $('slotHint').innerHTML = `<b>${slot.dataset.flavor}</b> · ${slot.dataset.pos}${review}`;
-});
-$('slots').addEventListener('focusin', e => {
-  const slot = e.target.closest('.slot');
-  if (slot) $('slotHint').innerHTML = `<b>${slot.dataset.flavor}</b> · ${slot.dataset.pos}`;
+    const body=await response.json();
+    if(!response.ok)throw new Error(body.detail||`Request failed (${response.status})`);
+    setStatus($('feedbackStatus'),`Saved successfully. Feedback ID: ${body.feedback_id}`,'success');
+  }catch(error){
+    setStatus($('feedbackStatus'),error.message||'Could not save feedback.','error');
+  }finally{button.disabled=false}
 });
 
-/* ============================================================
-   LIGHTBOX
-   ============================================================ */
-function applyZoom(value){
-  zoom = Math.min(6, Math.max(0.08, value));
-  if (!viewerImage.naturalWidth) return;
-  viewerImage.style.width = `${viewerImage.naturalWidth * zoom}px`;
-  zoomLevel.textContent = `${Math.round(zoom * 100)}%`;
-}
+analyze.addEventListener('click',async()=>{
+  const file=photo.files[0];
+  if(!file)return;
 
-function fitImage(){
-  if (!viewerImage.naturalWidth) return;
-  const availW = Math.max(40, viewerCanvas.clientWidth - 52);
-  const availH = Math.max(40, viewerCanvas.clientHeight - 52);
-  fitZoom = Math.min(availW / viewerImage.naturalWidth, availH / viewerImage.naturalHeight, 1);
-  applyZoom(fitZoom);
-  viewerCanvas.scrollTo(0, 0);
-}
+  analyze.disabled=true;
+  capacity.disabled=true;
+  analyze.textContent='Analyzing…';
+  results.hidden=true;
+  setStatus($('status'),'Locating the tray and classifying every slot…','loading');
 
-function openViewer(img, title){
-  viewer.hidden = false;
-  document.body.style.overflow = 'hidden';
-  $('viewerTitle').textContent = title || img.alt || 'Processing image';
-  viewerImage.alt = img.alt || '';
-  viewerImage.style.width = '';
-  zoom = 1;
-  viewerImage.src = img.src;
-  if (viewerImage.complete) requestAnimationFrame(fitImage);
-  else viewerImage.onload = fitImage;
-}
+  const form=new FormData();
+  form.append('image',file);
+  form.append('filled_only','true');
+  if(capacity.value)form.append('capacity',capacity.value);
 
-function closeViewer(){
-  viewer.hidden = true;
-  document.body.style.overflow = '';
-  viewerImage.onload = null;
-  viewerImage.removeAttribute('src');
-  viewerImage.style.width = '';
-}
-
-$('pipeline').addEventListener('click', e => {
-  const btn = e.target.closest('.stage-media');
-  if (!btn) return;
-  openViewer(btn.querySelector('img'), btn.dataset.title);
-});
-
-$('zoomIn').addEventListener('click', () => applyZoom(zoom * 1.25));
-$('zoomOut').addEventListener('click', () => applyZoom(zoom / 1.25));
-$('zoomFit').addEventListener('click', fitImage);
-$('zoomActual').addEventListener('click', () => applyZoom(1));
-$('viewerClose').addEventListener('click', closeViewer);
-
-viewerCanvas.addEventListener('wheel', e => {
-  e.preventDefault();
-  applyZoom(zoom * (e.deltaY < 0 ? 1.12 : 0.89));
-}, { passive: false });
-
-viewerCanvas.addEventListener('mousedown', e => {
-  dragging = true;
-  dragX = e.clientX; dragY = e.clientY;
-  scrollX = viewerCanvas.scrollLeft; scrollY = viewerCanvas.scrollTop;
-  viewerCanvas.classList.add('dragging');
-});
-window.addEventListener('mousemove', e => {
-  if (!dragging) return;
-  viewerCanvas.scrollLeft = scrollX - (e.clientX - dragX);
-  viewerCanvas.scrollTop  = scrollY - (e.clientY - dragY);
-});
-window.addEventListener('mouseup', () => {
-  dragging = false;
-  viewerCanvas.classList.remove('dragging');
-});
-
-/* double-click toggles fit ↔ 100% */
-viewerCanvas.addEventListener('dblclick', e => {
-  if (e.target !== viewerImage) return;
-  applyZoom(Math.abs(zoom - fitZoom) < 0.02 ? 1 : fitZoom);
-});
-
-viewer.addEventListener('click', e => { if (e.target === viewer) closeViewer(); });
-
-window.addEventListener('keydown', e => {
-  if (viewer.hidden) return;
-  if (e.key === 'Escape') closeViewer();
-  if (e.key === '+' || e.key === '=') { e.preventDefault(); applyZoom(zoom * 1.25); }
-  if (e.key === '-' || e.key === '_') { e.preventDefault(); applyZoom(zoom / 1.25); }
-  if (e.key === '0') { e.preventDefault(); fitImage(); }
-});
-
-/* ============================================================
-   ANALYZE
-   ============================================================ */
-analyze.addEventListener('click', async () => {
-  const file = photo.files[0];
-  if (!file) return;
-
-  analyze.disabled = true;
-  analyze.classList.add('loading');
-  analyze.querySelector('.btn-text').textContent = 'Analyzing…';
-  picker.classList.add('analyzing');
-  capacity.disabled = true;
-  results.hidden = true;
-  setStatus('Analyzing the box — locating the tray, reading each slot…', 'loading');
-
-  const form = new FormData();
-  form.append('image', file);
-  form.append('filled_only', 'true');
-  if (capacity.value) form.append('capacity', capacity.value);
-
-  try {
-    const response = await fetch('predict', { method: 'POST', body: form });
-    const data = await response.json();
-    if (!response.ok) throw new Error(data.detail || `Request failed (${response.status})`);
-
+  try{
+    const response=await fetch('predict',{method:'POST',body:form});
+    const data=await response.json();
+    if(!response.ok)throw new Error(data.detail||`Request failed (${response.status})`);
     render(data);
-    const review = Number(data.review_slots) || 0;
-    setStatus(
-      review
-        ? `Done — ${review} slot${review === 1 ? '' : 's'} flagged for review.`
-        : 'Done — every slot classified with confidence.',
-      'success'
-    );
-  } catch (error) {
-    setStatus(error.message || 'Something went wrong while analyzing.', 'error');
-  } finally {
-    analyze.disabled = false;
-    analyze.classList.remove('loading');
-    analyze.querySelector('.btn-text').textContent = 'Analyze box';
-    picker.classList.remove('analyzing');
-    capacity.disabled = false;
+    setStatus($('status'),'Analysis complete. Click any slot if a correction is needed.','success');
+    setStatus($('feedbackStatus'),'','');
+  }catch(error){
+    setStatus($('status'),error.message||'Analysis failed.','error');
+  }finally{
+    analyze.disabled=false;
+    capacity.disabled=false;
+    analyze.textContent='Analyze box';
   }
 });
+
+$('pipeline').addEventListener('click',event=>{
+  const button=event.target.closest('.stage-media');
+  if(!button)return;
+  const image=button.querySelector('img');
+  $('viewerTitle').textContent=button.dataset.title||'Image';
+  $('viewerImage').src=image.src;
+  $('viewer').hidden=false;
+  document.body.style.overflow='hidden';
+  $('viewerImage').onload=fitImage;
+});
+
+function setZoom(value){
+  zoom=Math.min(6,Math.max(.08,value));
+  const image=$('viewerImage');
+  if(image.naturalWidth)image.style.width=`${image.naturalWidth*zoom}px`;
+  $('zoomLevel').textContent=`${Math.round(zoom*100)}%`;
+}
+function fitImage(){
+  const image=$('viewerImage'),canvas=$('viewerCanvas');
+  if(!image.naturalWidth)return;
+  fitZoom=Math.min((canvas.clientWidth-44)/image.naturalWidth,(canvas.clientHeight-44)/image.naturalHeight,1);
+  setZoom(fitZoom);
+}
+function closeViewer(){$('viewer').hidden=true;$('viewerImage').removeAttribute('src');document.body.style.overflow=''}
+$('zoomIn').addEventListener('click',()=>setZoom(zoom*1.25));
+$('zoomOut').addEventListener('click',()=>setZoom(zoom/1.25));
+$('zoomFit').addEventListener('click',fitImage);
+$('viewerClose').addEventListener('click',closeViewer);
+$('viewer').addEventListener('click',event=>{if(event.target===$('viewer'))closeViewer()});
+window.addEventListener('keydown',event=>{
+  if(event.key==='Escape'){if(!$('corrector').hidden)closeCorrector();else if(!$('viewer').hidden)closeViewer()}
+});
+
+$('theme').addEventListener('click',()=>{
+  const theme=document.documentElement.dataset.theme==='dark'?'light':'dark';
+  document.documentElement.dataset.theme=theme;
+  localStorage.setItem('chocolathon-theme',theme);
+});
+document.documentElement.dataset.theme=localStorage.getItem('chocolathon-theme')||'dark';
 </script>
 </body>
 </html>

@@ -3,12 +3,14 @@
 import asyncio
 import base64
 import io
+import json
 import logging
 import os
 import sys
 import tempfile
 import time
 import uuid
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
 
@@ -45,12 +47,13 @@ if THREADS < 1 or BATCH_SIZE < 1: raise RuntimeError("CHOCOLATHON_THREADS and CH
 
 app = FastAPI(
     title="Chocolathon Inference API",
-    version="1.1.0",
+    version="1.2.0",
     description="Offline tray localization, chocolate classification and processing visualization.",
 )
 app.state.engine = None
 app.state.started_at = None
 app.state.inference_lock = asyncio.Lock()
+app.state.feedback_lock = asyncio.Lock()
 
 
 @app.on_event("startup")
@@ -210,6 +213,32 @@ def run_prediction(path, capacity, filled_only):
     result, rgb, tray, _ = engine.predict(path, filled_only=filled_only, capacity_override=capacity)
     result["visualizations"] = processing_visuals(result, rgb, tray)
     return result
+
+
+@app.post("/feedback")
+async def save_feedback(payload: dict):
+    encoded = json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
+    if len(encoded.encode("utf-8")) > 500_000:
+        raise HTTPException(status_code=413, detail="Feedback payload is too large")
+    if not payload.get("request_id") or not payload.get("original") or not payload.get("corrected"):
+        raise HTTPException(status_code=422, detail="Feedback requires request_id, original and corrected results")
+
+    record = {
+        "feedback_id": str(uuid.uuid4()),
+        "created_at_utc": datetime.now(timezone.utc).isoformat(),
+        "model_version": app.version,
+        **payload,
+    }
+    directory = PROJECT_ROOT/"data"/"feedback"
+    path = directory/"corrections.jsonl"
+
+    async with app.state.feedback_lock:
+        directory.mkdir(parents=True, exist_ok=True)
+        with path.open("a", encoding="utf-8") as handle:
+            handle.write(json.dumps(record, ensure_ascii=False)+"\n")
+
+    LOGGER.info("feedback=%s request=%s changes=%s", record["feedback_id"], payload["request_id"], len(payload.get("changes", [])))
+    return {"status": "saved", "feedback_id": record["feedback_id"]}
 
 
 @app.post("/predict")
