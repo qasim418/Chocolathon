@@ -1020,7 +1020,9 @@ function observeReveals(){
    ============================================================ */
 function render(data){
   const cap = Number(data.capacity) || 0;
-  const [rows, cols] = layout(cap);
+  const fallbackLayout = layout(cap);
+  const rows = Number(data.layout_rows) || fallbackLayout[0];
+  const cols = Number(data.layout_columns) || fallbackLayout[1];
 
   /* ---- metrics ---- */
   countUp($('capacityOut'), cap);

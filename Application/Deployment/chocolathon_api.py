@@ -28,7 +28,7 @@ else:
     raise RuntimeError(f"Chocolathon runtime not found under {CONFIGURED_ROOT}.")
 
 sys.path.insert(0, str(INFERENCE_DIR))
-from chocolathon_inference import Chocolathon, LAYOUTS
+from chocolathon_inference import AUTO_CAPACITIES, Chocolathon, LAYOUTS
 
 logging.basicConfig(level=os.getenv("CHOCOLATHON_LOG_LEVEL", "INFO"), format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 LOGGER = logging.getLogger("chocolathon.api")
@@ -99,7 +99,7 @@ def health():
         "threads": THREADS,
         "batch_size": BATCH_SIZE,
         "supported_capacities": list(LAYOUTS),
-        "automatic_capacities": [6, 16, 30, 50],
+        "automatic_capacities": list(AUTO_CAPACITIES),
         "manual_capacity_10": 10 in LAYOUTS,
         "primary_localizer": "segmentation",
         "fallback_localizer": "routed_corner_regression",
@@ -158,7 +158,8 @@ def processing_visuals(result, rgb, tray):
     draw.text((22, 20), caption, font=caption_font, fill="white")
 
     rectified = Image.fromarray(tray)
-    rows, columns = LAYOUTS[result["capacity"]]
+    rows = int(result.get("layout_rows", LAYOUTS[result["capacity"]][0]))
+    columns = int(result.get("layout_columns", LAYOUTS[result["capacity"]][1]))
     grid = rectified.copy()
     grid_draw = ImageDraw.Draw(grid)
     cell_width, cell_height = grid.width/columns, grid.height/rows

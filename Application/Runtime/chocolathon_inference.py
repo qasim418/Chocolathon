@@ -154,9 +154,8 @@ def oriented_layout(corners, capacity):
     rows, cols = LAYOUTS[capacity]
     if rows == cols: return rows, cols
     corners = np.asarray(corners, np.float32)
-    observed_width = (np.linalg.norm(corners[1]-corners[0]) + np.linalg.norm(corners[2]-corners[3]))/2
-    observed_height = (np.linalg.norm(corners[3]-corners[0]) + np.linalg.norm(corners[2]-corners[1]))/2
-    return (cols, rows) if (observed_width > observed_height) != (cols > rows) else (rows, cols)
+    observed_landscape = np.ptp(corners[:, 0]) > np.ptp(corners[:, 1])
+    return (cols, rows) if observed_landscape != (cols > rows) else (rows, cols)
 
 
 def warp(rgb, corners, capacity, cell_size, layout=None):
@@ -492,10 +491,15 @@ class Chocolathon:
             capacity_source = 'override'
         else:
             capacity_labels = AUTO_CAPACITIES
-            probabilities = self.size_model(tensor).softmax(1)[0].cpu().numpy()
+            size_batch = torch.cat([
+                localization_tensor(np.ascontiguousarray(np.rot90(rgb, turns)))
+                for turns in range(4)
+            ]).to(self.device)
+            rotation_probabilities = self.size_model(size_batch).softmax(1).cpu().numpy()
+            probabilities = rotation_probabilities.mean(axis=0)
             predicted_capacity = AUTO_CAPACITIES[int(probabilities.argmax())]
             capacity = predicted_capacity
-            capacity_source = 'classifier'
+            capacity_source = 'classifier_rotation_tta'
 
         if annotation is None:
             localization_diagnostics, fallback_reason = {}, None
